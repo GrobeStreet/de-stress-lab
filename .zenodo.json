@@ -1,0 +1,13 @@
+{
+  "title": "Anatomy of a 2-3 sigma Hint: An Independent Stress Test of the DESI DR2 Evolving-Dark-Energy Preference",
+  "description": "Independent reimplementation and adversarial stress test of the compressed likelihoods behind the DESI DR2 preference for evolving dark energy. Reproduces the published results (Delta-chi2 ladder, posteriors, DIC), then maps the preference's fragility: leave-one-out influence diagnostics, an eBOSS comparator swap, calibration intercept tests, w(z) parameterization swaps, a 5,000-mock significance calibration, a full-CMB lensing variant (finding the preference falls to ~1.4 sigma without the single LRG2 measurement), and a pre-registered cross-probe hypothesis chain in which one kill condition was met (the supernova crossing feature is degenerate with a low-z calibration offset). AI-assisted implementation; four external adversarial reviews adopted; all data public and primary-sourced; publish-regardless protocol.",
+  "creators": [{"name": "Morong, Bobby"}],
+  "keywords": ["dark energy", "DESI", "cosmology", "BAO", "supernovae", "reproducibility", "w0waCDM", "systematics"],
+  "license": "MIT",
+  "upload_type": "software",
+  "related_identifiers": [
+    {"identifier": "arXiv:2503.14738", "relation": "isSupplementTo", "scheme": "arxiv"},
+    {"identifier": "arXiv:2408.07175", "relation": "references", "scheme": "arxiv"},
+    {"identifier": "arXiv:2501.06664", "relation": "references", "scheme": "arxiv"}
+  ]
+}
