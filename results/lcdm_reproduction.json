@@ -1,0 +1,20 @@
+{
+ "bao_alone": {
+  "Om": 0.2973,
+  "Om_err": 0.0083,
+  "hrd_Mpc": 101.55,
+  "hrd_err": 0.72,
+  "chi2_min": 10.54,
+  "ndata": 13,
+  "nparam": 2,
+  "target": "Om=0.2975+/-0.0086, hrd=101.54+/-0.73 (arXiv:2503.14738)"
+ },
+ "sn_alone": {
+  "Om": 0.3326,
+  "Om_err": 0.018,
+  "chi2_min": 1386.41,
+  "n_sne": 1580,
+  "cuts": "zHD>0.01, IS_CALIBRATOR==0, full STAT+SYS cov, M marginalized",
+  "target": "Om=0.334+/-0.018 (arXiv:2202.04077) [to re-verify]"
+ }
+}

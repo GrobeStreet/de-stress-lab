@@ -1,0 +1,36 @@
+{
+ "gate_G1_rd_max_dev_pct": 0.169,
+ "gate_G2": {
+  "Om": 0.2976,
+  "H0": 68.37,
+  "chi2": 10.56,
+  "passed": true
+ },
+ "run1_DESI_alone": {
+  "dchi2": -4.7,
+  "target": -4.7,
+  "w0": -0.18,
+  "wa": -2.7
+ },
+ "run2_DESI_SN": {
+  "dchi2": -5.1,
+  "target": -4.9,
+  "w0": -0.886,
+  "wa": -0.24,
+  "target_w0": "-0.888+0.055-0.064",
+  "target_wa": "-0.17+/-0.46",
+  "Om": 0.305
+ },
+ "run3_DESI_cCMB": {
+  "dchi2": -8.5,
+  "target": -8.0,
+  "w0": -0.44,
+  "wa": -1.68,
+  "target_w0": "~ -0.43+/-0.21 (paper: compressed ~ full)",
+  "Om": 0.352,
+  "H0": 63.6
+ },
+ "run1_sigma": 1.7,
+ "run2_sigma": 1.8,
+ "run3_sigma": 2.4
+}

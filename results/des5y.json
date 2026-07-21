@@ -1,0 +1,49 @@
+{
+ "A_DESI_DES5Y": {
+  "dchi2": -7.3,
+  "sigma": 2.2,
+  "w0": -0.843,
+  "wa": -0.54,
+  "Om": 0.314,
+  "published": "dchi2=-13.6, 3.3sigma (2024 release; ours is Dovekie)"
+ },
+ "B_intercept_test": {
+  "dchi2": -0.4,
+  "sigma": 0.2,
+  "w0": -0.987,
+  "wa": 0.12,
+  "D_lowz_mag_at_w0wa": 0.0336,
+  "D_lowz_mag_at_LCDM": 0.0375,
+  "note": "free magnitude offset on external (IDSURVEY!=10) low-z sample, analytically marginalized"
+ },
+ "C_lowz_cut_sweep": {
+  "z>0.0": {
+   "n": 1820,
+   "dchi2": -7.3,
+   "sigma": 2.2,
+   "w0": -0.843,
+   "wa": -0.54
+  },
+  "z>0.025": {
+   "n": 1820,
+   "dchi2": -7.3,
+   "sigma": 2.2,
+   "w0": -0.843,
+   "wa": -0.54
+  },
+  "z>0.05": {
+   "n": 1679,
+   "dchi2": -3.3,
+   "sigma": 1.3,
+   "w0": -0.873,
+   "wa": -0.37
+  },
+  "z>0.1": {
+   "n": 1619,
+   "dchi2": -0.6,
+   "sigma": 0.3,
+   "w0": -0.991,
+   "wa": 0.2
+  }
+ }
+}

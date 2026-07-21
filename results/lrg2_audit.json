@@ -1,0 +1,48 @@
+{
+ "T1_tension_vs_LCDM": {
+  "eBOSS_DR16": {
+   "joint_chi2": 1.8,
+   "joint_sigma": 0.83,
+   "zscore_DM": 1.28,
+   "zscore_DH": -0.7
+  },
+  "DESI_DR1": {
+   "joint_chi2": 3.63,
+   "joint_sigma": 1.4,
+   "zscore_DM": -1.78,
+   "zscore_DH": 0.13
+  },
+  "DESI_DR2": {
+   "joint_chi2": 4.08,
+   "joint_sigma": 1.51,
+   "zscore_DM": -0.39,
+   "zscore_DH": -1.66
+  }
+ },
+ "T2_T3_swap": {
+  "DESI_DR2 (baseline)": {
+   "dchi2": -8.5,
+   "sigma": 2.4,
+   "w0": -0.44,
+   "wa": -1.68
+  },
+  "eBOSS_DR16 (independent)": {
+   "dchi2": -4.3,
+   "sigma": 1.6,
+   "w0": -0.62,
+   "wa": -1.16
+  },
+  "DESI_DR1": {
+   "dchi2": -5.9,
+   "sigma": 1.9,
+   "w0": -0.57,
+   "wa": -1.35
+  },
+  "none (dropped)": {
+   "dchi2": -4.3,
+   "sigma": 1.6,
+   "w0": -0.62,
+   "wa": -1.17
+  }
+ }
+}

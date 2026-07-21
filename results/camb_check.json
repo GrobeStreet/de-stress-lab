@@ -1,0 +1,56 @@
+{
+ "lcdm": {
+  "chi2": 15.61,
+  "Om": 0.3002,
+  "H0": 68.38,
+  "wb": 0.02241,
+  "nfev": 84,
+  "camb_vs_surrogate": {
+   "rd_camb": 147.77,
+   "rd_surr": 147.95,
+   "th_camb": 1.0413,
+   "th_surr": 1.04167
+  }
+ },
+ "w0wa": {
+  "chi2": 7.33,
+  "Om": 0.3507,
+  "H0": 63.73,
+  "w0": -0.447,
+  "wa": -1.64,
+  "nfev": 507,
+  "camb_vs_surrogate": {
+   "rd_camb": 147.4,
+   "rd_surr": 147.57,
+   "th_camb": 1.04123,
+   "th_surr": 1.04159
+  }
+ },
+ "lcdm_noLRG2": {
+  "chi2": 9.27,
+  "Om": 0.3036,
+  "H0": 68.12,
+  "wb": 0.02238,
+  "nfev": 104,
+  "camb_vs_surrogate": {
+   "rd_camb": 147.66,
+   "rd_surr": 147.83,
+   "th_camb": 1.04118,
+   "th_surr": 1.04155
+  }
+ },
+ "w0wa_noLRG2": {
+  "chi2": 5.13,
+  "Om": 0.3357,
+  "H0": 65.14,
+  "w0": -0.623,
+  "wa": -1.15,
+  "nfev": 559,
+  "camb_vs_surrogate": {
+   "rd_camb": 147.4,
+   "rd_surr": 147.57,
+   "th_camb": 1.04123,
+   "th_surr": 1.04159
+  }
+ }
+}

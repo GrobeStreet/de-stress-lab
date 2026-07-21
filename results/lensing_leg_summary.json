@@ -1,0 +1,17 @@
+{
+ "with_lrg2": {
+  "dchi2": -10.35,
+  "sigma": 2.77
+ },
+ "without_lrg2": {
+  "dchi2": -3.76,
+  "sigma": 1.43
+ },
+ "note": "likelihood dchi2 after removing 2log(20) prior-volume constant; PR3-native Planck lowl TT/EE + plik-lite + lensing + DESI BAO; cobaya BOBYQA MAP",
+ "raw_2xminuslogpost": {
+  "lcdm": 1000.257,
+  "w0wa": 995.894,
+  "lcdm_nolrg2": 993.033,
+  "w0wa_nolrg2": 995.267
+ }
+}

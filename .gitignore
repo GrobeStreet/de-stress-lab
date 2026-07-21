@@ -1,0 +1,8 @@
+venv/
+cobaya_packages/
+lensing-leg/chains/
+data/*
+!data/DOWNLOAD.md
+__pycache__/
+*.pyc
+.DS_Store

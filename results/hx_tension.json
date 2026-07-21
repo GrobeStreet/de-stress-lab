@@ -1,0 +1,14 @@
+{
+ "desi_bao_ccmb_vs_pantheon": {
+  "q": 3.79,
+  "sigma": 1.44
+ },
+ "desi_bao_ccmb_vs_des5y": {
+  "q": 3.47,
+  "sigma": 1.35
+ },
+ "pantheon_vs_des5y": {
+  "q": 0.43,
+  "sigma": 0.24
+ }
+}
