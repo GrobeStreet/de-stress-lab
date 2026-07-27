@@ -1,0 +1,40 @@
+name: Statistical red team
+description: Request adversarial tests of a quantitative claim.
+title: "[Red team] "
+labels: ["engagement", "statistics"]
+body:
+  - type: markdown
+    attributes:
+      value: Do not include confidential files, credentials, or unpublished data.
+  - type: textarea
+    id: claim
+    attributes:
+      label: Claim to stress-test
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Public evidence and code
+      description: Provide public links only.
+    validations:
+      required: true
+  - type: textarea
+    id: risks
+    attributes:
+      label: Known statistical risks
+      description: Selection, multiplicity, priors, nuisance parameters, covariance, or other concerns.
+  - type: input
+    id: deadline
+    attributes:
+      label: Desired deadline
+  - type: dropdown
+    id: private
+    attributes:
+      label: Is private scoping required?
+      options:
+        - "No"
+        - "Yes — contact details will be exchanged privately"
+    validations:
+      required: true
+

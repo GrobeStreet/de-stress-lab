@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use de-stress-lab, please cite the software release."
+title: "de-stress-lab"
+type: software
+authors:
+  - family-names: Morong
+    given-names: Bobby
+version: 0.1.0
+date-released: 2026-07-27
+license: MIT
+repository-code: "https://github.com/GrobeStreet/de-stress-lab"
+url: "https://github.com/GrobeStreet/de-stress-lab"
+keywords:
+  - reproducibility
+  - statistical diagnostics
+  - likelihood
+  - cosmology
+

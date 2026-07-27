@@ -1,0 +1,58 @@
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[project]
+name = "de-stress-lab"
+version = "0.1.0"
+description = "Reusable influence diagnostics, null calibration, and prediction ledgers for scientific likelihoods"
+readme = "README.md"
+requires-python = ">=3.10"
+license = {file = "LICENSE"}
+authors = [
+  {name = "Bobby Morong"}
+]
+keywords = [
+  "reproducibility",
+  "scientific-software",
+  "statistical-diagnostics",
+  "cosmology",
+  "likelihood",
+]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Science/Research",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Scientific/Engineering",
+]
+dependencies = [
+  "numpy>=1.26",
+  "scipy>=1.11",
+]
+
+[project.optional-dependencies]
+test = [
+  "pytest>=8",
+  "pytest-cov>=5",
+]
+posterior = [
+  "emcee>=3.1",
+]
+
+[project.scripts]
+destress = "destress.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/GrobeStreet/de-stress-lab"
+Repository = "https://github.com/GrobeStreet/de-stress-lab"
+Issues = "https://github.com/GrobeStreet/de-stress-lab/issues"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/destress"]
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]
+
