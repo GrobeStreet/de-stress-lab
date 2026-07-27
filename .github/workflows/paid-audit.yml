@@ -110,50 +110,11 @@ jobs:
       - name: Prepare delivery record
         if: always()
         run: |
-          python - <<'PY'
-          import json
-          import os
-          import subprocess
-          from pathlib import Path
-
-          output = Path("delivery")
-          output.mkdir(exist_ok=True)
-          try:
-              commit = subprocess.check_output(
-                  ["git", "-C", "target", "rev-parse", "HEAD"], text=True
-              ).strip()
-          except Exception:
-              commit = "unavailable"
-
-          scope = f"""# Audit scope
-
-- Order reference: `{os.environ["ORDER_REFERENCE"]}`
-- Repository: {os.environ["REPOSITORY_URL"]}
-- Audited commit: `{commit}`
-- Execution: not attempted
-
-This automated stage performs structural inspection only. It does not execute
-customer code, numerically reproduce a claim, or certify scientific validity.
-"""
-          (output / "scope.md").write_text(scope, encoding="utf-8")
-          execution = """# Execution record
-
-Customer code was not executed automatically. Installation and test smoke
-checks remain behind the published safety gate and require isolated review.
-"""
-          (output / "execution.md").write_text(execution, encoding="utf-8")
-          manifest = {
-              "schema_version": 1,
-              "order_reference": os.environ["ORDER_REFERENCE"],
-              "repository": os.environ["REPOSITORY_URL"],
-              "commit": commit,
-              "static_audit": (output / "audit.json").exists(),
-              "customer_code_executed": False,
-          }
-          (output / "delivery-manifest.json").write_text(
-              json.dumps(manifest, indent=2) + "\n", encoding="utf-8"
-          )
-          PY
+          python auditor/scripts/prepare_paid_audit_delivery.py \
+            --output delivery \
+            --target target \
+            --repository "$REPOSITORY_URL" \
+            --order-reference "$ORDER_REFERENCE"
       - name: Preserve delivery package
         if: always()
         uses: actions/upload-artifact@v7
