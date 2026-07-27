@@ -1,0 +1,38 @@
+name: Frozen prediction ledger guard
+
+on:
+  push:
+    paths:
+      - "predictions/**"
+      - ".github/workflows/ledger-guard.yml"
+  pull_request:
+    paths:
+      - "predictions/**"
+      - ".github/workflows/ledger-guard.yml"
+  schedule:
+    - cron: "17 9 1 * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Verify published checksum
+        run: |
+          cd predictions
+          sha256sum -c 2027-ledger.json.sha256
+      - name: Verify immutable files against frozen tag
+        run: |
+          for path in \
+            predictions/2027-ledger.json \
+            predictions/2027-ledger.json.sha256 \
+            predictions/2027-ledger.md
+          do
+            git show "prediction-ledger-2027-v1:$path" | cmp - "$path"
+          done

@@ -1,0 +1,31 @@
+{
+  "schema_version": 1,
+  "record_type": "canonical_reproduction_release",
+  "title": "Dark-Energy Stress Lab canonical reproduction package",
+  "release_tag": "v1.0",
+  "git_commit": "a45fcf71e703351882af770453b032671b1ae21e",
+  "published_utc": "2026-07-21T03:37:47Z",
+  "release_url": "https://github.com/GrobeStreet/de-stress-lab/releases/tag/v1.0",
+  "artifacts": [
+    {
+      "name": "canonical-reproduction-v1.0.tar.gz",
+      "sha256": "6b794c675709cde99921d2a3e40bf0f32a7e9fc53c18d08332344978af790bc1",
+      "url": "https://github.com/GrobeStreet/de-stress-lab/releases/download/v1.0/canonical-reproduction-v1.0.tar.gz"
+    },
+    {
+      "name": "whitepaper.pdf",
+      "sha256": "39b0d17973f1c5dad3bf6c82c4743e18e435d541334e982d7c2433e2cc82b0c8",
+      "url": "https://github.com/GrobeStreet/de-stress-lab/releases/download/v1.0/whitepaper.pdf"
+    },
+    {
+      "name": "SHA256SUMS-v1.0.txt",
+      "url": "https://github.com/GrobeStreet/de-stress-lab/releases/download/v1.0/SHA256SUMS-v1.0.txt"
+    }
+  ],
+  "doi": {
+    "status": "pending_zenodo_deposition",
+    "value": null,
+    "policy": "Add the minted version DOI and concept DOI in a new commit. Never retag or replace v1.0."
+  },
+  "preservation_policy": "The tag, commit, and release assets are immutable. Corrections are new releases linked through ERRATA.md."
+}
