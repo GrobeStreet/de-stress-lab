@@ -10,7 +10,7 @@
 
 **Method:** Independent reimplementation of the published compressed likelihoods from primary sources, followed by systematic adversarial testing: influence diagnostics, calibration stress tests, parameterization swaps, empirical significance calibration, full-Boltzmann verification, posterior inference, and pre-registered cross-probe hypothesis tests. Four external adversarial reviews absorbed; all corrections adopted; two internal bugs caught by validation gates before any result existed; every finding published regardless of direction.
 
-**Answer, in one sentence:** The preference is real, reproducible, statistically honest, and specifically for *recent time variation* in dark energy — and its evidential weight is concentrated in one radial BAO measurement (which no other analysis corroborates and whose anomaly changed observable between DESI's own releases), one contested 0.036-magnitude supernova calibration seam, and a weak but genuinely distributed BAO-geometry feature pointing at a turning point near z ≈ 0.48 that the supernovae place at z ≈ 0.30 instead.
+**Answer, in one sentence:** The preference is real, reproducible, statistically calibrated, and specifically for *recent time variation* — its observed fit sensitivity is concentrated in one radial BAO measurement and one contested supernova calibration seam, but the selected-null analysis shows that this degree of BAO concentration is ordinary among ΛCDM mocks with a global preference as strong as observed.
 
 ## II. The complete test ledger
 
@@ -32,13 +32,14 @@ Every test run by this lab, its result, and its verdict. Reproduction targets fr
 | 12 | SN low-z cut sweeps (both compilations) | significance decays monotonically as low-z SNe removed; crossing is a low-z phenomenon | LOCALIZED (SN side) |
 | 13 | Dovekie-release comparison | DES5Y contribution −13.6 → −7.3 across releases (multi-element change; attribution open) | RELEASE-DEPENDENT |
 | 14 | w(z) parameterization swap (CPL/JBP/LOG/wCDM) | evolving families all 2.1–2.9σ; constant-w 0.8–1.2σ | ROBUST to form; evidence is specifically TIME VARIATION |
-| 15 | Parametric bootstrap, 5,000 ΛCDM mocks | P(false pos.) = 1.50% [1.19–1.87%] vs Wilks 1.46%; one mock hit 3.7σ | STATISTICS CALIBRATED |
+| 15 | Parametric bootstrap, 5,000 ΛCDM mocks (unrounded reconciled runner) | P(false pos.) = 1.40% [1.09–1.77%] vs Wilks 1.46% | STATISTICS CALIBRATED |
 | 16 | Anchor-uncertainty propagation | surrogate pins significance to 2.4σ ± 0.5σ | BOUNDED, then superseded by #17 |
 | 17 | Full CAMB Boltzmann verification | baseline 2.41σ vs surrogate 2.45σ; no-LRG2 1.53σ vs 1.58σ | SURROGATE VINDICATED |
 | 18 | Full-CMB + lensing variant (PR3-native, cobaya) | 2.77σ with LRG2 (pub. PR4: 3.1σ); **1.43σ without LRG2** | LENSING DOES NOT RESCUE |
 | 19 | H-X pre-registered cross-probe consistency | BAO–SN shifts 1.44σ/1.35σ; SN–SN 0.24σ; z×: BAO 0.49±0.07, SNe ≈0.30 | **INTERMEDIATE** (per kill conditions) |
 | 20 | H-X registered follow-up: BAO z× without LRG2 | z× = 0.478 [0.384–0.564] — unchanged | CROSSING LOCATION IS DISTRIBUTED, not an LRG2 artifact |
 | 21 | H-Y registered: SN crossing vs intercept degeneracy | with intercept marginalized: wₐ = +0.50 [−0.33, +1.03] (includes 0, flips sign); w₀ → −1.17 | **KILL CONDITION MET: SN crossing degenerate with calibration seam** |
+| 22 | Selection-calibrated maximum influence, 5,000 ΛCDM mocks | M_obs = 4.125 at LRG2; unconditional 78/5,000, p=0.0156; conditional on equally strong global preference 34/70, p=0.486 | **LOCALIZED, BUT NOT EXCEPTIONALLY SO CONDITIONAL ON SIGNAL STRENGTH** |
 
 ## III. The three-layer picture (current best model of the evidence)
 
@@ -46,7 +47,7 @@ Everything above coheres into a three-layer anatomy that neither pure narrative 
 
 **Layer 1 — A weak, distributed BAO-geometry feature.** Even with LRG2 removed, the BAO+CMB data retain a ~1.4–1.6σ preference for evolution with a stable turning point at z ≈ 0.48 (test #20). This is not one data point; it is the shape of the remaining geometry (dominated by the BAO–CMB Ωm tension and LRG1). Too weak to mean anything alone; too stable to dismiss as a single fluctuation.
 
-**Layer 2 — The LRG2 amplifier.** One radial BAO measurement at z = 0.706 supplies the majority of the *statistical strength* everywhere it appears: compressed (2.4σ→1.6σ), exact-Boltzmann (2.41σ→1.53σ), and full-CMB-with-lensing (2.77σ→1.43σ). Its anomaly has no external corroboration (test #9) and changed observable between DESI's own releases (test #10). It is also DESI's most precise measurement and passed the collaboration's blinded checks — "wrong" is not established; "load-bearing and unverified" is.
+**Layer 2 — The LRG2 amplifier.** One radial BAO measurement at z = 0.706 supplies much of the *statistical strength* everywhere it appears: compressed (2.4σ→1.6σ), full-Boltzmann (2.41σ→1.53σ), and full-CMB-with-lensing (2.77σ→1.43σ). Its signature changed observable between DESI's releases and the earlier, partially overlapping eBOSS comparator does not reproduce its projection onto w₀wₐ. It is also DESI's most precise measurement and passed the collaboration's blinded checks. Test #22 now calibrates the selection: M_obs = 4.125 is rare unconditionally (p=0.0156) but ordinary conditional on a global fluctuation this strong (34/70, p=0.486). “Load-bearing” is descriptive; it is not a second independent anomaly.
 
 **Layer 3 — The supernova seam.** Both SN compilations share a mild evolution feature (they agree with each other at 0.24σ) with a turning point at z ≈ 0.30 — a *different* location than the BAO layer prefers. The DES5Y version of this feature can be absorbed by a single +0.036 mag low-z calibration offset (matching Efstathiou's independent estimate; contested by DES), decays under low-z cuts, and shrank between DES data releases. Test #21 (registered, completed): the crossing does NOT survive the calibration nuisance — wₐ becomes consistent with zero and flips sign. Layer 3 is fully degenerate with the seam; cause (calibration vs cosmology) remains formally open but the leading systematic explanation is sufficient.
 
@@ -57,10 +58,11 @@ The published 3.1–4.2σ headline is the sum of these three layers plus the CMB
 **Established (would defend against any audience):**
 1. The published compressed likelihoods genuinely contain the reported evolving-dark-energy preference; it is not a software, optimizer, prior-boundary, or Wilks artifact (tests 1–5, 15).
 2. The preference is specifically for recent time variation; constant-w explains almost nothing (test 14).
-3. The statistical strength of the preference is dominated by the single LRG2 radial measurement at every level tested, including with CMB lensing (tests 6–8, 17, 18) — the no-LRG2 lensing-inclusive number (1.43σ) is, to our knowledge, previously unpublished.
+3. The observed preference is highly sensitive to the single LRG2 radial measurement at every level tested, including with CMB lensing (tests 6–8, 17, 18), but that maximum influence is typical conditional on an equally strong global ΛCDM fluctuation (test 22).
 4. The z ≈ 0.7 anomaly is uncorroborated and release-unstable (tests 9, 10).
 5. The DES5Y supernova contribution is absorbable by one calibration parameter of exactly the magnitude independently predicted (test 11) — a sensitivity result, not a diagnosis.
 6. The BAO leg's preferred crossing location is distributed, not an LRG2 artifact (test 20) — a point against the maximal-systematics reading, found by our own registered test and reported per pre-commitment.
+7. The look-elsewhere concern in naming LRG2 is now calibrated directly: localization remains a valid influence map, not additional evidence against ΛCDM (test 22).
 
 **Refuted or resolved (within this lab's scope):**
 - "The lensing information independently supports evolving dark energy" — no (test 18).
@@ -73,7 +75,7 @@ The published 3.1–4.2σ headline is the sum of these three layers plus the CMB
 - Whether LRG2's precision is measuring reality or fluctuating — only DESI's final likelihood (2027) and an official-likelihood-level audit decide.
 - Whether the SN seam is calibration or cosmology: test #21 established full *degeneracy* — the SN data cannot distinguish a z≈0.3 bend from a 3.6% cross-sample mis-stitch (cause remains open; Rubin-calibrated SNe break the degeneracy).
 
-**Calibrated odds (consistent with four adversarial reviews):** ~25–40% the departure survives independent calibration at meaningful strength; <~30% the ultimate explanation is new physics rather than systematics/fluctuation. If it IS physics, this lab's map says where it lives: a late-time bend with the BAO geometry favoring z× ≈ 0.5 — a quantitative prediction the 2027 data can check against this document.
+No numerical probability is assigned to signal survival or “new physics”: this analysis does not derive such odds. If the effect is physical, the map still supplies a falsifiable expectation — a late-time bend with BAO geometry favoring z× ≈ 0.5 — for future data.
 
 ## V. What decides it (in order of arrival)
 1. ~~Test #21~~ DONE: the SN crossing does NOT survive the intercept (kill condition met) — Layer 3 is calibration-degenerate.
@@ -83,4 +85,4 @@ The published 3.1–4.2σ headline is the sum of these three layers plus the CMB
 5. **Growth and lensing co-variance (RSD, fσ8, E_G):** the physics-vs-systematics discriminator no background test can provide.
 
 ## VI. Provenance of this investigation
-Built in ~2 weeks by an independent researcher with AI-assisted implementation, from a standing start; all data public; every input primary-sourced under a no-numbers-from-memory rule; two implementation bugs caught by pre-set validation gates; four external adversarial reviews adopted in full and logged; three registered tests completed under pre-committed kill conditions — one of which (test 20) cut against the investigation's own leaning and was reported anyway, and one of which (test 21) met its kill condition decisively. The audit trail is the method; the method is the result.
+Built by an independent researcher with AI-assisted implementation; all data public; every input primary-sourced under a no-numbers-from-memory rule; two implementation bugs caught by pre-set validation gates; four AI software/statistics/manuscript reviews logged; registered tests reported against pre-committed conditions; and the post-selection correction in test 22 incorporated even though it limits the strongest localization narrative. A blind human-verifier package is complete; independent human execution remains pending.

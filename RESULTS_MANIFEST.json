@@ -1,0 +1,116 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-07-27T02:30:00Z",
+  "project": "Dark-Energy Stress Lab",
+  "repository": "https://github.com/GrobeStreet/de-stress-lab.git",
+  "base_repository_commit": "c6293da4f870f4f1aef15d9f6cd31c6a1a67b896",
+  "source_state": "base commit plus the uncommitted files and edits described by this manifest; commit the reconciled state before external verification",
+  "canonical_manuscript": "whitepaper.md",
+  "superseded_or_generated_documents": {
+    "REPORT-draft.md": "superseded outline; do not cite",
+    "whitepaper.pdf": "predates the 2026-07-26 selection calibration; regenerate from whitepaper.md before release",
+    "whitepaper.docx": "predates the 2026-07-26 selection calibration; regenerate from whitepaper.md before release"
+  },
+  "runtime": {
+    "platform": "macOS Apple silicon",
+    "python": "3.13.5",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0"
+  },
+  "canonical_results": {
+    "compressed_global_preference": {
+      "status": "completed",
+      "combination": "DESI DR2 published BAO summaries plus compressed CMB",
+      "observed_dchi2_w0wa_minus_lcdm": -8.457489554940723,
+      "legacy_rounded_display": -8.5
+    },
+    "selection_calibrated_maximum_influence": {
+      "status": "completed",
+      "statistic": "I_j=dchi2_deleted_j-dchi2_full; M=max_j(I_j)",
+      "n_mocks": 5000,
+      "seed_range_inclusive": [
+        10000,
+        14999
+      ],
+      "observed_selected_tracer": "LRG2 z=0.706",
+      "observed_max_influence": 4.124942514489671,
+      "observed_dchi2_without_selected_tracer": -4.332547040451052,
+      "unconditional": {
+        "exceedances": 78,
+        "empirical_p": 0.0156,
+        "plus_one_p": 0.015796840631873626,
+        "clopper_pearson_95": [
+          0.012350169987072885,
+          0.019431743263603196
+        ]
+      },
+      "conditional_on_global_preference_as_strong_or_stronger": {
+        "eligible_mocks": 70,
+        "exceedances": 34,
+        "empirical_p": 0.4857142857142857,
+        "clopper_pearson_95": [
+          0.36440215140754956,
+          0.6082731722971446
+        ]
+      },
+      "optimizer_failures": 0,
+      "interpretation": "LRG2 is the observed load-bearing tracer, but an equal-or-larger selected maximum influence is ordinary among LambdaCDM mocks whose global w0wa preference is at least as strong as observed. Localization is not independent evidence beyond the global fluctuation."
+    },
+    "global_null_calibration_reconciled": {
+      "status": "completed",
+      "n_mocks": 5000,
+      "unrounded_threshold": -8.457489554940723,
+      "exceedances": 70,
+      "empirical_p": 0.014,
+      "clopper_pearson_95": [
+        0.010929509501664568,
+        0.017655468925136385
+      ],
+      "wilks_p": 0.0146,
+      "supersedes": "The manuscript's prior 0.0150 value from results/null_mocks.json, which stored rounded legacy optimizer outputs. The conclusion of no detectable Wilks inflation is unchanged."
+    },
+    "legacy_leave_one_tracer_out": {
+      "status": "completed",
+      "source": "results/influence.json",
+      "full_dchi2_display": -8.5,
+      "no_lrg2_dchi2_display": -4.3,
+      "full_sigma_display": 2.4,
+      "no_lrg2_sigma_display": 1.6
+    },
+    "full_boltzmann_check": {
+      "status": "completed",
+      "source": "results/camb_check.json",
+      "baseline_dchi2": -8.28,
+      "no_lrg2_dchi2": -4.14
+    },
+    "full_cmb_lensing_variant": {
+      "status": "completed",
+      "source": "results/lensing_leg_summary.json",
+      "likelihood_generation": "Planck PR3-native comparison stack, not DESI PR4/ACT",
+      "baseline_dchi2": -10.35,
+      "no_lrg2_dchi2": -3.76
+    },
+    "human_clean_room_rerun": {
+      "status": "prepared_pending_external_execution",
+      "instructions": "cleanroom/README.md",
+      "worksheet": "cleanroom/VERIFIER_WORKSHEET.md",
+      "runner": "cleanroom/run_flagship.sh"
+    },
+    "official_lrg2_likelihood_reconstruction": {
+      "status": "pending_external_likelihood_inputs"
+    }
+  },
+  "sha256": {
+    "scripts/max_influence_mocks.py": "6fa219405cafddcfd7deac7a412fc7c8ba90e5a856a55f306609fa00ba80262c",
+    "results/max_influence_mocks.json": "47fce96794294389bc99cb39e7141dbe3254e2abd7e5f07a5d68998fda55abe6",
+    "results/max_influence_solver_validation.json": "5280f8f674066a8d03337203ed5c1ce1dd5fdc4a120fdfe86f6352ecd92104d0",
+    "results/w0wa.json": "e2b27218e941034833bd36cf94681ac05af7f73258d19527fb2db0a12b7a9c2d",
+    "results/influence.json": "2badb38bd99b0770825ac982a209d8f847b7ea2989900cb0d3f5d914b271a65b",
+    "results/camb_check.json": "cf220f82f22341ea68595f933b4ba9ed543ffab6f1bf197186918a43fe6bebd4",
+    "results/lensing_leg_summary.json": "255798d79b34b0df077b1bedafec5906466e6757a556cc613a34f2beee82600d",
+    "results/posterior.json": "a5487af1cee70df8ffea34d7a0ac8966ee7a73a23a3b550769d4f1449f5096dd",
+    "results/probe_posteriors.json": "258fc34a41e01796494b5787878b63d0680b1330b967bff074442730a9876b21",
+    "results/ccmb_ext.json": "23302e42d529f29ec2ed61727b3ce7829901c1a316bc8c110b232e908dd8d4e2",
+    "results/des5y.json": "12a94a215acd89f20f6eacdff6406760b991acddbf67b160957738f25e3ca51c"
+  }
+}
