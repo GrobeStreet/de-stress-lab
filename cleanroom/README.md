@@ -1,9 +1,10 @@
 # Independent verifier rerun
 
 This package is for a human verifier working in a fresh clone and a fresh Python
-environment. It reproduces the flagship selection-calibrated influence test without
-external data downloads: the seven published DESI DR2 BAO summaries and compressed-CMB
-mean/covariance are versioned in `scripts/fit_w0wa.py`.
+environment. It reproduces the selection-calibrated influence test and the three
+frontier diagnostics without external data downloads: the seven published DESI DR2
+BAO summaries and compressed-CMB mean/covariance are versioned in
+`scripts/fit_w0wa.py`.
 
 This is an independent **execution and numerical verification** of the released code.
 It is not a clean-room reimplementation of the likelihood from the papers. A stronger
@@ -63,6 +64,30 @@ implementation.
    `results/max_influence_mocks.json`. Report every numerical mismatch, convergence
    failure, code change, or environmental deviation; do not silently repair the run.
 
+## Frontier diagnostics
+
+After completing and recording the flagship result, run the direct time-variation
+and held-out LRG2 tests:
+
+```bash
+cleanroom/run_frontier.sh 20 1 cleanroom/frontier-smoke
+cleanroom/run_frontier.sh 5000 8 cleanroom/frontier-verification
+```
+
+The runner first executes the unit tests, then produces:
+
+- `time-variation.json`: one-extra-parameter likelihood-ratio calibration of
+  constant-w CDM against CPL w₀wₐCDM;
+- `time-variation-no-lrg2.json`: the same calibrated test after omitting LRG2;
+- `lrg2-posterior-predictive.json`: a ΛCDM fit excluding LRG2 followed by a
+  held-out joint, Alcock–Paczynski-ratio, and isotropic-distance check.
+
+Record the requested fields in `VERIFIER_WORKSHEET.md` before viewing the expected
+values. The time-variation mocks are generated at the observed best-fit constant-w
+null separately for the full and no-LRG2 datasets. The LRG2 diagnostic is targeted
+after inspection; it must be interpreted together with the selection-calibrated
+maximum-influence result, not as an independent discovery test.
+
 ## Optional broader reproduction
 
 To reproduce the compressed-likelihood ladder and the published leave-one-out table,
@@ -85,6 +110,15 @@ The flagship rerun passes if:
   within `1e-3`;
 - the exceedance count matches exactly for deterministic seeds 10000–14999;
 - a repeated run with the same software versions produces the same output hash.
+
+The frontier rerun passes if:
+
+- all unit tests pass;
+- all three outputs contain 5,000 mock records with zero optimizer failures;
+- the observed statistics, exceedance counts, and deterministic output hashes match
+  `RESULTS_MANIFEST.json`;
+- the full-data and no-LRG2 time-variation tests use their own recorded constant-w
+  null fits and report no fit at the prior boundary.
 
 If only the final JSON is compared, this verifies deterministic re-execution. For
 scientific independence, the verifier should additionally audit the statistic definition,

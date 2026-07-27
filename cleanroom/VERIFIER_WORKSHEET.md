@@ -48,6 +48,43 @@ Complete this before opening `RESULTS_MANIFEST.json` or the canonical result JSO
 - Were a sample of minima checked with a second optimizer or starting point?
 - Differences from the released result:
 
+## Direct time-variation calibration
+
+### Full DESI+cCMB
+
+- Observed wCDM χ² and best-fit w:
+- Observed w₀wₐCDM χ², w₀, and wₐ:
+- T = χ²(wCDM) − χ²(w₀wₐCDM):
+- Number of mocks and seed range:
+- Exceedances:
+- Empirical tail probability and exact 95% interval:
+- Gaussian-equivalent significance:
+- Prior-boundary records / optimizer failures:
+- Output SHA-256:
+
+### Without LRG2
+
+- Observed wCDM χ² and best-fit w:
+- Observed w₀wₐCDM χ², w₀, and wₐ:
+- T = χ²(wCDM) − χ²(w₀wₐCDM):
+- Number of mocks and seed range:
+- Exceedances:
+- Empirical tail probability and exact 95% interval:
+- Gaussian-equivalent significance:
+- Prior-boundary records / optimizer failures:
+- Output SHA-256:
+
+## Held-out LRG2 diagnostic
+
+- No-LRG2 ΛCDM best-fit parameters:
+- Predicted and observed `(D_M/r_d, D_H/r_d)`:
+- Joint χ²:
+- Joint bootstrap exceedances, p, and exact 95% interval:
+- `F_AP` observed/predicted, |z|, and bootstrap p:
+- `D_V/r_d` observed/predicted, |z|, and bootstrap p:
+- Prior-boundary records / optimizer failures:
+- Output SHA-256:
+
 ## Attestation
 
 I recorded the fields above before viewing the expected values in the results manifest.
