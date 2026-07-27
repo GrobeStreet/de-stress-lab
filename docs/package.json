@@ -1,0 +1,9 @@
+{
+  "name": "de-stress-lab-docs",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Pinned whitepaper document build dependency",
+  "dependencies": {
+    "docx": "9.6.1"
+  }
+}

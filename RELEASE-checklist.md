@@ -37,10 +37,12 @@
 - [x] Full-CMB lensing-inclusive variant (PR3-native comparison stack).
 - [x] 5,000-mock global significance calibration.
 - [x] Selection-calibrated maximum-influence analysis.
+- [x] Direct wCDM-versus-CPL time-variation calibration, full and without LRG2.
+- [x] Held-out LRG2 joint/AP/isotropic posterior-predictive diagnostic.
 - [x] Clean-room verifier package and pinned execution instructions.
+- [x] Regenerated and visually validated canonical PDF/DOCX artifacts from `whitepaper.md`.
 
 ## Still outstanding
 
 - [ ] Human clean-room execution and signed worksheet.
 - [ ] Official-likelihood LRG2 reconstruction.
-- [ ] Regenerate PDF/DOCX release artifacts from the reconciled `whitepaper.md`.

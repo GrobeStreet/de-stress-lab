@@ -3,7 +3,7 @@
 
 **Scope statement (audit-reconciled):** this lab independently *reimplements the published compressed likelihoods* (DESI DR2 BAO summaries, Pantheon+/DES5Y distances, the DR2 compressed early-CMB prior) and reproduces their maximum-likelihood improvements and compressed-branch posterior structure. It is NOT a raw-data reanalysis and does not reproduce DESI's exact PR4/ACT full-CMB or 2024 DES5Y/Union3 headline rows. Four AI systems performed software, statistics, or manuscript checks; these are not independent scientific review. A clean-room human rerun is the outstanding verification step.
 
-**Status (2026-07-27): reproduction and diagnostics complete, including the 5,000-mock selection calibration, direct time-variation calibration, and held-out LRG2 prediction. A human clean-room rerun is prepared and pending. Canonical completion states, hashes, and numbers are in `RESULTS_MANIFEST.json`.**
+**Status (2026-07-27): reproduction and diagnostics complete, including the 5,000-mock selection calibration, direct time-variation calibration, and held-out LRG2 prediction. The canonical DOCX/PDF has been regenerated from `whitepaper.md`, validated, and inspected page by page. A human clean-room rerun is prepared and pending. Canonical completion states, hashes, and numbers are in `RESULTS_MANIFEST.json`.**
 
 ## Frontier result: what advanced and what did not
 
@@ -51,6 +51,7 @@ scripts/   fit_lcdm.py (wk1 reproductions) · fit_w0wa.py (w0wa + calibrated-sur
            camb_check.py (full-Boltzmann swap — REQUIRES local CAMB)
 results/   *.json per analysis
 cleanroom/ blind independent-verifier protocol, worksheet, pinned environment, one-command runner
+docs/      pinned canonical-whitepaper build dependency and instructions
 tests/     numerical equivalence, observed-result, and determinism checks
 ```
 

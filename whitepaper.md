@@ -70,9 +70,26 @@ Using cobaya with CAMB and the clik-free native Planck 2018 likelihoods (low-ℓ
 
 Established: the published compressed likelihoods genuinely contain the reported preference; it survives independent reimplementation, optimizer attack, full Boltzmann physics, parameterization changes, and bootstrap calibration. Within CPL, a direct constant-w null test gives a calibrated 2.75σ preference for time variation, falling to 1.81σ without LRG2. The held-out LRG2 vector is a modest 2.05σ discrepancy, driven more by isotropic distance scale than by its shape ratio. Among ΛCDM mocks with a global preference this strong, a maximum deletion influence at least as large as observed occurs about half the time. Not established: that dark energy evolves; that LRG2 is wrong; that localization or the targeted held-out p-value is independent evidence; that the supernova calibration explanation is correct; or that the PR3-native full-CMB variant reproduces DESI's PR4/ACT stack. The honest status is **a reproducible, LRG2-sensitive 2–3σ hint — not proof.**
 
-## 10. Falsifiable expectations
+## 10. Frontier-standard boundary and development roadmap
 
-If the signal is physics: DESI's final likelihood (2027) retains the radial z ≈ 0.7 departure at higher precision; Rubin-calibrated supernovae reproduce the low-z crossing with no magnitude offset required; growth and lensing co-vary as dynamical dark energy predicts. If it is systematics: the LRG2 radial deviation regresses; the supernova preference tracks calibration choices across compilations; residuals decorrelate across probes. We pre-commit to updating this document against those outcomes.
+A frontier-roadmap review was compared against the frozen analysis rather than treated as new evidence. Several recommendations are adopted as the next evidentiary gates: native-likelihood reconstruction of LRG2; survey splits and nuisance templates for fiber assignment, reconstruction, redshift failures, observing conditions, covariance, and window functions; flexible or nonparametric expansion reconstructions calibrated inside null mocks; prior-sensitive Bayesian evidence or out-of-sample predictive scores; growth consistency through RSD, fσ₈, weak lensing, and CMB lensing; and a hierarchical, survey-aware supernova calibration model.
+
+The same review also proposed interpretations that exceed this project’s evidence. This compressed-likelihood analysis does not identify fiber assignment as the cause of LRG2, prove that the supernova seam is a calibration error, validate a Gaussian-process crossing, support Early Dark Energy, or favor interacting/decaying dark matter or modified gravity. Those ideas remain hypotheses until they improve predictions outside the data that generated the anomaly and survive appropriate null calibration and model-complexity penalties. The complete comparison is recorded in `FRONTIER_REVIEW.md`.
+
+The frontier claim ladder is therefore explicit:
+
+| Level | Required evidence | Current status |
+|---|---|---|
+| Reproducible likelihood feature | independent implementation and stable optimization | **Met** for the published compressed inputs |
+| Calibrated anomaly | null simulations and selection-aware statistics | **Met** for the global, maximum-influence, direct-time-variation, and held-out tests |
+| Measurement diagnosis | native likelihood, survey splits, nuisance-template and covariance audit | **Open** |
+| Cross-probe physical consistency | expansion, growth, and lensing predicted by one model | **Open** |
+| Model preference | prior-robust Bayesian or predictive advantage over flexible alternatives | **Open** |
+| Discovery | independent data and human replication at discovery-grade significance | **Not met** |
+
+## 11. Falsifiable expectations
+
+If the signal is physics: DESI's final likelihood (2027) retains the z ≈ 0.7 distance-scale departure at higher precision; Rubin-calibrated supernovae reproduce the low-z crossing with no magnitude offset required; growth and lensing co-vary as dynamical dark energy predicts. If it is systematics: the LRG2 distance residual regresses; the supernova preference tracks calibration choices across compilations; residuals decorrelate across probes. We pre-commit to updating this document against those outcomes.
 
 ## Reproduction
 
@@ -81,6 +98,16 @@ Everything runs from the released directory. The selection calibration is `pytho
 ## Acknowledgments and provenance of assistance
 
 Implementation, literature triage, and drafting were AI-assisted (multiple systems, adversarially cross-checked); four AI software/statistics/manuscript audits are incorporated with attribution in the README, but these are not independent scientific replication. A human clean-room rerun remains pending. Errors are the author's. Data credits: DESI, SDSS/eBOSS, Pantheon+/SH0ES, DES, Planck, and the cobaya project's data releases.
+
+## Primary sources
+
+1. DESI Collaboration, “DESI DR2 Results II: Measurements of Baryon Acoustic Oscillations and Cosmological Constraints,” arXiv:2503.14738.
+2. DESI Collaboration, “DESI 2024 III: Baryon Acoustic Oscillations from Galaxies and Quasars,” arXiv:2404.03000, and “DESI 2024 VI: Cosmological Constraints from the Measurements of Baryon Acoustic Oscillations,” arXiv:2404.03002.
+3. Brout et al., “The Pantheon+ Analysis: Cosmological Constraints,” arXiv:2202.04077.
+4. DES Collaboration, “The Dark Energy Survey: Cosmology Results With ~1500 New High-redshift Type Ia Supernovae Using the Full 5-year Dataset,” arXiv:2401.02929.
+5. Efstathiou, “Evolving Dark Energy or Supernovae Systematics?”, arXiv:2408.07175.
+6. Vincenzi et al., “Comparing the DES-SN5YR and Pantheon+ SN cosmology analyses,” arXiv:2501.06664.
+7. Cortês and Liddle, “Interpreting DESI’s evidence for evolving dark energy,” arXiv:2504.15336.
 
 
 ## Appendix A. Complete test ledger
