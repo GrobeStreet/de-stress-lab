@@ -21,13 +21,20 @@ issue, report, commit, or workflow log.
 
 ## Intake
 
-1. Confirm the payment in Stripe; do not rely on an email alone.
-2. Copy only the repository URL into the working record.
+1. Confirm the payment in Stripe; do not rely on an email alone. The production
+   webhook performs this check automatically for supported Payment Link orders.
+2. Use the non-customer order reference and repository URL from the generated
+   GitHub Actions artifact. Do not copy payment or contact data into GitHub.
 3. Check that the repository is accessible and the requested work fits one
    repository and one primary build path.
 4. If access or authorization is unclear, pause before cloning or analysis and
    request clarification privately.
 5. Record the intake time and set a two-business-day delivery target.
+
+The automated stage validates the Stripe signature, Payment Link, settled
+status, amount, currency, and public GitHub repository URL. It is idempotent by
+Checkout Session and produces only a static audit. Customer code is never
+executed by the webhook.
 
 ## Safety gate
 
@@ -70,6 +77,11 @@ and state that execution was not attempted.
    - **High:** can materially change or invalidate a reported result.
    - **Medium:** weakens provenance, testing, or environment control.
    - **Low:** maintainability or documentation improvement.
+
+For automated orders, the structural scanner has already run on an ephemeral
+GitHub-hosted runner. Download the `paid-audit-*` artifact, verify its recorded
+commit, and continue from the safety gate before attempting installation or
+tests.
 
 ## Delivery package
 
