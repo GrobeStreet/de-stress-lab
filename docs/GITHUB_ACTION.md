@@ -76,3 +76,11 @@ The free scan does not execute headline scientific claims, judge statistical
 validity, inspect private data, or certify a result. Claim-level reproduction,
 null simulations, influence analysis, and correction pull requests belong to
 the paid audit tier.
+
+## Go beyond the badge
+
+The fixed-scope
+[Automated Reproducibility Audit](PAID_AUDIT.md) adds code, build, test,
+provenance, and safe execution-path review for one authorized repository. It
+produces Markdown and JSON findings with prioritized remediation for a one-time
+$199 payment.
