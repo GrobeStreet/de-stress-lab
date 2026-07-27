@@ -115,10 +115,14 @@ The frontier rerun passes if:
 
 - all unit tests pass;
 - all three outputs contain 5,000 mock records with zero optimizer failures;
-- the observed statistics, exceedance counts, and deterministic output hashes match
+- the observed statistics match within `1e-6`, and the exceedance counts match
   `RESULTS_MANIFEST.json`;
 - the full-data and no-LRG2 time-variation tests use their own recorded constant-w
   null fits and report no fit at the prior boundary.
+
+Record all hashes. Exact byte-level hash agreement is expected on a repeated run in
+the same pinned environment; across platforms, last-bit floating-point differences
+may change the JSON hash without changing the numerical result.
 
 If only the final JSON is compared, this verifies deterministic re-execution. For
 scientific independence, the verifier should additionally audit the statistic definition,

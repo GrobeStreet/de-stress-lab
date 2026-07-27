@@ -3,7 +3,27 @@
 
 **Scope statement (audit-reconciled):** this lab independently *reimplements the published compressed likelihoods* (DESI DR2 BAO summaries, Pantheon+/DES5Y distances, the DR2 compressed early-CMB prior) and reproduces their maximum-likelihood improvements and compressed-branch posterior structure. It is NOT a raw-data reanalysis and does not reproduce DESI's exact PR4/ACT full-CMB or 2024 DES5Y/Union3 headline rows. Four AI systems performed software, statistics, or manuscript checks; these are not independent scientific review. A clean-room human rerun is the outstanding verification step.
 
-**Status (2026-07-26): reproduction and diagnostics complete, including the 5,000-mock selection-calibrated maximum-influence test. A human clean-room rerun is prepared and pending. Canonical completion states and numbers are in `RESULTS_MANIFEST.json`.**
+**Status (2026-07-27): reproduction and diagnostics complete, including the 5,000-mock selection calibration, direct time-variation calibration, and held-out LRG2 prediction. A human clean-room rerun is prepared and pending. Canonical completion states, hashes, and numbers are in `RESULTS_MANIFEST.json`.**
+
+## Frontier result: what advanced and what did not
+
+The project now tests the scientific question more directly than the original
+ΛCDM-versus-w₀wₐ headline:
+
+- **Direct time variation:** DESI+cCMB gives
+  T = χ²(wCDM) − χ²(w₀wₐCDM) = 7.8506. Only 30 of 5,000 mocks generated
+  at the best-fit constant-w null are as large: p = 0.0060
+  [0.0041, 0.0086], or 2.75σ.
+- **Without LRG2:** T falls to 3.4263; 349/5,000 mocks are as large:
+  p = 0.0698 [0.0629, 0.0772], or 1.81σ.
+- **Held-out LRG2:** fitting ΛCDM without LRG2 and predicting it gives a
+  joint p = 0.0408 (2.05σ). The isotropic distance is low
+  (D_V/r_d p = 0.0204), but the AP ratio D_M/D_H is ordinary (p = 0.374).
+
+This is stronger evidence that the compressed CPL likelihood genuinely rewards
+time variation, but weaker evidence for a revolutionary physical interpretation:
+most of the direct significance remains LRG2-sensitive, and the targeted LRG2
+p-values are not independent of selecting that tracer after inspection.
 
 | Run | This pipeline | Published | Source |
 |---|---|---|---|
@@ -26,6 +46,8 @@ scripts/   fit_lcdm.py (wk1 reproductions) · fit_w0wa.py (w0wa + calibrated-sur
            influence.py (LOO/pulls/SN cuts) · fit_des5y.py (DES5Y + intercept test)
            ccmb_ext.py (anchored intercept + w(z) swap) · null_mocks.py (parametric bootstrap)
            max_influence_mocks.py (all 7 deletions inside each null mock; selection calibration)
+           time_variation_mocks.py (wCDM-vs-CPL direct test, full and no-LRG2)
+           lrg2_posterior_predictive.py (held-out joint/AP/isotropic test)
            camb_check.py (full-Boltzmann swap — REQUIRES local CAMB)
 results/   *.json per analysis
 cleanroom/ blind independent-verifier protocol, worksheet, pinned environment, one-command runner
