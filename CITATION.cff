@@ -10,9 +10,12 @@ date-released: 2026-07-27
 license: MIT
 repository-code: "https://github.com/GrobeStreet/de-stress-lab"
 url: "https://github.com/GrobeStreet/de-stress-lab"
+identifiers:
+  - type: doi
+    value: "10.5281/zenodo.21632602"
+    description: "Canonical v1.0 scientific reproduction archive"
 keywords:
   - reproducibility
   - statistical diagnostics
   - likelihood
   - cosmology
-

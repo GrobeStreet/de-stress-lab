@@ -23,9 +23,12 @@
     }
   ],
   "doi": {
-    "status": "pending_zenodo_deposition",
-    "value": null,
-    "policy": "Add the minted version DOI and concept DOI in a new commit. Never retag or replace v1.0."
+    "status": "published",
+    "version_doi": "10.5281/zenodo.21632602",
+    "concept_doi": "10.5281/zenodo.21632601",
+    "record_url": "https://zenodo.org/records/21632602",
+    "verified_utc": "2026-07-27",
+    "policy": "Cite the version DOI for the frozen v1.0 reproduction. Never retag or replace v1.0."
   },
   "preservation_policy": "The tag, commit, and release assets are immutable. Corrections are new releases linked through ERRATA.md."
 }
