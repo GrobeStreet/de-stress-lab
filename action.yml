@@ -1,0 +1,72 @@
+name: "de-stress reproducibility audit"
+description: "Score a research repository's reproducibility readiness and publish a transparent GitHub summary."
+author: "Bobby Morong"
+
+branding:
+  icon: "check-circle"
+  color: "purple"
+
+inputs:
+  path:
+    description: "Repository path to audit after checkout."
+    required: false
+    default: "."
+  minimum-score:
+    description: "Fail the job when the readiness score is below this value."
+    required: false
+    default: "70"
+  report-path:
+    description: "Path for the machine-readable JSON report."
+    required: false
+    default: "destress-audit.json"
+  markdown-path:
+    description: "Path for the Markdown audit report."
+    required: false
+    default: "destress-audit.md"
+  workflow-file:
+    description: "Calling workflow filename, used to generate public badge Markdown."
+    required: false
+    default: "reproducibility-audit.yml"
+
+outputs:
+  score:
+    description: "Readiness score from 0 to 100."
+    value: ${{ steps.audit.outputs.score }}
+  grade:
+    description: "Letter grade derived from the readiness score."
+    value: ${{ steps.audit.outputs.grade }}
+  score-badge-url:
+    description: "Static Shields.io badge URL for this audit result."
+    value: ${{ steps.audit.outputs.score_badge_url }}
+  status-badge-markdown:
+    description: "Copy-ready Markdown for the public workflow status badge."
+    value: ${{ steps.audit.outputs.status_badge_markdown }}
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: "3.13"
+    - name: Install audit engine
+      shell: bash
+      run: python -m pip install --no-deps "$GITHUB_ACTION_PATH"
+    - name: Audit repository
+      id: audit
+      shell: bash
+      env:
+        AUDIT_PATH: ${{ inputs.path }}
+        MINIMUM_SCORE: ${{ inputs.minimum-score }}
+        REPORT_PATH: ${{ inputs.report-path }}
+        MARKDOWN_PATH: ${{ inputs.markdown-path }}
+        WORKFLOW_FILE: ${{ inputs.workflow-file }}
+      run: |
+        destress audit-repo "$AUDIT_PATH" \
+          --json-output "$REPORT_PATH" \
+          --markdown-output "$MARKDOWN_PATH" \
+          --minimum-score "$MINIMUM_SCORE" \
+          --github-output "$GITHUB_OUTPUT" \
+          --github-summary "$GITHUB_STEP_SUMMARY" \
+          --github-repository "$GITHUB_REPOSITORY" \
+          --workflow-file "$WORKFLOW_FILE"
