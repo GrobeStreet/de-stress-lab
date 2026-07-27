@@ -38,12 +38,12 @@ jobs:
   audit:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - id: audit
         uses: GrobeStreet/de-stress-lab@action-v1
         with:
           minimum-score: "70"
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: reproducibility-audit
           path: |
