@@ -5,7 +5,11 @@
   "keywords": ["reproducibility", "statistical diagnostics", "scientific software", "likelihood", "dark energy", "DESI", "cosmology", "BAO", "systematics"],
   "license": "MIT",
   "upload_type": "software",
+  "access_right": "open",
+  "version": "1.0",
+  "publication_date": "2026-07-21",
   "related_identifiers": [
+    {"identifier": "https://github.com/GrobeStreet/de-stress-lab/releases/tag/v1.0", "relation": "isIdenticalTo", "scheme": "url"},
     {"identifier": "arXiv:2503.14738", "relation": "isSupplementTo", "scheme": "arxiv"},
     {"identifier": "arXiv:2408.07175", "relation": "references", "scheme": "arxiv"},
     {"identifier": "arXiv:2501.06664", "relation": "references", "scheme": "arxiv"}

@@ -20,6 +20,9 @@ destress verify-ledger predictions/2027-ledger.json
 - [Frozen 2027 prediction ledger](predictions/2027-ledger.md)
 - [Reproducibility and statistical red-team services](SERVICES.md)
 - [JOSS paper and eligibility status](paper/JOSS-READINESS.md)
+- [Scholarly submission roadmap](paper/SUBMISSION_ROADMAP.md)
+- [Local complimentary pilot program](outreach/LOCAL_PILOT_PROGRAM.md)
+- [Canonical release preservation record](archive/CANONICAL_RELEASE.json)
 - [Architecture decision](docs/adr/0001-package-boundary.md)
 - [Contributing](CONTRIBUTING.md) and [support](SUPPORT.md)
 - [Release clarifications and errata](ERRATA.md)
@@ -32,9 +35,11 @@ are documented in the repository and manuscript.
 
 **Code availability:** the source code, frozen result manifests, prediction
 ledger, and documentation are available in this public repository. The
-canonical software release is archived with a DOI, while
-`RESULTS_MANIFEST.json` and the published SHA-256 files bind reported claims to
-specific artifacts.
+canonical `v1.0` release has a deterministic full reproduction archive and
+published SHA-256 manifest. Its Zenodo DOI deposition is pending; no DOI should
+be cited until the minted identifier is added to `CITATION.cff` and the
+preservation record. `RESULTS_MANIFEST.json` and the published SHA-256 files
+bind reported claims to specific artifacts.
 
 **Scope statement (audit-reconciled):** this lab independently *reimplements the published compressed likelihoods* (DESI DR2 BAO summaries, Pantheon+/DES5Y distances, the DR2 compressed early-CMB prior) and reproduces their maximum-likelihood improvements and compressed-branch posterior structure. It is NOT a raw-data reanalysis and does not reproduce DESI's exact PR4/ACT full-CMB or 2024 DES5Y/Union3 headline rows. Four AI systems performed software, statistics, or manuscript checks; these are not independent scientific review. A clean-room human rerun is the outstanding verification step.
 

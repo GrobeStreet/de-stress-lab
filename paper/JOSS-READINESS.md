@@ -18,6 +18,7 @@ Before submission:
 - [x] contribution, support, and conduct guidance
 - [x] JOSS `paper.md` and bibliography
 - [x] required AI usage disclosure
+- [x] deterministic canonical archive and published checksum manifest
 - [ ] six months of public development history
 - [ ] evidence of use beyond the original flagship analysis
 - [ ] independent installation by another researcher
@@ -26,4 +27,3 @@ Before submission:
 
 Submitting before the public-history gate is met would invite a predictable desk
 rejection and is intentionally deferred.
-
