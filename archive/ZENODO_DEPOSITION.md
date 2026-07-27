@@ -1,7 +1,12 @@
-# Zenodo deposition specification
+# Zenodo deposition record
 
-The DOI has not yet been minted. The authenticated depositor should create one
-public **Software** record with the following exact scope.
+Published on 2026-07-27:
+
+- version DOI: https://doi.org/10.5281/zenodo.21632602
+- all-versions DOI: https://doi.org/10.5281/zenodo.21632601
+- Zenodo record: https://zenodo.org/records/21632602
+
+The public **Software** record has the following exact scope.
 
 ## Files
 
@@ -30,15 +35,15 @@ against `CANONICAL_RELEASE.json`.
 Add an ORCID only if it belongs to the creator and the creator elects to make
 it public.
 
-## After publication
+## Publication verification
 
-Zenodo will provide a version DOI and normally a concept DOI. Record both in a
-new commit:
-
-1. add the version DOI to `archive/CANONICAL_RELEASE.json`;
-2. add the appropriate software DOI to `CITATION.cff`;
-3. replace the pending language in `README.md` and `ERRATA.md`;
-4. add the DOI badge only after `https://doi.org/<doi>` resolves;
-5. publish a small metadata-only follow-up release or pull request.
+- [x] Version and concept DOIs resolve through doi.org.
+- [x] Public downloads match `SHA256SUMS-v1.0.txt`.
+- [x] The version DOI is recorded in `archive/CANONICAL_RELEASE.json`.
+- [x] The canonical reproduction DOI is identified in `CITATION.cff`.
+- [x] The README and erratum distinguish the DOI mint date from the original
+  release timestamp.
+- [x] The Zenodo metadata accurately describes the canonical scientific
+  reproduction rather than the later reusable Python package.
 
 Never move the existing `v1.0` tag or replace its assets after DOI publication.

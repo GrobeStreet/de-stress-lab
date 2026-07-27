@@ -22,7 +22,8 @@ Before submission:
 - [ ] six months of public development history
 - [ ] evidence of use beyond the original flagship analysis
 - [ ] independent installation by another researcher
-- [ ] archived software release with a verifiable DOI
+- [ ] archived reusable-package release with a verifiable DOI (the canonical
+  scientific reproduction has DOI `10.5281/zenodo.21632602`)
 - [ ] author confirms affiliation, ORCID if desired, and conflict-of-interest declaration
 
 Submitting before the public-history gate is met would invite a predictable desk
