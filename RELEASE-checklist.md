@@ -2,14 +2,16 @@
 
 ## 1. Repo (30 min, do first)
 - [ ] Create public GitHub repo `de-stress-lab` (your account).
-- [ ] Copy in: `REPORT.md`, `README.md`, `scripts/`, `results/`, `RELEASE-checklist.md` (this file, optional).
+- [ ] Copy in: `whitepaper.md`, `README.md`, `RESULTS_MANIFEST.json`, `scripts/`, `results/`, `tests/`, `cleanroom/`, and `RELEASE-checklist.md`.
 - [ ] Do NOT commit `data/` raw files (Pantheon+ cov is 33MB; DES npz 6MB) — instead add `data/DOWNLOAD.md` with the curl commands (they're in the scripts' headers and session history). Keeps the repo light and forces provenance.
 - [ ] Do NOT commit `venv/`. Add `.gitignore`: `venv/`, `data/*.cov`, `data/*.npz`, `data/*.html`, `data/*.dat`, `data/*.csv`.
 - [ ] Add `LICENSE` (MIT for code) and note data licenses belong to the surveys.
 - [ ] Tag `v1.0`.
 
 ## 2. Sanity pass before sharing (1 evening)
-- [ ] Re-run `fit_w0wa.py` and `lrg2_audit.py` from a fresh clone following your own DOWNLOAD.md — the reproduce-from-scratch test.
+- [ ] Give the exact commit to an independent human verifier and have them complete `cleanroom/VERIFIER_WORKSHEET.md` before opening expected results.
+- [ ] Re-run `fit_w0wa.py` and `lrg2_audit.py` from a fresh clone following `data/DOWNLOAD.md`.
+- [x] Run 5,000 ΛCDM mocks with all seven tracer deletions selected inside every mock; reconcile the manuscript and manifest.
 - [ ] Read REPORT.md once aloud. Fix anything you can't defend in your own words — you will be asked.
 - [ ] Optional but high-value: have one more external AI adversarial pass on REPORT.md specifically.
 
@@ -26,9 +28,21 @@
 
 ## 5. Rules of engagement (pin this)
 - Every critique gets logged in the README audit trail, answered or adopted.
-- Never claim more than "reproducible, sharply localized 2–3σ hint."
+- Never claim more than "reproducible, localized 2–3σ hint"; the selected-null result shows localization is not independent evidence beyond the global fluctuation.
 - If someone shows an error: fix, credit, update the repo, say so publicly. The audit trail IS the credibility.
 - The report pre-commits to updating against the 2027 outcomes — calendar it.
 
-## While it circulates → Expedition 2
-Full-CMB lensing leg (Planck PR4 + lensing via cobaya on the Mac): the "does 3.1σ survive without LRG2" run — the question this release will make people want answered.
+## Completed after the original checklist
+
+- [x] Full-CMB lensing-inclusive variant (PR3-native comparison stack).
+- [x] 5,000-mock global significance calibration.
+- [x] Selection-calibrated maximum-influence analysis.
+- [x] Direct wCDM-versus-CPL time-variation calibration, full and without LRG2.
+- [x] Held-out LRG2 joint/AP/isotropic posterior-predictive diagnostic.
+- [x] Clean-room verifier package and pinned execution instructions.
+- [x] Regenerated and visually validated canonical PDF/DOCX artifacts from `whitepaper.md`.
+
+## Still outstanding
+
+- [ ] Human clean-room execution and signed worksheet.
+- [ ] Official-likelihood LRG2 reconstruction.

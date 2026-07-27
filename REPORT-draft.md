@@ -1,3 +1,10 @@
+# SUPERSEDED DRAFT — DO NOT CITE
+
+This outline predates the completed 5,000-mock calibration, full-CMB lensing
+variant, registered H-X/H-Y results, and selection-calibrated influence test.
+The canonical manuscript is `whitepaper.md`; canonical machine-readable results
+and completion states are in `RESULTS_MANIFEST.json`.
+
 # Anatomy of a 2–3σ Hint: An Independent Stress Test of the DESI DR2 Evolving-Dark-Energy Preference
 ### Draft v0.9 — public write-up of the Dark-Energy Stress Lab · July 2026
 

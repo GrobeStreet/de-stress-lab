@@ -1,0 +1,30 @@
+{
+  "analysis": "matched-seed solver validation for maximum-influence mocks",
+  "n_mocks": 200,
+  "seed_start": 10000,
+  "solvers": [
+    "legacy Nelder-Mead scalar chi2",
+    "bounded least-squares whitened Gaussian residuals"
+  ],
+  "observed_max_influence": {
+    "nelder_mead": 4.124933965664626,
+    "least_squares": 4.124942514489671,
+    "absolute_difference": 8.548825045195274e-06
+  },
+  "dchi2_full_absolute_difference": {
+    "maximum": 7.455005425782701e-05,
+    "median": 6.799936890455882e-06,
+    "count_over_1e-3": 0
+  },
+  "max_influence_absolute_difference": {
+    "maximum": 0.06362272627511967,
+    "median": 4.2061895300093965e-06,
+    "count_over_1e-3": 3
+  },
+  "selected_tracer_mismatches": 1,
+  "tail_exceedances_ge_observed": {
+    "nelder_mead": 4,
+    "least_squares": 4
+  },
+  "interpretation": "The selection-calibrated tail count is identical. The three larger maximum-influence differences are legacy local-minimum cases; the bounded least-squares solver reaches the lower chi2 while exploiting the exact Gaussian residual structure."
+}

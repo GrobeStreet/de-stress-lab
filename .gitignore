@@ -1,4 +1,5 @@
 venv/
+.venv-cleanroom/
 cobaya_packages/
 lensing-leg/chains/
 data/*
@@ -6,3 +7,4 @@ data/*
 __pycache__/
 *.pyc
 .DS_Store
+cleanroom/*-output.json

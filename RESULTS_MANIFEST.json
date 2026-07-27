@@ -1,0 +1,222 @@
+{
+  "schema_version": 1,
+  "generated_utc": "2026-07-27T03:46:22Z",
+  "project": "Dark-Energy Stress Lab",
+  "repository": "https://github.com/GrobeStreet/de-stress-lab.git",
+  "base_repository_commit": "c6293da4f870f4f1aef15d9f6cd31c6a1a67b896",
+  "analysis_repository_commit": "28894e7ad3ae874506f6adf0059546a9b008c8f3",
+  "source_state": "The three frontier scripts, tests, result JSONs, and clean-room runner are frozen at analysis_repository_commit. This manifest and the canonical documents are reconciled in the release commit containing this file.",
+  "canonical_manuscript": "whitepaper.md",
+  "canonical_pdf": "whitepaper.pdf",
+  "generated_documents": {
+    "whitepaper.docx": "generated from whitepaper.md by scripts/build_whitepaper_docx.js",
+    "whitepaper.pdf": "canonical rendered whitepaper; generated from whitepaper.docx and visually inspected page by page",
+    "build_instructions": "docs/WHITEPAPER_BUILD.md"
+  },
+  "superseded_documents": {
+    "REPORT-draft.md": "superseded outline; do not cite"
+  },
+  "runtime": {
+    "platform": "macOS Apple silicon",
+    "python": "3.13.5",
+    "numpy": "2.5.1",
+    "scipy": "1.18.0"
+  },
+  "canonical_results": {
+    "compressed_global_preference": {
+      "status": "completed",
+      "combination": "DESI DR2 published BAO summaries plus compressed CMB",
+      "observed_dchi2_w0wa_minus_lcdm": -8.457489554940723,
+      "legacy_rounded_display": -8.5
+    },
+    "selection_calibrated_maximum_influence": {
+      "status": "completed",
+      "statistic": "I_j=dchi2_deleted_j-dchi2_full; M=max_j(I_j)",
+      "n_mocks": 5000,
+      "seed_range_inclusive": [
+        10000,
+        14999
+      ],
+      "observed_selected_tracer": "LRG2 z=0.706",
+      "observed_max_influence": 4.124942514489671,
+      "observed_dchi2_without_selected_tracer": -4.332547040451052,
+      "unconditional": {
+        "exceedances": 78,
+        "empirical_p": 0.0156,
+        "plus_one_p": 0.015796840631873626,
+        "clopper_pearson_95": [
+          0.012350169987072885,
+          0.019431743263603196
+        ]
+      },
+      "conditional_on_global_preference_as_strong_or_stronger": {
+        "eligible_mocks": 70,
+        "exceedances": 34,
+        "empirical_p": 0.4857142857142857,
+        "clopper_pearson_95": [
+          0.36440215140754956,
+          0.6082731722971446
+        ]
+      },
+      "optimizer_failures": 0,
+      "interpretation": "LRG2 is the observed load-bearing tracer, but an equal-or-larger selected maximum influence is ordinary among LambdaCDM mocks whose global w0wa preference is at least as strong as observed. Localization is not independent evidence beyond the global fluctuation."
+    },
+    "global_null_calibration_reconciled": {
+      "status": "completed",
+      "n_mocks": 5000,
+      "unrounded_threshold": -8.457489554940723,
+      "exceedances": 70,
+      "empirical_p": 0.014,
+      "clopper_pearson_95": [
+        0.010929509501664568,
+        0.017655468925136385
+      ],
+      "wilks_p": 0.0146,
+      "supersedes": "The manuscript's prior 0.0150 value from results/null_mocks.json, which stored rounded legacy optimizer outputs. The conclusion of no detectable Wilks inflation is unchanged."
+    },
+    "direct_time_variation_full": {
+      "status": "completed",
+      "source": "results/time_variation_mocks.json",
+      "comparison": "constant-w CDM versus CPL w0waCDM in DESI DR2 BAO plus compressed CMB",
+      "statistic": "T=chi2_min(wCDM)-chi2_min(w0waCDM)",
+      "null": "5000 parametric mocks at the observed best-fit constant-w model",
+      "seed_range_inclusive": [
+        40000,
+        44999
+      ],
+      "observed_wcdm_chi2": 14.970763893000743,
+      "observed_wcdm_w": -1.029772924302962,
+      "observed_w0wacdm_chi2": 7.120173827443403,
+      "observed_w0": -0.43999542187306684,
+      "observed_wa": -1.6762431080638645,
+      "observed_test_statistic": 7.85059006555734,
+      "exceedances": 30,
+      "empirical_p": 0.006,
+      "plus_one_p": 0.0061987602479504095,
+      "clopper_pearson_95": [
+        0.004051728278694621,
+        0.00855438013468656
+      ],
+      "empirical_two_sided_gaussian_sigma": 2.7477813854449926,
+      "wilks_p": 0.005080412294620878,
+      "optimizer_failures": 0,
+      "near_prior_boundary_records": 0,
+      "interpretation": "Within CPL and this compressed likelihood, adding time variation to constant-w is preferred at 2.75 sigma. This is not a model-independent detection of arbitrary time dependence."
+    },
+    "direct_time_variation_without_lrg2": {
+      "status": "completed",
+      "source": "results/time_variation_no_lrg2_mocks.json",
+      "comparison": "constant-w CDM versus CPL w0waCDM after deleting LRG2",
+      "null": "5000 parametric mocks at the observed best-fit no-LRG2 constant-w model",
+      "seed_range_inclusive": [
+        40000,
+        44999
+      ],
+      "observed_wcdm_chi2": 8.384158489689396,
+      "observed_wcdm_w": -1.038829933599592,
+      "observed_w0wacdm_chi2": 4.957834081785444,
+      "observed_w0": -0.6186736544974274,
+      "observed_wa": -1.173985353918576,
+      "observed_test_statistic": 3.4263244079039517,
+      "exceedances": 349,
+      "empirical_p": 0.0698,
+      "plus_one_p": 0.06998600279944012,
+      "clopper_pearson_95": [
+        0.06288991710547732,
+        0.07721727193122642
+      ],
+      "empirical_two_sided_gaussian_sigma": 1.8132063552978481,
+      "wilks_p": 0.0641647575455937,
+      "optimizer_failures": 0,
+      "near_prior_boundary_records": 0,
+      "interpretation": "Removing LRG2 reduces the calibrated direct CPL time-variation preference from 2.75 to 1.81 sigma."
+    },
+    "held_out_lrg2_prediction": {
+      "status": "completed",
+      "source": "results/lrg2_posterior_predictive.json",
+      "method": "Fit LambdaCDM to DESI plus compressed CMB without LRG2, predict the held-out vector, and add Laplace-propagated parameter covariance to measurement covariance",
+      "scope": "Targeted diagnostic selected after inspection; not an independent discovery p-value",
+      "n_mocks": 5000,
+      "seed_range_inclusive": [
+        60000,
+        64999
+      ],
+      "predicted_dm_over_rd": 17.52957023852189,
+      "predicted_dh_over_rd": 20.065514686872426,
+      "observed_dm_over_rd": 17.351,
+      "observed_dh_over_rd": 19.455,
+      "joint_chi2": 6.291161856173631,
+      "joint_exceedances": 204,
+      "joint_empirical_p": 0.0408,
+      "joint_clopper_pearson_95": [
+        0.03548628089020959,
+        0.04665791821220261
+      ],
+      "joint_empirical_two_sided_gaussian_sigma": 2.045556753768633,
+      "ap_ratio_observed_absolute_z": 0.8843275696043786,
+      "ap_ratio_empirical_p": 0.3744,
+      "isotropic_dv_observed_absolute_z": 2.3193600411593227,
+      "isotropic_dv_empirical_p": 0.0204,
+      "optimizer_failures": 0,
+      "near_prior_boundary_records": 0,
+      "interpretation": "LRG2 is a modest held-out discrepancy. Its residual is primarily an isotropic distance-scale shift, not an unusual Alcock-Paczynski shape ratio; the radial coordinate can still carry greater leverage for the model comparison."
+    },
+    "legacy_leave_one_tracer_out": {
+      "status": "completed",
+      "source": "results/influence.json",
+      "full_dchi2_display": -8.5,
+      "no_lrg2_dchi2_display": -4.3,
+      "full_sigma_display": 2.4,
+      "no_lrg2_sigma_display": 1.6
+    },
+    "full_boltzmann_check": {
+      "status": "completed",
+      "source": "results/camb_check.json",
+      "baseline_dchi2": -8.28,
+      "no_lrg2_dchi2": -4.14
+    },
+    "full_cmb_lensing_variant": {
+      "status": "completed",
+      "source": "results/lensing_leg_summary.json",
+      "likelihood_generation": "Planck PR3-native comparison stack, not DESI PR4/ACT",
+      "baseline_dchi2": -10.35,
+      "no_lrg2_dchi2": -3.76
+    },
+    "human_clean_room_rerun": {
+      "status": "prepared_pending_external_execution",
+      "instructions": "cleanroom/README.md",
+      "worksheet": "cleanroom/VERIFIER_WORKSHEET.md",
+      "selection_runner": "cleanroom/run_flagship.sh",
+      "frontier_runner": "cleanroom/run_frontier.sh"
+    },
+    "official_lrg2_likelihood_reconstruction": {
+      "status": "pending_external_likelihood_inputs"
+    }
+  },
+  "sha256": {
+    "whitepaper.md": "36c01f4e9898aeb841cb4b8dad0475df6d30ab526caffe2e20ce056315fb4d3e",
+    "whitepaper.docx": "15d4d63cb24b1cd50cbea011391d6ecbe0013779c0dcbfcd97713e08debaf2ee",
+    "whitepaper.pdf": "39b0d17973f1c5dad3bf6c82c4743e18e435d541334e982d7c2433e2cc82b0c8",
+    "FRONTIER_REVIEW.md": "88ae19db776976228d22522b47c524d5b72cf7cb2117474cf4a12e6437ecd831",
+    "scripts/build_whitepaper_docx.js": "0c22a0ae96f0ce2c82c45cbcd3f33d11d66bc0edbb74032be6124b59d5deeae9",
+    "docs/package.json": "27fcab6d3cf05a1bc73fb3b2276f8ba37735b59bbde7cc0eaef95299b6d1bb0c",
+    "docs/WHITEPAPER_BUILD.md": "0bd0e1b766b2bc8061435b315e37a39a25b7fc4f586dc85c4717304eaf40bff7",
+    "scripts/max_influence_mocks.py": "6fa219405cafddcfd7deac7a412fc7c8ba90e5a856a55f306609fa00ba80262c",
+    "scripts/time_variation_mocks.py": "8cbd2c7e13811aab9682a0df2b1d082ab01f609312ba4aba5d66b3bdf831502b",
+    "scripts/lrg2_posterior_predictive.py": "50206997d0190bd2d2a0918699491bcf38b1ba6f069fb54883b93cb73f6008c2",
+    "cleanroom/run_frontier.sh": "6b7132acc6eccc5b9788ec73d1ba65527f978051a1079594798cc866d8a9a7a7",
+    "results/max_influence_mocks.json": "47fce96794294389bc99cb39e7141dbe3254e2abd7e5f07a5d68998fda55abe6",
+    "results/time_variation_mocks.json": "5b13b6839ed960d45df25b086055000be493fda39218fd28016900e71399446b",
+    "results/time_variation_no_lrg2_mocks.json": "48a5838ff749d98116809f7a44391ea6f771735f02025a50409107e9f65a2682",
+    "results/lrg2_posterior_predictive.json": "3cd2294fd6d0a3675db7fbd88012ae82eca9b0883730d1f2d14b9c7d5446a3b6",
+    "results/max_influence_solver_validation.json": "5280f8f674066a8d03337203ed5c1ce1dd5fdc4a120fdfe86f6352ecd92104d0",
+    "results/w0wa.json": "e2b27218e941034833bd36cf94681ac05af7f73258d19527fb2db0a12b7a9c2d",
+    "results/influence.json": "2badb38bd99b0770825ac982a209d8f847b7ea2989900cb0d3f5d914b271a65b",
+    "results/camb_check.json": "cf220f82f22341ea68595f933b4ba9ed543ffab6f1bf197186918a43fe6bebd4",
+    "results/lensing_leg_summary.json": "255798d79b34b0df077b1bedafec5906466e6757a556cc613a34f2beee82600d",
+    "results/posterior.json": "a5487af1cee70df8ffea34d7a0ac8966ee7a73a23a3b550769d4f1449f5096dd",
+    "results/probe_posteriors.json": "258fc34a41e01796494b5787878b63d0680b1330b967bff074442730a9876b21",
+    "results/ccmb_ext.json": "23302e42d529f29ec2ed61727b3ce7829901c1a316bc8c110b232e908dd8d4e2",
+    "results/des5y.json": "12a94a215acd89f20f6eacdff6406760b991acddbf67b160957738f25e3ca51c"
+  }
+}

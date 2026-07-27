@@ -1,9 +1,29 @@
 # Dark-Energy Stress Lab
 ### Project B v2 — an independent compressed-likelihood implementation and stress test of the DESI evolving-dark-energy claim
 
-**Scope statement (audit-reconciled):** this lab independently *reimplements the published compressed likelihoods* (DESI DR2 BAO summaries, Pantheon+/DES5Y distances, the DR2 compressed early-CMB prior) and reproduces their maximum-likelihood w0wa improvements. It is NOT a raw-data reanalysis, does not reproduce the full-CMB 3.1sigma or the 3.8-4.2sigma SN headline rows, and reproduces best fits, not posteriors. Externally reviewed by four independent AI systems (software/statistics/manuscript checks, not independent scientific peer review); one re-ran the pipeline and matched all chi2 values to 4 decimals. A clean-room human rerun is the outstanding verification step.
+**Scope statement (audit-reconciled):** this lab independently *reimplements the published compressed likelihoods* (DESI DR2 BAO summaries, Pantheon+/DES5Y distances, the DR2 compressed early-CMB prior) and reproduces their maximum-likelihood improvements and compressed-branch posterior structure. It is NOT a raw-data reanalysis and does not reproduce DESI's exact PR4/ACT full-CMB or 2024 DES5Y/Union3 headline rows. Four AI systems performed software, statistics, or manuscript checks; these are not independent scientific review. A clean-room human rerun is the outstanding verification step.
 
-**Status (2026-07-19): reproduction phase complete; diagnostics complete; verdict below.**
+**Status (2026-07-27): reproduction and diagnostics complete, including the 5,000-mock selection calibration, direct time-variation calibration, and held-out LRG2 prediction. The canonical DOCX/PDF has been regenerated from `whitepaper.md`, validated, and inspected page by page. A human clean-room rerun is prepared and pending. Canonical completion states, hashes, and numbers are in `RESULTS_MANIFEST.json`.**
+
+## Frontier result: what advanced and what did not
+
+The project now tests the scientific question more directly than the original
+ΛCDM-versus-w₀wₐ headline:
+
+- **Direct time variation:** DESI+cCMB gives
+  T = χ²(wCDM) − χ²(w₀wₐCDM) = 7.8506. Only 30 of 5,000 mocks generated
+  at the best-fit constant-w null are as large: p = 0.0060
+  [0.0041, 0.0086], or 2.75σ.
+- **Without LRG2:** T falls to 3.4263; 349/5,000 mocks are as large:
+  p = 0.0698 [0.0629, 0.0772], or 1.81σ.
+- **Held-out LRG2:** fitting ΛCDM without LRG2 and predicting it gives a
+  joint p = 0.0408 (2.05σ). The isotropic distance is low
+  (D_V/r_d p = 0.0204), but the AP ratio D_M/D_H is ordinary (p = 0.374).
+
+This is stronger evidence that the compressed CPL likelihood genuinely rewards
+time variation, but weaker evidence for a revolutionary physical interpretation:
+most of the direct significance remains LRG2-sensitive, and the targeted LRG2
+p-values are not independent of selecting that tracer after inspection.
 
 | Run | This pipeline | Published | Source |
 |---|---|---|---|
@@ -25,8 +45,14 @@ data/      pantheon_plus.dat + cov, des_dovekie_hd.csv + npz (official releases)
 scripts/   fit_lcdm.py (wk1 reproductions) · fit_w0wa.py (w0wa + calibrated-surrogate CMB, validation gates)
            influence.py (LOO/pulls/SN cuts) · fit_des5y.py (DES5Y + intercept test)
            ccmb_ext.py (anchored intercept + w(z) swap) · null_mocks.py (parametric bootstrap)
-           camb_check.py (exact-Boltzmann swap — REQUIRES local CAMB; sandbox CPU unsupported)
+           max_influence_mocks.py (all 7 deletions inside each null mock; selection calibration)
+           time_variation_mocks.py (wCDM-vs-CPL direct test, full and no-LRG2)
+           lrg2_posterior_predictive.py (held-out joint/AP/isotropic test)
+           camb_check.py (full-Boltzmann swap — REQUIRES local CAMB)
 results/   *.json per analysis
+cleanroom/ blind independent-verifier protocol, worksheet, pinned environment, one-command runner
+docs/      pinned canonical-whitepaper build dependency and instructions
+tests/     numerical equivalence, observed-result, and determinism checks
 ```
 
 ## Documented simplifications (v0)
@@ -67,7 +93,9 @@ Best-fit parameters also land on the published values: DESI+SN w₀=−0.886 (pu
 
 **Probe 3 — SN low-z cut sweep (DESI+Pantheon+):** σ falls monotonically 1.8 → 1.6 → 1.4 → 1.3 as z_min goes 0.01 → 0.025 → 0.05 → 0.10, while w₀ stays pinned at ≈ −0.89 throughout. The *crossing* component (wₐ) is what the nearby supernovae supply.
 
-**Reading (calibrated, not triumphant):** in this pipeline the evolving-dark-energy preference concentrates in three places — one BAO measurement (LRG2, z=0.706), the lowest-redshift supernovae, and the CMB geometric anchor's mild Ωm tension with BAO. This is *consistent with both* interpretations: genuine late-time dark-energy dynamics would look like this, and so would one ~2σ-fluctuating data point plus low-z SN calibration effects. Caveats: dropping the most influential point of any ~2–3σ signal deflates it by construction (look-elsewhere applies); DESI's own robustness checks found no instrumental issue with LRG2; and this pipeline lacks full-CMB lensing and DESY5/Union3, which supply the climb above 3σ. What the diagnostics establish is the signal's *concentration*, which is exactly what decides how much one should believe it before the 2027 data.
+**Probe 1b — selection-calibrated maximum influence (completed 2026-07-26):** define I_j = Δχ²_−j − Δχ²_full and select M = max_j I_j inside each dataset. Observed M = 4.1249 at LRG2. Repeating the full fit and all seven deletion fits inside each of 5,000 ΛCDM mocks gives 78/5,000 equal-or-larger selected maxima: p = 0.0156 [0.0124, 0.0194]. However, among the 70 null mocks whose global preference is at least as strong as observed, 34 have an equal-or-larger maximum: p_cond = 0.486 [0.364, 0.608].
+
+**Reading (selection-calibrated):** the observed fit is genuinely sensitive to LRG2, so “load-bearing” remains an accurate descriptive label. But this concentration is not an additional anomaly once one conditions on a global w₀wₐ fluctuation of the observed strength. The localization map directs follow-up; it must not be counted as independent evidence against ΛCDM.
 
 ## Week 6 results: DES5Y + THE EFSTATHIOU TEST (2026-07-19)
 
@@ -110,19 +138,19 @@ Public write-up (notebook + report), per the publish-regardless rule.
 
 ## FINAL SECTION — External audits, bootstrap, and consolidated verdict (2026-07-19)
 
-**Cross-AI verification.** Three independent AI systems audited this lab. One re-executed the pipeline and confirmed every χ² to 4 decimals, verified the minima against differential evolution and varied starts (not a local-minimum accident), confirmed distance-grid accuracy at 3×10⁻⁷, and verified the covariance is positive definite. Its corrections are adopted: the early-universe module is labeled a **calibrated surrogate** (rd correction 2.32%, θ* anchor 0.125%; G2 partially circular), the "independent reproduction" claim is narrowed to "independent compressed-likelihood implementation," and DESI's early-matter condition (w₀+wₐ<0; satisfied by all reported best fits) is documented.
+**AI-assisted software review.** Four AI systems reviewed software, statistics, or manuscript text over the life of the project; these are not independent scientific replication. One re-executed the pipeline and confirmed every χ² to 4 decimals, checked minima against differential evolution and varied starts, confirmed distance-grid accuracy at 3×10⁻⁷, and verified covariance positive-definiteness. Its corrections are adopted: the early-universe module is labeled a **calibrated surrogate** (rd correction 2.32%, θ* anchor 0.125%; G2 partially circular), the "independent reproduction" claim is narrowed to "independent compressed-likelihood implementation," and DESI's early-matter condition (w₀+wₐ<0; satisfied by all reported best fits) is documented.
 
 **Anchor-uncertainty propagation:** varying the surrogate's θ* anchor by ±1σ of the *published* anchor uncertainty (H₀ = 67.14 ± 0.47) moves the baseline between Δχ² = −6.1 and −11.1 → the surrogate pins significance to **2.4σ ± ~0.5σ**. Exact CLASS/CAMB required to do better (`camb_check.py` ready; blocked in this sandbox by CPU instruction set — run locally).
 
-**Parametric bootstrap (75 ΛCDM mocks through the full pipeline):** empirical P(Δχ² ≤ −8.46 | ΛCDM) = 0.013 vs Wilks 0.0146 — **the 2.45σ label is honest; no pipeline significance inflation.** One mock ΛCDM universe exceeded the real data's preference.
+**Historical 75-mock checkpoint (superseded):** this early consistency check was too small to calibrate a percent-level tail. The completed unrounded 5,000-mock result appears below.
 
 **Cross-AI extensions adopted into the record:** LRG2's leverage is primarily its *radial* D_H/r_d measurement (Δχ² −6.5 with radial only vs −4.9 transverse only vs −4.3 neither); LRG2 sits ~2.36σ from the joint ΛCDM prediction (unusual, not outrageous); shifting LRG2 halfway to ΛCDM (a 1.18σ move in its own covariance) drops the preference below 2σ; error-inflation degrades the signal smoothly (not a numerical pathology).
 
 **Literature balance (added per audit):** DES's rebuttal ([Vincenzi et al., arXiv:2501.06664](https://arxiv.org/abs/2501.06664)) reproduces the Efstathiou offset but attributes much of it to improved intrinsic-scatter/host modeling — reverting assumptions lowers their result 3.9σ→3.3σ rather than eliminating it. [Cortês & Liddle (arXiv:2504.15336)](https://arxiv.org/abs/2504.15336): overlapping SN significances must not be averaged; DESI+CMB 3.1σ is the safest single summary. [Afroz & Mukherjee (PRD, arXiv:2504.16868)](https://arxiv.org/abs/2504.16868): a redshift-dependent Pantheon+–DESI inconsistency; ΛCDM-compatible once modeled.
 
-**Consolidated verdict (three AI systems, one human, convergent):** a real, reproducible, parameterization-robust likelihood-level tension exists (~2.4σ compressed / 3.1σ full-CMB per DESI); it is sharply localized (LRG2 radial BAO + CMB anchor + low-z SN calibration); the Efstathiou intercept (D≈+0.036 mag) neutralizes the SN contribution even CMB-anchored, while DES's rebuttal keeps that contested; the constant-w model captures none of it (evidence is specifically for *time variation*); and the honest status is **a reproducible, sharply localized 2–3σ hint — not proof**. Calibrated odds that the ultimate explanation is genuinely new physics rather than calibration/systematics: ~25–40% for signal survival, <~30% for new physics. Deciders: official LRG2 likelihood-level audit, exact-Boltzmann full-CMB decomposition (lensing leg), DESI 2027 final likelihood, Rubin-calibrated SNe.
+**Consolidated verdict at that checkpoint:** a real, reproducible, parameterization-robust likelihood-level tension exists (~2.4σ compressed / 3.1σ full-CMB per DESI); it is localized (LRG2 radial BAO + CMB anchor + low-z SN calibration); the Efstathiou intercept (D≈+0.036 mag) neutralizes the SN contribution even CMB-anchored, while DES's rebuttal keeps that contested; and constant-w captures little of it. The honest status is **a reproducible, localized 2–3σ hint — not proof**. No numerical probability of “new physics” is assigned because this analysis does not derive one.
 
-**Remaining evidentiary gates (in order):** LRG2 official-likelihood audit → CLASS/CAMB swap (script ready) → posterior sampling with DESI priors + DIC → full-CMB with lensing decomposition → official Union3/DES5Y likelihoods (never averaging overlapping SN significances) → growth/lensing (RSD, fσ8, E_G) to separate dark energy from modified gravity at matched H(z).
+**Remaining evidentiary gates (current):** independent human clean-room rerun → official LRG2 likelihood-surface audit → official Union3/DES5Y likelihoods → growth/lensing consistency (RSD, fσ8, E_G) → DESI final likelihood and independently calibrated supernovae.
 
 
 ---
@@ -152,7 +180,7 @@ The z≈0.7 deviation has **changed observable between DESI's own releases** —
 
 **Finding:** substituting the independent eBOSS measurement yields *exactly* the same preference as having no z≈0.7 measurement at all — eBOSS's deviation pattern has essentially zero projection onto the w₀wₐ direction. The entire lift from 1.6σ to 2.4σ is supplied by DR2's LRG2 specifically.
 
-**Balanced reading:** DR2's LRG2 is by far the most precise of the three (±0.177 vs ±0.30/±0.32 on D_M) — more data can legitimately resolve what noisier data could not, DESI's blinded internal-consistency checks passed, and eBOSS's weaker precision means it *couldn't* strongly confirm the signal even if real. But the audit establishes two facts the discovery narrative must carry: the z≈0.7 anomaly's observable signature is unstable across DESI's own releases (transverse → radial), and the only independent experiment at this redshift is ΛCDM-consistent. The official-likelihood-level LRG2 reproduction (Gate 1's full form) remains the decisive test — this is the strongest public-data evidence available for prioritizing it.
+**Balanced reading:** DR2's LRG2 is by far the most precise of the three (±0.177 vs ±0.30/±0.32 on D_M) — more data can legitimately resolve what noisier data could not, DESI's blinded internal-consistency checks passed, and eBOSS's weaker precision means it could not strongly confirm the signal even if real. But the audit establishes two facts the interpretation must carry: the z≈0.7 signature changed observable across DESI releases (transverse → radial), and the earlier, partially sample- and footprint-correlated eBOSS comparator is ΛCDM-consistent. The official-likelihood-level LRG2 reproduction remains the decisive test.
 
 
 ---
@@ -195,7 +223,7 @@ DIC convention note: naive plug-in at the posterior *mean* gives ΔDIC = −8.99
 
 ## AUDIT 4 ADOPTED (2026-07-20) — eight corrections, all accepted
 
-A fourth external review (13-page document) was received and adopted in full: (1) eBOSS reframed as a partially correlated comparator, not an independent non-confirmation (DESI/SDSS sample+footprint overlap); (2) the 75-mock bootstrap relabeled as a consistency check (1/75 ⇒ 95% CI 0.03–7.2%) — a 5,000-mock calibration run is queued; (3) the two LRG2 sigmas (global preference vs single-measurement deviation) now explicitly defined with reference fit; (4) "exact CAMB"→"full CAMB Boltzmann," "independent hardware"→"separate execution environment," AI reviews relabeled as software/manuscript checks with a clean-room human rerun as the outstanding verification; (5) Dovekie framed as a multi-element release change, attribution unestablished (cf. arXiv:2511.07517); (6) the low-z intercept explicitly labeled a sensitivity test that cannot distinguish calibration from cosmology; (7) full-CMB claims kept outside the report boundary until the in-progress lensing-leg run completes (PR3-native likelihoods; comparison caveat pre-documented); (8) repository freeze with one-command reproduction confirmed as release step 1. The audit's bottom-line framing is adopted as the project's: **lead with the influence/fragility map — where the DESI preference lives and how fragile it is — not with "evolving dark energy."**
+A fourth external review (13-page document) was received and adopted in full. At that historical checkpoint it required: (1) eBOSS reframed as a partially correlated comparator, not an independent non-confirmation; (2) the 75-mock bootstrap relabeled as a consistency check and a 5,000-mock run queued (now completed); (3) the two LRG2 sigmas explicitly distinguished; (4) "exact CAMB"→"full CAMB Boltzmann," "independent hardware"→"separate execution environment," and AI reviews relabeled as software/manuscript checks; (5) Dovekie framed as a multi-element release change; (6) the low-z intercept labeled a sensitivity test; (7) full-CMB claims held until the lensing-leg run completed; and (8) a frozen, reproducible release. The bottom-line framing remains: lead with the influence map, not with "evolving dark energy."
 
 
 ---
@@ -218,7 +246,7 @@ Published full-CMB row (PR4): −12.5, 3.1σ — our −10.4 / 2.8σ with the PR
 
 ## H-X CROSS-PROBE TEST RESULT + 5000-MOCK CALIBRATION (2026-07-20)
 
-**Mock calibration (audit item 2 CLOSED):** 5,000 ΛCDM mocks through the full pipeline: P(Δχ² ≤ −8.46) = 0.0150 [95% CI 0.0119–0.0187] vs Wilks 0.0146. The significance labels are now *calibrated*, not merely consistent. Distribution extreme: one mock at Δχ² = −17.5 (~3.7σ-equivalent) — pure-ΛCDM universes do occasionally produce stronger "evolving dark energy" than the real data.
+**Mock calibration (audit item 2 CLOSED; reconciled 2026-07-26):** the fresh unrounded least-squares runner gives 70/5,000 at Δχ² ≤ −8.4575, p = 0.0140 [0.0109, 0.0177], vs Wilks 0.0146. This supersedes the earlier 1.50% number taken from the rounded legacy JSON; the scientific conclusion is unchanged. The same deterministic run performs all seven deletion fits per mock: selected maximum-influence p = 0.0156 [0.0124, 0.0194], but p = 0.486 [0.364, 0.608] conditional on global preference at least as strong as observed. Localization is not independent evidence beyond the global fluctuation.
 
 **H-X (pre-registered cross-probe w(z) consistency): verdict INTERMEDIATE, per kill conditions.** BAO–Pantheon+ shift 1.44σ, BAO–DES5Y 1.35σ, Pantheon+–DES5Y 0.24σ. Crossing redshifts: BAO z× = 0.49 ± 0.07; both SN legs z× ≈ 0.29–0.30. Neither the consistency nor the inconsistency threshold was met; reported without promotion. Notable texture (not promoted): the two supernova datasets agree with each other almost exactly and both point at a *different* turning point than the BAO leg, despite a shared CMB anchor pulling all legs together. Registered follow-up: P1-without-LRG2 z× test. Full record: HYPOTHESIS-cross-probe.md, results/hx_tension.json, results/probe_posteriors.json.
 
