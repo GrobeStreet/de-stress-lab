@@ -5,7 +5,20 @@ publish-regardless audit: reproduce the headline result first, then look for
 where it is fragile, calibrate every selected statistic inside the null, and
 state in advance what future evidence would change the conclusion.
 
-## Engagements
+## Start here
+
+| Offer | Best for | Price | Next step |
+|---|---|---:|---|
+| Free GitHub Action | Public repository-readiness score and badge | $0 | [Install the Action](docs/GITHUB_ACTION.md) |
+| Automated Reproducibility Audit | Evidence-backed review of one authorized repository | $199 once | [Review scope and purchase](docs/PAID_AUDIT.md) |
+| Reproduction sprint | Claim-level computational reproduction | Custom | [Request scope](#request-custom-work) |
+| Statistical red team | Selection-aware stress tests and null calibration | Custom | [Request scope](#request-custom-work) |
+
+The fixed-price audit is intentionally narrower than a scientific reproduction.
+It reviews repository controls, code and build structure, and a safe smoke path;
+it does not sell endorsement or scientific certification.
+
+## Custom engagements
 
 ### Reproduction sprint
 
@@ -40,7 +53,7 @@ This is adversarial quality assurance, not purchased endorsement. Findings are
 reported whether they strengthen or weaken the original claim. Domain experts
 retain responsibility for scientific interpretation and any regulated use.
 
-## Request work
+## Request custom work
 
 Open one of these repository forms:
 
@@ -50,4 +63,3 @@ Open one of these repository forms:
 Do not place confidential data in a public issue. Describe only the field,
 artifact type, desired deadline, and whether a private scoping channel is
 required.
-

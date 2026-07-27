@@ -5,7 +5,11 @@ labels: ["engagement", "reproducibility"]
 body:
   - type: markdown
     attributes:
-      value: Do not include confidential files, credentials, or unpublished data.
+      value: |
+        Do not include confidential files, credentials, or unpublished data.
+
+        For the fixed-scope $199 repository audit, review the offer and checkout:
+        https://github.com/GrobeStreet/de-stress-lab/blob/main/docs/PAID_AUDIT.md
   - type: input
     id: field
     attributes:
@@ -38,4 +42,3 @@ body:
         - "Yes — contact details will be exchanged privately"
     validations:
       required: true
-
