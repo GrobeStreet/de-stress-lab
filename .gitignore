@@ -9,4 +9,7 @@ __pycache__/
 .DS_Store
 *.tmp
 .~lock.*#
+dist/
+build/
+*.egg-info/
 cleanroom/*-output.json

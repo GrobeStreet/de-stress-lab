@@ -1,8 +1,8 @@
 {
-  "title": "Anatomy of a 2-3 sigma Hint: An Independent Stress Test of the DESI DR2 Evolving-Dark-Energy Preference",
-  "description": "Independent reimplementation and adversarial stress test of the compressed likelihoods behind the DESI DR2 preference for evolving dark energy. Reproduces the published results (Delta-chi2 ladder, posteriors, DIC), then maps the preference's fragility: leave-one-out influence diagnostics, an eBOSS comparator swap, calibration intercept tests, w(z) parameterization swaps, a 5,000-mock significance calibration, a full-CMB lensing variant (finding the preference falls to ~1.4 sigma without the single LRG2 measurement), and a pre-registered cross-probe hypothesis chain in which one kill condition was met (the supernova crossing feature is degenerate with a low-z calibration offset). AI-assisted implementation; four external adversarial reviews adopted; all data public and primary-sourced; publish-regardless protocol.",
+  "title": "de-stress-lab: Selection-aware stress tests and frozen prediction ledgers for scientific likelihoods",
+  "description": "Installable research software for grouped-observation likelihoods, deterministic model comparison, leave-group-out influence diagnostics, selection-aware null calibration, and cryptographically frozen prediction ledgers. Includes a DESI DR2 cosmology flagship demonstration, numerical equivalence tests, public documentation, and an explicit AI-usage disclosure.",
   "creators": [{"name": "Morong, Bobby"}],
-  "keywords": ["dark energy", "DESI", "cosmology", "BAO", "supernovae", "reproducibility", "w0waCDM", "systematics"],
+  "keywords": ["reproducibility", "statistical diagnostics", "scientific software", "likelihood", "dark energy", "DESI", "cosmology", "BAO", "systematics"],
   "license": "MIT",
   "upload_type": "software",
   "related_identifiers": [

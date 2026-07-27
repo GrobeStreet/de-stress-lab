@@ -1,6 +1,25 @@
 # Dark-Energy Stress Lab
 ### Project B v2 — an independent compressed-likelihood implementation and stress test of the DESI evolving-dark-energy claim
 
+`de-stress-lab` is now also an installable Python package for selection-aware
+influence diagnostics, null calibration, and frozen scientific prediction
+ledgers. The original scripts remain frozen as the flagship validation case.
+
+```bash
+python -m pip install -e ".[test]"
+destress demo
+pytest
+destress verify-ledger predictions/2027-ledger.json
+```
+
+- [Package quick start](docs/QUICKSTART.md)
+- [Frozen 2027 prediction ledger](predictions/2027-ledger.md)
+- [Reproducibility and statistical red-team services](SERVICES.md)
+- [JOSS paper and eligibility status](paper/JOSS-READINESS.md)
+- [Architecture decision](docs/adr/0001-package-boundary.md)
+- [Contributing](CONTRIBUTING.md) and [support](SUPPORT.md)
+- [Release clarifications and errata](ERRATA.md)
+
 **Scope statement (audit-reconciled):** this lab independently *reimplements the published compressed likelihoods* (DESI DR2 BAO summaries, Pantheon+/DES5Y distances, the DR2 compressed early-CMB prior) and reproduces their maximum-likelihood improvements and compressed-branch posterior structure. It is NOT a raw-data reanalysis and does not reproduce DESI's exact PR4/ACT full-CMB or 2024 DES5Y/Union3 headline rows. Four AI systems performed software, statistics, or manuscript checks; these are not independent scientific review. A clean-room human rerun is the outstanding verification step.
 
 **Status (2026-07-27): reproduction and diagnostics complete, including the 5,000-mock selection calibration, direct time-variation calibration, and held-out LRG2 prediction. The canonical DOCX/PDF has been regenerated from `whitepaper.md`, validated, and inspected page by page. A human clean-room rerun is prepared and pending. Canonical completion states, hashes, and numbers are in `RESULTS_MANIFEST.json`.**
@@ -41,6 +60,9 @@ p-values are not independent of selecting that tracer after inspection.
 
 ## Layout
 ```
+src/       reusable installable `destress` package
+paper/     JOSS paper, bibliography, and readiness gate
+predictions/ frozen 2027 ledger plus SHA-256 digest
 data/      pantheon_plus.dat + cov, des_dovekie_hd.csv + npz (official releases), desi_dr2.html (BAO/CMB source)
 scripts/   fit_lcdm.py (wk1 reproductions) · fit_w0wa.py (w0wa + calibrated-surrogate CMB, validation gates)
            influence.py (LOO/pulls/SN cuts) · fit_des5y.py (DES5Y + intercept test)
