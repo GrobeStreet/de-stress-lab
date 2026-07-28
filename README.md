@@ -17,12 +17,9 @@ destress verify-ledger predictions/2027-ledger.json
 
 - [Package quick start](docs/QUICKSTART.md)
 - [Free GitHub Action](docs/GITHUB_ACTION.md)
-- [Automated Reproducibility Audit — $199](docs/PAID_AUDIT.md)
 - [Frozen 2027 prediction ledger](predictions/2027-ledger.md)
-- [Reproducibility and statistical red-team services](SERVICES.md)
 - [JOSS paper and eligibility status](paper/JOSS-READINESS.md)
 - [Scholarly submission roadmap](paper/SUBMISSION_ROADMAP.md)
-- [Local complimentary pilot program](outreach/LOCAL_PILOT_PROGRAM.md)
 - [Canonical release preservation record](archive/CANONICAL_RELEASE.json)
 - [Architecture decision](docs/adr/0001-package-boundary.md)
 - [Contributing](CONTRIBUTING.md) and [support](SUPPORT.md)
