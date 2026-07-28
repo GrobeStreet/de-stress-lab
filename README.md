@@ -3,6 +3,7 @@
 
 [![Reproducibility audit](https://github.com/GrobeStreet/de-stress-lab/actions/workflows/reproducibility-audit.yml/badge.svg)](https://github.com/GrobeStreet/de-stress-lab/actions/workflows/reproducibility-audit.yml)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21632602.svg)](https://doi.org/10.5281/zenodo.21632602)
+[![Package archive DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21633731.svg)](https://doi.org/10.5281/zenodo.21633731)
 
 `de-stress-lab` is now also an installable Python package for selection-aware
 influence diagnostics, null calibration, and frozen scientific prediction
@@ -24,6 +25,7 @@ destress verify-ledger predictions/2027-ledger.json
 - [Scholarly submission roadmap](paper/SUBMISSION_ROADMAP.md)
 - [Local complimentary pilot program](outreach/LOCAL_PILOT_PROGRAM.md)
 - [Canonical release preservation record](archive/CANONICAL_RELEASE.json)
+- [Reusable package release archive](archive/PACKAGE_RELEASE.md)
 - [Architecture decision](docs/adr/0001-package-boundary.md)
 - [Contributing](CONTRIBUTING.md) and [support](SUPPORT.md)
 - [Release clarifications and errata](ERRATA.md)
@@ -41,6 +43,9 @@ published SHA-256 manifest. The frozen scientific reproduction is archived at
 [Zenodo DOI 10.5281/zenodo.21632602](https://doi.org/10.5281/zenodo.21632602);
 the all-versions DOI is
 [10.5281/zenodo.21632601](https://doi.org/10.5281/zenodo.21632601).
+The reusable package's `v0.1.0` wheel, source distribution, JOSS paper draft,
+and SHA-256 manifest are archived separately at
+[10.5281/zenodo.21633731](https://doi.org/10.5281/zenodo.21633731).
 `RESULTS_MANIFEST.json` and the published SHA-256 files bind reported claims to
 specific artifacts.
 
