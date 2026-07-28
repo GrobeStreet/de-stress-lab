@@ -19,6 +19,10 @@ Target sequence:
 6. Submit to an appropriate scientific journal, with Physical Review D as the
    current primary target.
 
+The prepared PRD cover letter, declarations, and gate checklist are in
+`paper/prd/`. They deliberately leave funding and competing-interest
+statements for author confirmation rather than inventing declarations.
+
 The journal submission must describe the work as an independent implementation
 of published compressed likelihoods, not a raw-data reanalysis. It must retain
 the selection caveat, AI-use disclosure, data credits, and clean-room status.

@@ -3,32 +3,234 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>De-Stress Audit Automation</title>
+    <meta
+      name="description"
+      content="Independent, evidence-backed reproducibility audits for public research-software repositories."
+    >
+    <title>De-Stress Lab — Reproducibility Audits</title>
     <style>
       :root {
-        color-scheme: light dark;
-        font-family: ui-sans-serif, system-ui, sans-serif;
+        color-scheme: dark;
+        --background: #08111f;
+        --panel: #101d31;
+        --panel-strong: #152640;
+        --text: #f4f7fb;
+        --muted: #aebbd0;
+        --accent: #78e6c4;
+        --accent-dark: #071914;
+        --line: #2a3b55;
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+          "Segoe UI", sans-serif;
       }
-      main {
-        max-width: 42rem;
-        margin: 12vh auto;
-        padding: 2rem;
+
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        color: var(--text);
+        background:
+          radial-gradient(circle at 75% 5%, #183859 0, transparent 30rem),
+          var(--background);
+        line-height: 1.6;
       }
       a { color: inherit; }
+      main {
+        width: min(70rem, calc(100% - 2rem));
+        margin: 0 auto;
+        padding: 5rem 0;
+      }
+      .eyebrow {
+        color: var(--accent);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+      }
+      h1 {
+        max-width: 15ch;
+        margin: 0.8rem 0 1.2rem;
+        font-size: clamp(2.7rem, 7vw, 5.8rem);
+        line-height: 0.98;
+        letter-spacing: -0.055em;
+      }
+      h2 {
+        margin-top: 0;
+        font-size: 1.4rem;
+        letter-spacing: -0.02em;
+      }
+      .lede {
+        max-width: 44rem;
+        color: var(--muted);
+        font-size: clamp(1.05rem, 2vw, 1.3rem);
+      }
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.8rem;
+        margin: 2rem 0 3rem;
+      }
+      .button {
+        display: inline-block;
+        padding: 0.8rem 1.05rem;
+        border: 1px solid var(--line);
+        border-radius: 0.65rem;
+        font-weight: 750;
+        text-decoration: none;
+      }
+      .button.primary {
+        border-color: var(--accent);
+        color: var(--accent-dark);
+        background: var(--accent);
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1rem;
+      }
+      .card {
+        padding: 1.4rem;
+        border: 1px solid var(--line);
+        border-radius: 1rem;
+        background: color-mix(in srgb, var(--panel) 92%, transparent);
+      }
+      .price {
+        margin: 0.5rem 0;
+        font-size: 1.8rem;
+        font-weight: 850;
+      }
+      ul {
+        padding-left: 1.2rem;
+        color: var(--muted);
+      }
+      .proof {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+        margin-top: 1rem;
+      }
+      .proof a {
+        display: block;
+        padding: 1rem;
+        border: 1px solid var(--line);
+        border-radius: 0.8rem;
+        color: var(--muted);
+        text-decoration: none;
+      }
+      .proof strong {
+        display: block;
+        color: var(--text);
+      }
+      .note {
+        margin-top: 2rem;
+        padding: 1rem 1.2rem;
+        border-left: 3px solid var(--accent);
+        color: var(--muted);
+        background: var(--panel-strong);
+      }
+      footer {
+        margin-top: 3rem;
+        padding-top: 1.5rem;
+        border-top: 1px solid var(--line);
+        color: var(--muted);
+        font-size: 0.9rem;
+      }
+      @media (max-width: 760px) {
+        main { padding: 3rem 0; }
+        .grid, .proof { grid-template-columns: 1fr; }
+      }
     </style>
   </head>
   <body>
     <main>
-      <h1>De-Stress Audit Automation</h1>
-      <p>
-        Payment-triggered intake for the fixed-scope Automated Reproducibility
-        Audit. No customer payment information is published here.
+      <div class="eyebrow">Independent research-software quality assurance</div>
+      <h1>Find what could break before reviewers do.</h1>
+      <p class="lede">
+        De-Stress Lab audits public research repositories for reproducibility,
+        provenance, release integrity, and statistical fragility. Findings are
+        reported whether they strengthen or weaken the original claim.
       </p>
-      <p>
-        <a href="https://github.com/GrobeStreet/de-stress-lab/blob/main/docs/PAID_AUDIT.md">
-          Review the audit scope
-        </a>
-      </p>
+
+      <div class="actions">
+        <a
+          class="button primary"
+          href="https://buy.stripe.com/5kQbJ08uh8ZFaCpfXu3F600"
+        >Buy the $199 audit</a>
+        <a
+          class="button"
+          href="https://github.com/GrobeStreet/de-stress-lab/blob/main/docs/PAID_AUDIT.md"
+        >Review the exact scope</a>
+      </div>
+
+      <section class="grid" aria-label="Services">
+        <article class="card">
+          <div class="eyebrow">Open-source entry point</div>
+          <h2>Repository readiness</h2>
+          <p class="price">$0</p>
+          <p>Run the public GitHub Action and add a readiness badge.</p>
+          <a href="https://github.com/GrobeStreet/de-stress-lab/blob/main/docs/GITHUB_ACTION.md">
+            Install the free check
+          </a>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow">Fixed-scope audit</div>
+          <h2>Automated audit</h2>
+          <p class="price">$199 once</p>
+          <ul>
+            <li>Static repository and release review</li>
+            <li>Readable and machine-readable reports</li>
+            <li>Prioritized remediation list</li>
+            <li>Safe smoke check when feasible</li>
+          </ul>
+        </article>
+
+        <article class="card">
+          <div class="eyebrow">Custom engagement</div>
+          <h2>Scientific red team</h2>
+          <p class="price">Scoped separately</p>
+          <p>
+            Claim-level reproduction, influence diagnostics, null calibration,
+            and frozen prediction-ledger design.
+          </p>
+          <a href="https://github.com/GrobeStreet/de-stress-lab/blob/main/SERVICES.md">
+            See custom services
+          </a>
+        </article>
+      </section>
+
+      <div class="note">
+        The $199 audit is structural quality assurance, not purchased
+        endorsement, peer review, security certification, or proof that a
+        scientific conclusion is correct.
+      </div>
+
+      <section>
+        <h2>Verify the flagship demonstration</h2>
+        <div class="proof">
+          <a href="https://github.com/GrobeStreet/de-stress-lab">
+            <strong>Public source and tests</strong>
+            Inspect the complete implementation and issue history.
+          </a>
+          <a href="https://pypi.org/project/de-stress-lab/">
+            <strong>Installable Python package</strong>
+            Install the reusable tooling from PyPI.
+          </a>
+          <a href="https://doi.org/10.5281/zenodo.21632602">
+            <strong>Scientific reproduction DOI</strong>
+            Frozen canonical evidence package.
+          </a>
+          <a href="https://doi.org/10.5281/zenodo.21633731">
+            <strong>Software release DOI</strong>
+            Separately archived package release and checksums.
+          </a>
+        </div>
+      </section>
+
+      <footer>
+        One public repository per fixed-price audit. Do not submit credentials,
+        unpublished data, private access tokens, personal records, or regulated
+        information through checkout.
+      </footer>
     </main>
   </body>
 </html>
