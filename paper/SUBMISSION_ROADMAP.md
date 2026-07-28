@@ -39,7 +39,7 @@ earliest conservative screening date is 2027-01-22.
 
 Before that date:
 
-- preserve a versioned software DOI;
+- [x] preserve a versioned software DOI (`10.5281/zenodo.21633731`);
 - obtain an independent installation record;
 - document at least one use beyond the original flagship analysis;
 - maintain meaningful issues, pull requests, tests, releases, and changelog

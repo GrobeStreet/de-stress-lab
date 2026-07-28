@@ -27,7 +27,7 @@ The deployed function uses these encrypted environment variables:
 - `GITHUB_DISPATCH_TOKEN`
 - `GITHUB_AUDIT_REPOSITORY`
 - `AUDIT_DELIVERY_TOKEN`
-- `RESEND_API_KEY`
+- `SENDGRID_API_KEY`
 - `AUDIT_FROM_EMAIL`
 - `AUDIT_REPLY_TO_EMAIL` (optional)
 
@@ -56,6 +56,9 @@ permission needed to create a repository dispatch.
 - The private delivery callback rejects unknown orders, repository mismatches,
   oversized packages, unexpected filenames, duplicate sends, and invalid
   callback tokens.
-- Email sends use a provider idempotency key derived from the non-customer order
-  reference.
+- Before calling SendGrid, the order is moved to a private
+  `delivery_pending` state. Retries do not send again while that state exists;
+  a rejected SendGrid request safely restores the dispatchable state. This
+  biases ambiguous network failures toward manual recovery instead of duplicate
+  customer email.
 - The workflow never automatically installs or executes customer code.

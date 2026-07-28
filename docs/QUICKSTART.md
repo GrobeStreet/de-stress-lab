@@ -1,14 +1,16 @@
 # Quick start
 
-Install the package from a checkout:
+Install the published package:
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate
-python -m pip install -e ".[test]"
+python -m pip install de-stress-lab==0.1.0
 destress demo
-pytest
 ```
+
+For development from a checkout, use
+`python -m pip install -e ".[test]"` and run `pytest`.
 
 The API separates a scientific model from a dataset:
 

@@ -96,29 +96,48 @@ export function deliveryEmail(
   customerEmail: string,
   from: string,
   replyTo?: string,
-): Record<string, unknown> {
+): {
+  attachments: Array<{ content: string; filename: string; type: string }>;
+  categories: string[];
+  content: Array<{ type: string; value: string }>;
+  from: { email: string };
+  personalizations: Array<{
+    custom_args: { order_reference: string; service: string };
+    to: Array<{ email: string }>;
+  }>;
+  reply_to?: { email: string };
+  subject: string;
+} {
+  const text = [
+    "Your automated reproducibility audit is attached.",
+    "",
+    `Repository: ${request.repository_url}`,
+    `Order reference: ${request.order_reference}`,
+    "",
+    "This automated stage is a structural repository review. It does not certify scientific correctness, reproduce numerical claims, or constitute peer review.",
+    "",
+    "Reply to this email within seven days for one clarification round covering factual errors or missing repository instructions.",
+  ].join("\n");
+
   return {
-    from,
-    to: [customerEmail],
-    ...(replyTo ? { reply_to: replyTo } : {}),
+    personalizations: [
+      {
+        to: [{ email: customerEmail }],
+        custom_args: {
+          order_reference: request.order_reference,
+          service: "reproducibility-audit",
+        },
+      },
+    ],
+    from: { email: from },
+    ...(replyTo ? { reply_to: { email: replyTo } } : {}),
     subject: `Your reproducibility audit is ready (${request.order_reference})`,
-    text: [
-      "Your automated reproducibility audit is attached.",
-      "",
-      `Repository: ${request.repository_url}`,
-      `Order reference: ${request.order_reference}`,
-      "",
-      "This automated stage is a structural repository review. It does not certify scientific correctness, reproduce numerical claims, or constitute peer review.",
-      "",
-      "Reply to this email within seven days for one clarification round covering factual errors or missing repository instructions.",
-    ].join("\n"),
+    content: [{ type: "text/plain", value: text }],
     attachments: request.files.map((file) => ({
       content: file.content_base64,
       filename: file.name,
+      type: file.content_type,
     })),
-    tags: [
-      { name: "service", value: "reproducibility-audit" },
-      { name: "order_reference", value: request.order_reference },
-    ],
+    categories: ["reproducibility-audit"],
   };
 }

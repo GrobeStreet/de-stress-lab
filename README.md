@@ -10,11 +10,13 @@ influence diagnostics, null calibration, and frozen scientific prediction
 ledgers. The original scripts remain frozen as the flagship validation case.
 
 ```bash
-python -m pip install -e ".[test]"
+python -m pip install de-stress-lab==0.1.0
 destress demo
-pytest
 destress verify-ledger predictions/2027-ledger.json
 ```
+
+Contributors can install a checkout with
+`python -m pip install -e ".[test]"` and run `pytest`.
 
 - [Package quick start](docs/QUICKSTART.md)
 - [Free GitHub Action](docs/GITHUB_ACTION.md)

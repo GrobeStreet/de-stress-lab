@@ -85,11 +85,22 @@ test("builds an attachment-only customer email", () => {
   const message = deliveryEmail(
     request,
     "researcher@example.edu",
-    "Audit Lab <audit@example.com>",
+    "audit@example.com",
     "support@example.com",
   );
-  assert.deepEqual(message.to, ["researcher@example.edu"]);
-  assert.equal(message.reply_to, "support@example.com");
-  assert.equal((message.attachments as unknown[]).length, 4);
-  assert.ok(String(message.text).includes("does not certify scientific correctness"));
+  assert.deepEqual(message.personalizations[0]?.to, [
+    { email: "researcher@example.edu" },
+  ]);
+  assert.equal(message.from.email, "audit@example.com");
+  assert.equal(message.reply_to?.email, "support@example.com");
+  assert.equal(message.attachments.length, 4);
+  assert.equal(message.attachments[0]?.type, "application/json");
+  assert.ok(
+    message.content[0]?.value.includes("does not certify scientific correctness"),
+  );
+  assert.deepEqual(message.categories, ["reproducibility-audit"]);
+  assert.equal(
+    message.personalizations[0]?.custom_args.order_reference,
+    orderReference,
+  );
 });

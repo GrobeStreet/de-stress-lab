@@ -18,10 +18,12 @@ type OrderRecord = {
   customerEmail?: string;
   deliveredAt?: string;
   emailMessageId?: string;
+  deliveryStartedAt?: string;
   orderReference: string;
   repositoryUrl?: string;
   state:
     | "accepted"
+    | "delivery_pending"
     | "dispatched"
     | "delivered"
     | "needs_attention"
@@ -83,6 +85,9 @@ export default async (request: Request): Promise<Response> => {
   if (record.state === "delivered") {
     return json({ delivered: true, action: "duplicate" });
   }
+  if (record.state === "delivery_pending") {
+    return json({ delivered: false, action: "pending" }, 202);
+  }
   if (
     record.state !== "dispatched" ||
     record.repositoryUrl !== delivery.repository_url ||
@@ -91,31 +96,52 @@ export default async (request: Request): Promise<Response> => {
     return json({ error: "order_not_deliverable" }, 409);
   }
 
-  const response = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${requiredEnvironment("RESEND_API_KEY")}`,
-      "Content-Type": "application/json",
-      "Idempotency-Key": `audit-delivery-${delivery.order_reference}`,
-      "User-Agent": "de-stress-audit-delivery",
-    },
-    body: JSON.stringify(
-      deliveryEmail(
-        delivery,
-        record.customerEmail,
-        requiredEnvironment("AUDIT_FROM_EMAIL"),
-        Netlify.env.get("AUDIT_REPLY_TO_EMAIL"),
+  const deliveryStartedAt = new Date().toISOString();
+  await store.setJSON(key, {
+    ...record,
+    deliveryStartedAt,
+    state: "delivery_pending",
+    updatedAt: deliveryStartedAt,
+  } satisfies OrderRecord);
+
+  let messageId: string;
+  try {
+    const response = await fetch("https://api.sendgrid.com/v3/mail/send", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${requiredEnvironment("SENDGRID_API_KEY")}`,
+        "Content-Type": "application/json",
+        "User-Agent": "de-stress-audit-delivery",
+      },
+      body: JSON.stringify(
+        deliveryEmail(
+          delivery,
+          record.customerEmail,
+          requiredEnvironment("AUDIT_FROM_EMAIL"),
+          Netlify.env.get("AUDIT_REPLY_TO_EMAIL"),
+        ),
       ),
-    ),
-  });
-  const result = (await response.json().catch(() => ({}))) as {
-    id?: string;
-    message?: string;
-  };
-  if (!response.ok || !result.id) {
-    throw new Error(
-      `Email delivery rejected (${response.status}): ${result.message ?? "unknown error"}`,
-    );
+    });
+    if (response.status !== 202) {
+      const result = (await response.json().catch(() => ({}))) as {
+        errors?: Array<{ message?: string }>;
+      };
+      throw new Error(
+        `Email delivery rejected (${response.status}): ${result.errors?.[0]?.message ?? "unknown error"}`,
+      );
+    }
+    messageId =
+      response.headers.get("x-message-id") ??
+      `sendgrid-accepted-${delivery.order_reference}`;
+  } catch (error) {
+    const failedAt = new Date().toISOString();
+    await store.setJSON(key, {
+      ...record,
+      reason: error instanceof Error ? error.message : "SendGrid delivery failed",
+      state: "dispatched",
+      updatedAt: failedAt,
+    } satisfies OrderRecord);
+    throw error;
   }
 
   const { customerEmail: _customerEmail, ...privacySafeRecord } = record;
@@ -123,7 +149,8 @@ export default async (request: Request): Promise<Response> => {
   await store.setJSON(key, {
     ...privacySafeRecord,
     deliveredAt: now,
-    emailMessageId: result.id,
+    deliveryStartedAt,
+    emailMessageId: messageId,
     state: "delivered",
     updatedAt: now,
   } satisfies OrderRecord);
