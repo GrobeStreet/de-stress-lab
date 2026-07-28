@@ -108,7 +108,9 @@ Never imply that passing the first two establishes the last two.
 
 ## Customer handoff
 
-1. Send the files to the email recorded by Stripe.
+1. Confirm the automatic delivery step sent the files to the email recorded by
+   Stripe. If delivery failed, correct the private provider configuration and
+   rerun only the failed workflow job.
 2. State the audited commit SHA and every unattempted check.
 3. Invite one clarification round limited to factual errors or missing
    repository instructions.

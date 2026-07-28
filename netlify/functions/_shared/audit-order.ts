@@ -10,6 +10,7 @@ export type IntakeDecision =
   | { kind: "needs_attention"; orderReference: string; reason: string }
   | {
       kind: "dispatch";
+      customerEmail: string;
       orderReference: string;
       repositoryUrl: string;
     };
@@ -89,6 +90,21 @@ export function orderReference(sessionId: string): string {
   return createHash("sha256").update(sessionId).digest("hex").slice(0, 20);
 }
 
+export function normalizeCustomerEmail(value: string | null): string | null {
+  if (!value) {
+    return null;
+  }
+  const normalized = value.trim().toLowerCase();
+  if (
+    normalized.length > 254 ||
+    /[\u0000-\u001f\u007f]/.test(normalized) ||
+    !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(normalized)
+  ) {
+    return null;
+  }
+  return normalized;
+}
+
 export function decideIntake(
   eventType: string,
   session: Stripe.Checkout.Session,
@@ -120,6 +136,17 @@ export function decideIntake(
     return { kind: "ignore", reason: "payment_not_settled" };
   }
 
+  const customerEmail = normalizeCustomerEmail(
+    session.customer_details?.email ?? session.customer_email,
+  );
+  if (!customerEmail) {
+    return {
+      kind: "needs_attention",
+      orderReference: orderReference(session.id),
+      reason: "missing_or_invalid_customer_email",
+    };
+  }
+
   const repositoryUrl = extractRepositoryUrl(session.custom_fields);
   if (!repositoryUrl) {
     return {
@@ -131,6 +158,7 @@ export function decideIntake(
 
   return {
     kind: "dispatch",
+    customerEmail,
     orderReference: orderReference(session.id),
     repositoryUrl,
   };

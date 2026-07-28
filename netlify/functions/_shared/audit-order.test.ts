@@ -5,6 +5,7 @@ import type Stripe from "stripe";
 
 import {
   decideIntake,
+  normalizeCustomerEmail,
   normalizeGitHubRepositoryUrl,
   orderReference,
 } from "./audit-order.js";
@@ -17,6 +18,14 @@ function session(
     object: "checkout.session",
     amount_total: 19_900,
     currency: "usd",
+    customer_details: {
+      address: null,
+      email: "Researcher@Example.edu",
+      name: null,
+      phone: null,
+      tax_exempt: "none",
+      tax_ids: [],
+    },
     payment_link: "plink_expected",
     payment_status: "paid",
     custom_fields: [
@@ -53,6 +62,7 @@ test("dispatches a settled matching audit purchase", () => {
     decideIntake("checkout.session.completed", session(), "plink_expected"),
     {
       kind: "dispatch",
+      customerEmail: "researcher@example.edu",
       orderReference: orderReference("cs_live_example"),
       repositoryUrl: "https://github.com/example/research-code",
     },
@@ -74,6 +84,15 @@ test("does not fulfill an unsettled or unrelated checkout", () => {
   );
 });
 
+test("normalizes a deliverable customer email", () => {
+  assert.equal(
+    normalizeCustomerEmail("  Researcher@Example.edu "),
+    "researcher@example.edu",
+  );
+  assert.equal(normalizeCustomerEmail("not-an-email"), null);
+  assert.equal(normalizeCustomerEmail("header@example.edu\nBcc: bad@example.net"), null);
+});
+
 test("routes invalid intake for private review without exposing customer data", () => {
   const result = decideIntake(
     "checkout.session.async_payment_succeeded",
@@ -85,4 +104,17 @@ test("routes invalid intake for private review without exposing customer data", 
     result.kind === "needs_attention" ? result.reason : "",
     "missing_or_invalid_repository_url",
   );
+});
+
+test("routes a missing customer email for private review", () => {
+  const result = decideIntake(
+    "checkout.session.completed",
+    session({ customer_details: null, customer_email: null }),
+    "plink_expected",
+  );
+  assert.deepEqual(result, {
+    kind: "needs_attention",
+    orderReference: orderReference("cs_live_example"),
+    reason: "missing_or_invalid_customer_email",
+  });
 });

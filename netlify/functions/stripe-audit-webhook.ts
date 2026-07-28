@@ -13,9 +13,17 @@ declare const Netlify: {
 const stripe = new Stripe("sk_not_used_for_signature_verification");
 
 type OrderRecord = {
+  customerEmail?: string;
+  deliveredAt?: string;
+  emailMessageId?: string;
   orderReference: string;
   repositoryUrl?: string;
-  state: "accepted" | "dispatched" | "needs_attention" | "dispatch_failed";
+  state:
+    | "accepted"
+    | "dispatched"
+    | "delivered"
+    | "needs_attention"
+    | "dispatch_failed";
   reason?: string;
   updatedAt: string;
 };
@@ -172,6 +180,7 @@ export default async (request: Request): Promise<Response> => {
   }
 
   const accepted: OrderRecord = {
+    customerEmail: decision.customerEmail,
     orderReference: decision.orderReference,
     repositoryUrl: decision.repositoryUrl,
     state: "accepted",

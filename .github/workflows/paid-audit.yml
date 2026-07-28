@@ -115,6 +115,12 @@ jobs:
             --target target \
             --repository "$REPOSITORY_URL" \
             --order-reference "$ORDER_REFERENCE"
+      - name: Deliver report to the purchaser
+        if: always() && github.event.action == 'paid-audit-purchased'
+        env:
+          AUDIT_DELIVERY_TOKEN: ${{ secrets.AUDIT_DELIVERY_TOKEN }}
+          AUDIT_DELIVERY_URL: ${{ vars.AUDIT_DELIVERY_URL }}
+        run: python auditor/scripts/send_paid_audit_delivery.py
       - name: Preserve delivery package
         if: always()
         uses: actions/upload-artifact@v7
