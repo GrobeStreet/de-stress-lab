@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "If you use de-stress-lab, please cite the software release."
-title: "de-stress-lab"
+message: "If you use de-stress-lab, please cite the reusable software release."
+title: "de-stress-lab: reusable scientific likelihood stress-testing toolkit"
 type: software
 authors:
   - family-names: Morong
@@ -9,11 +9,14 @@ version: 0.1.1
 date-released: 2026-07-29
 license: MIT
 repository-code: "https://github.com/GrobeStreet/de-stress-lab"
-url: "https://github.com/GrobeStreet/de-stress-lab"
+url: "https://doi.org/10.5281/zenodo.21633731"
 identifiers:
   - type: doi
+    value: "10.5281/zenodo.21633731"
+    description: "Archived de-stress-lab 0.1.1 reusable software release"
+  - type: doi
     value: "10.5281/zenodo.21632602"
-    description: "Canonical v1.0 scientific reproduction archive"
+    description: "Separate canonical v1.0 scientific reproduction archive"
 keywords:
   - reproducibility
   - statistical diagnostics

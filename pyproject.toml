@@ -48,6 +48,8 @@ destress = "destress.cli:main"
 Homepage = "https://github.com/GrobeStreet/de-stress-lab"
 Repository = "https://github.com/GrobeStreet/de-stress-lab"
 Issues = "https://github.com/GrobeStreet/de-stress-lab/issues"
+"Software archive" = "https://doi.org/10.5281/zenodo.21633731"
+"Scientific reproduction archive" = "https://doi.org/10.5281/zenodo.21632602"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/destress"]

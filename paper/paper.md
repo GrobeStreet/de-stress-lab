@@ -1,5 +1,5 @@
 ---
-title: 'de-stress-lab: Selection-aware stress tests and frozen prediction ledgers for scientific likelihoods'
+title: 'de-stress-lab: Reusable scientific likelihood stress-testing toolkit'
 tags:
   - Python
   - reproducibility
@@ -13,7 +13,7 @@ authors:
 affiliations:
   - name: Independent researcher, United States
     index: 1
-date: 27 July 2026
+date: 29 July 2026
 bibliography: paper.bib
 ---
 
@@ -27,8 +27,9 @@ calibration, and cryptographically verifiable prediction ledgers. The package
 ships with a cosmology example based on public DESI DR2 baryon acoustic
 oscillation (BAO) summaries, while its statistical diagnostics operate on
 general model-comparison outputs.
-The versioned software archive and complete source are available with the
-project release [@destress2026].
+The versioned reusable software archive and complete source are available at
+DOI `10.5281/zenodo.21633731` [@destress2026]. The separate immutable flagship
+scientific reproduction is preserved at DOI `10.5281/zenodo.21632602`.
 
 The project separates three claims that are often conflated: reproducing a
 published likelihood result, locating which inputs affect it, and determining
