@@ -4,10 +4,12 @@
   "title": "de-stress-lab: reusable scientific likelihood stress-testing toolkit",
   "version": "0.1.1",
   "publication_date": "2026-07-29",
+  "git_commit": "2a235393dce68ede6b8919368058d24a6b5ca663",
   "doi": "10.5281/zenodo.21633731",
   "zenodo_record": "https://zenodo.org/records/21633731",
   "repository": "https://github.com/GrobeStreet/de-stress-lab",
   "repository_release": "https://github.com/GrobeStreet/de-stress-lab/releases/tag/v0.1.1",
+  "verified_utc": "2026-07-29",
   "related_scientific_archive": {
     "version_doi": "10.5281/zenodo.21632602",
     "concept_doi": "10.5281/zenodo.21632601",
