@@ -1,12 +1,13 @@
-# Dark-Energy Stress Lab
-### Project B v2 — an independent compressed-likelihood implementation and stress test of the DESI evolving-dark-energy claim
+# de-stress-lab
+### Reusable scientific likelihood stress-testing toolkit with a DESI dark-energy flagship case
 
 [![Reproducibility audit](https://github.com/GrobeStreet/de-stress-lab/actions/workflows/reproducibility-audit.yml/badge.svg)](https://github.com/GrobeStreet/de-stress-lab/actions/workflows/reproducibility-audit.yml)
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21632602.svg)](https://doi.org/10.5281/zenodo.21632602)
+[![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21633731.svg)](https://doi.org/10.5281/zenodo.21633731)
+[![Scientific archive DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21632602.svg)](https://doi.org/10.5281/zenodo.21632602)
 
-`de-stress-lab` is now also an installable Python package for selection-aware
-influence diagnostics, null calibration, and frozen scientific prediction
-ledgers. The original scripts remain frozen as the flagship validation case.
+`de-stress-lab` is an installable Python package for selection-aware influence
+diagnostics, null calibration, and frozen scientific prediction ledgers. The
+original dark-energy scripts remain frozen as the flagship validation case.
 
 ```bash
 python -m pip install -e ".[test]"
@@ -17,13 +18,27 @@ destress verify-ledger predictions/2027-ledger.json
 
 - [Package quick start](docs/QUICKSTART.md)
 - [Free GitHub Action](docs/GITHUB_ACTION.md)
+- [Reusable software archive: DOI 10.5281/zenodo.21633731](https://doi.org/10.5281/zenodo.21633731)
+- [Machine-readable software release record](archive/SOFTWARE_RELEASE_0.1.1.json)
 - [Frozen 2027 prediction ledger](predictions/2027-ledger.md)
 - [JOSS paper and eligibility status](paper/JOSS-READINESS.md)
 - [Scholarly submission roadmap](paper/SUBMISSION_ROADMAP.md)
-- [Canonical release preservation record](archive/CANONICAL_RELEASE.json)
+- [Canonical scientific-reproduction record](archive/CANONICAL_RELEASE.json)
 - [Architecture decision](docs/adr/0001-package-boundary.md)
 - [Contributing](CONTRIBUTING.md) and [support](SUPPORT.md)
 - [Release clarifications and errata](ERRATA.md)
+
+## Which DOI should I cite?
+
+- Cite **[10.5281/zenodo.21633731](https://doi.org/10.5281/zenodo.21633731)**
+  when using the reusable `de-stress-lab` package, API, CLI, or prediction-ledger
+  tools.
+- Cite **[10.5281/zenodo.21632602](https://doi.org/10.5281/zenodo.21632602)**
+  when referring to the immutable v1.0 cosmology reproduction and its exact
+  archived artifacts. Its all-versions DOI is
+  [10.5281/zenodo.21632601](https://doi.org/10.5281/zenodo.21632601).
+
+The software DOI supplements rather than replaces the frozen scientific archive.
 
 ## Data availability and code availability
 
@@ -31,19 +46,19 @@ destress verify-ledger predictions/2027-ledger.json
 cited official public releases; their upstream sources and retrieval provenance
 are documented in the repository and manuscript.
 
-**Code availability:** the source code, frozen result manifests, prediction
-ledger, and documentation are available in this public repository. The
-canonical `v1.0` release has a deterministic full reproduction archive and
-published SHA-256 manifest. The frozen scientific reproduction is archived at
-[Zenodo DOI 10.5281/zenodo.21632602](https://doi.org/10.5281/zenodo.21632602);
-the all-versions DOI is
+**Code availability:** the reusable package release is archived at
+[Zenodo DOI 10.5281/zenodo.21633731](https://doi.org/10.5281/zenodo.21633731).
+The canonical `v1.0` scientific reproduction has a deterministic full archive,
+published SHA-256 manifest, version DOI
+[10.5281/zenodo.21632602](https://doi.org/10.5281/zenodo.21632602), and
+all-versions DOI
 [10.5281/zenodo.21632601](https://doi.org/10.5281/zenodo.21632601).
 `RESULTS_MANIFEST.json` and the published SHA-256 files bind reported claims to
 specific artifacts.
 
 **Scope statement (audit-reconciled):** this lab independently *reimplements the published compressed likelihoods* (DESI DR2 BAO summaries, Pantheon+/DES5Y distances, the DR2 compressed early-CMB prior) and reproduces their maximum-likelihood improvements and compressed-branch posterior structure. It is NOT a raw-data reanalysis and does not reproduce DESI's exact PR4/ACT full-CMB or 2024 DES5Y/Union3 headline rows. Four AI systems performed software, statistics, or manuscript checks; these are not independent scientific review. A clean-room human rerun is the outstanding verification step.
 
-**Status (2026-07-27): reproduction and diagnostics complete, including the 5,000-mock selection calibration, direct time-variation calibration, and held-out LRG2 prediction. The canonical DOCX/PDF has been regenerated from `whitepaper.md`, validated, and inspected page by page. A human clean-room rerun is prepared and pending. Canonical completion states, hashes, and numbers are in `RESULTS_MANIFEST.json`.**
+**Status (2026-07-29): reproduction and diagnostics are complete, including the 5,000-mock selection calibration, direct time-variation calibration, and held-out LRG2 prediction. The reusable package is archived at DOI 10.5281/zenodo.21633731. The canonical DOCX/PDF has been regenerated from `whitepaper.md`, validated, and inspected page by page. A human clean-room rerun is prepared and pending. Canonical completion states, hashes, and numbers are in `RESULTS_MANIFEST.json`.**
 
 ## Frontier result: what advanced and what did not
 
@@ -176,7 +191,6 @@ Two conclusions cut opposite ways. *For* the DESI claim: the preference is **not
 ## Next
 Public write-up (notebook + report), per the publish-regardless rule.
 
-
 ---
 
 ## FINAL SECTION — External audits, bootstrap, and consolidated verdict (2026-07-19)
@@ -194,7 +208,6 @@ Public write-up (notebook + report), per the publish-regardless rule.
 **Consolidated verdict at that checkpoint:** a real, reproducible, parameterization-robust likelihood-level tension exists (~2.4σ compressed / 3.1σ full-CMB per DESI); it is localized (LRG2 radial BAO + CMB anchor + low-z SN calibration); the Efstathiou intercept (D≈+0.036 mag) neutralizes the SN contribution even CMB-anchored, while DES's rebuttal keeps that contested; and constant-w captures little of it. The honest status is **a reproducible, localized 2–3σ hint — not proof**. No numerical probability of “new physics” is assigned because this analysis does not derive one.
 
 **Remaining evidentiary gates (current):** independent human clean-room rerun → official LRG2 likelihood-surface audit → official Union3/DES5Y likelihoods → growth/lensing consistency (RSD, fσ8, E_G) → DESI final likelihood and independently calibrated supernovae.
-
 
 ---
 
@@ -225,7 +238,6 @@ The z≈0.7 deviation has **changed observable between DESI's own releases** —
 
 **Balanced reading:** DR2's LRG2 is by far the most precise of the three (±0.177 vs ±0.30/±0.32 on D_M) — more data can legitimately resolve what noisier data could not, DESI's blinded internal-consistency checks passed, and eBOSS's weaker precision means it could not strongly confirm the signal even if real. But the audit establishes two facts the interpretation must carry: the z≈0.7 signature changed observable across DESI releases (transverse → radial), and the earlier, partially sample- and footprint-correlated eBOSS comparator is ΛCDM-consistent. The official-likelihood-level LRG2 reproduction remains the decisive test.
 
-
 ---
 
 ## GATE 2 RESULT — EXACT BOLTZMANN PHYSICS (CAMB, run on Bobby's Mac, 2026-07-20)
@@ -240,7 +252,6 @@ The calibrated surrogate's two empirical constants — the audits' primary criti
 Best-fit parameters agree to the third decimal (exact: w₀=−0.447, wₐ=−1.64, Ωm=0.351, H0=63.7; surrogate: −0.44, −1.68, 0.352, 63.6). CAMB-vs-surrogate at the best fits: rd differs by 0.12%, θ* by 0.035% — and the fits absorb these into slightly shifted (h, ωb), leaving Δχ² essentially unchanged.
 
 **Conclusions.** (1) The calibrated surrogate was accurate: every headline number of this lab survives exact early-universe physics to within ~0.2 in Δχ² (~0.03σ). (2) **The LRG2 localization is confirmed at the Boltzmann level**: removing LRG2 still collapses the exact-physics preference from 2.4σ to 1.5σ. (3) The audits' surrogate objection is resolved empirically, not rhetorically. Remaining ladder: posterior sampling with DESI priors (+DIC), full-CMB lensing leg, official likelihoods — then the write-up.
-
 
 ---
 
@@ -261,13 +272,11 @@ DIC convention note: naive plug-in at the posterior *mean* gives ΔDIC = −8.99
 
 **Ladder status:** reproduction ✓ · diagnostics ✓ · calibration tests ✓ · parameterization ✓ · bootstrap ✓ · LRG2 audit ✓ · exact physics ✓ · posteriors+DIC ✓. Remaining beyond current resources: full-CMB lensing leg and official uncompressed likelihoods. → REPORT-draft.md is the write-up.
 
-
 ---
 
 ## AUDIT 4 ADOPTED (2026-07-20) — eight corrections, all accepted
 
 A fourth external review (13-page document) was received and adopted in full. At that historical checkpoint it required: (1) eBOSS reframed as a partially correlated comparator, not an independent non-confirmation; (2) the 75-mock bootstrap relabeled as a consistency check and a 5,000-mock run queued (now completed); (3) the two LRG2 sigmas explicitly distinguished; (4) "exact CAMB"→"full CAMB Boltzmann," "independent hardware"→"separate execution environment," and AI reviews relabeled as software/manuscript checks; (5) Dovekie framed as a multi-element release change; (6) the low-z intercept labeled a sensitivity test; (7) full-CMB claims held until the lensing-leg run completed; and (8) a frozen, reproducible release. The bottom-line framing remains: lead with the influence map, not with "evolving dark energy."
-
 
 ---
 
@@ -284,7 +293,6 @@ Published full-CMB row (PR4): −12.5, 3.1σ — our −10.4 / 2.8σ with the PR
 
 **THE ANSWER TO THE PROJECT'S CENTRAL OPEN QUESTION: the CMB-lensing information does not rescue the preference from LRG2 removal.** With full CMB including lensing, dropping the single z=0.706 measurement collapses the evolving-dark-energy preference from ~2.8σ to ~1.4σ — the sharpest form of the localization result, now demonstrated at the full-likelihood level rather than the compressed level. Caveats: PR3-native vs PR4 likelihoods; MAP (not posterior) comparison; single-pipeline result awaiting the clean-room rerun; LRG2 removal carries the usual look-elsewhere qualifier.
 
-
 ---
 
 ## H-X CROSS-PROBE TEST RESULT + 5000-MOCK CALIBRATION (2026-07-20)
@@ -293,8 +301,6 @@ Published full-CMB row (PR4): −12.5, 3.1σ — our −10.4 / 2.8σ with the PR
 
 **H-X (pre-registered cross-probe w(z) consistency): verdict INTERMEDIATE, per kill conditions.** BAO–Pantheon+ shift 1.44σ, BAO–DES5Y 1.35σ, Pantheon+–DES5Y 0.24σ. Crossing redshifts: BAO z× = 0.49 ± 0.07; both SN legs z× ≈ 0.29–0.30. Neither the consistency nor the inconsistency threshold was met; reported without promotion. Notable texture (not promoted): the two supernova datasets agree with each other almost exactly and both point at a *different* turning point than the BAO leg, despite a shared CMB anchor pulling all legs together. Registered follow-up: P1-without-LRG2 z× test. Full record: HYPOTHESIS-cross-probe.md, results/hx_tension.json, results/probe_posteriors.json.
 
-
 **H-X registered follow-up (2026-07-20):** P1 without LRG2 gives z× = 0.478 [0.384–0.564] — the BAO leg's crossing-location preference does NOT dissolve when LRG2 is removed (registered condition not met). LRG2 carries the *significance* of the BAO preference, but the crossing *location* is a distributed property of BAO+CMB geometry. Reported per registration; overall H-X verdict remains INTERMEDIATE.
-
 
 **H-Y RESULT (2026-07-20):** registered kill condition MET. DES5Y+cCMB with the low-z intercept marginalized: wₐ = +0.50 [−0.33, +1.03] (includes 0, sign flips), w₀ → −1.17 (straddles Λ). The SN crossing feature is fully degenerate with the calibration seam. Registered caveat carried: degeneracy established, cause not — the intercept can absorb real cosmology. Chain complete: HYPOTHESIS-cross-probe.md holds the full registered record.
