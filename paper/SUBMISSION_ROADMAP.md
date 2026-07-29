@@ -37,15 +37,19 @@ development, distributed activity, demonstrated research use, and healthy
 open-source practice. The repository became public on 2026-07-21, so the
 earliest conservative screening date is 2027-01-22.
 
-Before that date:
+The reusable package release is now archived at
+`10.5281/zenodo.21633731`. The separate immutable flagship scientific
+reproduction remains archived at `10.5281/zenodo.21632602`.
 
-- preserve a versioned software DOI;
-- obtain an independent installation record;
-- document at least one use beyond the original flagship analysis;
-- maintain meaningful issues, pull requests, tests, releases, and changelog
+Before the screening date:
+
+- [x] preserve a versioned reusable-software DOI;
+- [ ] obtain an independent installation record;
+- [ ] document at least one use beyond the original flagship analysis;
+- [ ] maintain meaningful issues, pull requests, tests, releases, and changelog
   entries over time;
-- record external feedback and how it changed the software;
-- confirm author name, affiliation, ORCID choice, conflicts, and AI disclosure.
+- [ ] record external feedback and how it changed the software;
+- [ ] confirm author name, affiliation, ORCID choice, conflicts, and AI disclosure.
 
 Do not manufacture activity to satisfy the timeline. Every public change should
 reflect actual maintenance, feedback, adoption, or research use.
