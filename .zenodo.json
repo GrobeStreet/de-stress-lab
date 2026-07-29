@@ -1,17 +1,52 @@
 {
-  "title": "de-stress-lab: Selection-aware stress tests and frozen prediction ledgers for scientific likelihoods",
+  "title": "de-stress-lab: reusable scientific likelihood stress-testing toolkit",
   "description": "Installable research software for grouped-observation likelihoods, deterministic model comparison, leave-group-out influence diagnostics, selection-aware null calibration, and cryptographically frozen prediction ledgers. Includes a DESI DR2 cosmology flagship demonstration, numerical equivalence tests, public documentation, and an explicit AI-usage disclosure.",
-  "creators": [{"name": "Morong, Bobby"}],
-  "keywords": ["reproducibility", "statistical diagnostics", "scientific software", "likelihood", "dark energy", "DESI", "cosmology", "BAO", "systematics"],
+  "creators": [
+    {
+      "name": "Morong, Bobby"
+    }
+  ],
+  "keywords": [
+    "reproducibility",
+    "statistical diagnostics",
+    "scientific software",
+    "likelihood",
+    "dark energy",
+    "DESI",
+    "cosmology",
+    "BAO",
+    "systematics"
+  ],
   "license": "MIT",
   "upload_type": "software",
   "access_right": "open",
-  "version": "1.0",
-  "publication_date": "2026-07-21",
+  "version": "0.1.1",
+  "publication_date": "2026-07-29",
   "related_identifiers": [
-    {"identifier": "https://github.com/GrobeStreet/de-stress-lab/releases/tag/v1.0", "relation": "isIdenticalTo", "scheme": "url"},
-    {"identifier": "arXiv:2503.14738", "relation": "isSupplementTo", "scheme": "arxiv"},
-    {"identifier": "arXiv:2408.07175", "relation": "references", "scheme": "arxiv"},
-    {"identifier": "arXiv:2501.06664", "relation": "references", "scheme": "arxiv"}
+    {
+      "identifier": "https://github.com/GrobeStreet/de-stress-lab/releases/tag/v0.1.1",
+      "relation": "isIdenticalTo",
+      "scheme": "url"
+    },
+    {
+      "identifier": "10.5281/zenodo.21632602",
+      "relation": "isSupplementTo",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "arXiv:2503.14738",
+      "relation": "isSupplementTo",
+      "scheme": "arxiv"
+    },
+    {
+      "identifier": "arXiv:2408.07175",
+      "relation": "references",
+      "scheme": "arxiv"
+    },
+    {
+      "identifier": "arXiv:2501.06664",
+      "relation": "references",
+      "scheme": "arxiv"
+    }
   ]
 }
