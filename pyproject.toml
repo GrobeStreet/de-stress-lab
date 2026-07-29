@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "de-stress-lab"
-version = "0.1.0"
+version = "0.1.1"
 description = "Reusable influence diagnostics, null calibration, and prediction ledgers for scientific likelihoods"
 readme = "README.md"
 requires-python = ">=3.10"
@@ -55,4 +55,3 @@ packages = ["src/destress"]
 [tool.pytest.ini_options]
 addopts = "-ra"
 testpaths = ["tests"]
-

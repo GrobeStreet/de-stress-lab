@@ -30,7 +30,7 @@ __all__ = [
     "verify_frozen_json",
 ]
 
-__version__ = "0.1.0"
+__version__ = "0.1.1"
 
 _EXPORT_MODULES = {
     "CPLCosmology": ".cosmology",
