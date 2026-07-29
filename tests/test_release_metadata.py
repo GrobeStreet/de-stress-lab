@@ -30,11 +30,13 @@ def test_package_version_is_consistent() -> None:
 
 
 def test_reusable_software_doi_is_canonical_for_package() -> None:
+    # .zenodo.json describes a future deposition and intentionally does not
+    # hard-code a DOI minted by the repository service. The already-minted DOI
+    # belongs in citation, documentation, package URLs, and preservation records.
     paths = [
         "README.md",
         "CITATION.cff",
         "pyproject.toml",
-        ".zenodo.json",
         "paper/paper.md",
         "paper/paper.bib",
         "paper/JOSS-READINESS.md",
