@@ -19,12 +19,17 @@ Before submission:
 - [x] JOSS `paper.md` and bibliography
 - [x] required AI usage disclosure
 - [x] deterministic canonical archive and published checksum manifest
+- [x] archived reusable-package release with a verifiable DOI:
+  `10.5281/zenodo.21633731`
 - [ ] six months of public development history
 - [ ] evidence of use beyond the original flagship analysis
 - [ ] independent installation by another researcher
-- [ ] archived reusable-package release with a verifiable DOI (the canonical
-  scientific reproduction has DOI `10.5281/zenodo.21632602`)
 - [ ] author confirms affiliation, ORCID if desired, and conflict-of-interest declaration
+
+The reusable software release is archived separately from the frozen flagship
+scientific reproduction. Cite `10.5281/zenodo.21633731` for the installable
+software toolkit and `10.5281/zenodo.21632602` for the immutable v1.0 cosmology
+reproduction package.
 
 Submitting before the public-history gate is met would invite a predictable desk
 rejection and is intentionally deferred.
