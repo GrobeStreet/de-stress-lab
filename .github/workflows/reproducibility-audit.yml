@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@v4
       - name: Run reproducibility audit
         id: audit
         uses: ./
@@ -23,7 +23,7 @@ jobs:
           minimum-score: "90"
       - name: Preserve audit reports
         if: always()
-        uses: actions/upload-artifact@v7
+        uses: actions/upload-artifact@v4
         with:
           name: reproducibility-audit
           path: |
