@@ -9,6 +9,16 @@ ROOT = Path(__file__).resolve().parents[1]
 SOFTWARE_DOI = "10.5281/zenodo.21633731"
 SCIENTIFIC_DOI = "10.5281/zenodo.21632602"
 VERSION = "0.1.1"
+JOSS_REQUIRED_SECTIONS = (
+    "# Summary",
+    "# Statement of need",
+    "# State of the field",
+    "# Software design",
+    "# Research impact statement",
+    "# AI usage disclosure",
+    "# Acknowledgements",
+    "# References",
+)
 
 
 def read(path: str) -> str:
@@ -66,3 +76,32 @@ def test_zenodo_metadata_targets_reusable_release() -> None:
     assert "reusable scientific likelihood stress-testing toolkit" in zenodo["title"]
     related = {item["identifier"] for item in zenodo["related_identifiers"]}
     assert SCIENTIFIC_DOI in related
+
+
+def test_joss_submission_bundle_tracks_current_required_sections() -> None:
+    paper = read("paper/paper.md")
+    for section in JOSS_REQUIRED_SECTIONS:
+        assert section in paper, f"JOSS paper is missing {section}"
+    assert "OpenAI ChatGPT" in paper
+    assert "human author reviewed" in paper
+
+
+def test_joss_readiness_does_not_overstate_eligibility() -> None:
+    readiness = read("paper/JOSS-READINESS.md")
+    normalized = " ".join(readiness.split())
+    assert "not yet eligible for JOSS screening" in normalized
+    assert "2027-01-22" in readiness
+    assert "independent installation by another researcher" in readiness
+    assert "evidence of use beyond the original flagship analysis" in readiness
+
+
+def test_open_source_maintenance_documents_are_present() -> None:
+    for path in (
+        "CHANGELOG.md",
+        "GOVERNANCE.md",
+        "CONTRIBUTING.md",
+        "SUPPORT.md",
+        "CODE_OF_CONDUCT.md",
+        "paper/REVIEW_CHECKLIST.md",
+    ):
+        assert (ROOT / path).is_file(), f"missing maintenance document: {path}"

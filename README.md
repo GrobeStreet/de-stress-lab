@@ -22,10 +22,12 @@ destress verify-ledger predictions/2027-ledger.json
 - [Machine-readable software release record](archive/SOFTWARE_RELEASE_0.1.1.json)
 - [Frozen 2027 prediction ledger](predictions/2027-ledger.md)
 - [JOSS paper and eligibility status](paper/JOSS-READINESS.md)
+- [JOSS reviewer checklist mapping](paper/REVIEW_CHECKLIST.md)
 - [Scholarly submission roadmap](paper/SUBMISSION_ROADMAP.md)
 - [Canonical scientific-reproduction record](archive/CANONICAL_RELEASE.json)
 - [Architecture decision](docs/adr/0001-package-boundary.md)
-- [Contributing](CONTRIBUTING.md) and [support](SUPPORT.md)
+- [Changelog](CHANGELOG.md), [governance](GOVERNANCE.md),
+  [contributing](CONTRIBUTING.md), and [support](SUPPORT.md)
 - [Release clarifications and errata](ERRATA.md)
 
 ## Which DOI should I cite?

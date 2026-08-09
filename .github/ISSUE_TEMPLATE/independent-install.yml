@@ -1,0 +1,65 @@
+name: Independent installation report
+description: Report an installation or clean-room verification by someone other than the author.
+title: "Independent install: "
+labels:
+  - reproducibility
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for independently checking `de-stress-lab`. This is a verification record, not an endorsement of the scientific interpretation. Please do not include secrets or private data.
+  - type: input
+    id: release
+    attributes:
+      label: Release or commit
+      description: Exact tag or commit tested, such as v0.1.1.
+    validations:
+      required: true
+  - type: input
+    id: platform
+    attributes:
+      label: Platform
+      description: Operating system and architecture.
+    validations:
+      required: true
+  - type: input
+    id: python
+    attributes:
+      label: Python version
+    validations:
+      required: true
+  - type: textarea
+    id: commands
+    attributes:
+      label: Commands run
+      description: Include the exact install and verification commands.
+      render: shell
+    validations:
+      required: true
+  - type: checkboxes
+    id: results
+    attributes:
+      label: Results
+      options:
+        - label: Package installation completed.
+        - label: The test suite completed.
+        - label: '`destress demo` completed.'
+        - label: '`destress verify-ledger predictions/2027-ledger.json` completed.'
+  - type: textarea
+    id: intervention
+    attributes:
+      label: Undocumented steps or failures
+      description: Record any manual intervention, missing dependency, warning, or complete error output.
+    validations:
+      required: true
+  - type: dropdown
+    id: independence
+    attributes:
+      label: Prior involvement
+      description: Were you involved in developing this repository before this check?
+      options:
+        - No prior involvement
+        - Prior contributor
+        - Other or unsure
+    validations:
+      required: true
