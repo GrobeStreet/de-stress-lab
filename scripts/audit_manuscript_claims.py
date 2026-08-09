@@ -130,6 +130,19 @@ def main() -> int:
         "headline displayed values occur in the manuscript",
         failures,
     )
+    require(
+        all(
+            token in manuscript
+            for token in (
+                "arXiv:2607.28918",
+                "running e-value from 33.97 to 0.49",
+                "numerical results must not be combined or treated as mutual validation",
+                "single-release calibration does not answer",
+            )
+        ),
+        "sequential-analysis comparison is cited and bounded",
+        failures,
+    )
 
     if failures:
         print(f"\n{len(failures)} manuscript audit check(s) failed.")
