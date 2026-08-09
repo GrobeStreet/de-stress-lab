@@ -1,7 +1,7 @@
 # Anatomy of a 2–3σ Hint
 ## An Independent Stress Test of the DESI DR2 Evolving-Dark-Energy Preference
 
-**Bobby Morong** (independent researcher), with AI-assisted implementation · July 2026
+**Robert Morong** (independent researcher, San Diego, California, USA), with AI-assisted implementation · July 2026
 *All data public · all code released with this report · every input primary-sourced · published under a pre-committed publish-regardless protocol*
 
 ---

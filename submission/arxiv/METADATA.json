@@ -2,10 +2,11 @@
   "title": "Anatomy of a 2–3σ Hint",
   "authors": [
     {
-      "name": "Bobby Morong",
-      "affiliation": "Independent researcher",
+      "name": "Robert Morong",
+      "affiliation": "Independent researcher, San Diego, California, USA",
       "email": "bobby@trainingties.com",
-      "orcid": null
+      "orcid": null,
+      "orcid_inclusion": "yes_link_before_submission"
     }
   ],
   "primary_category": "astro-ph.CO",
@@ -14,7 +15,7 @@
   "journal_reference": null,
   "doi": null,
   "report_number": null,
-  "license": null,
-  "endorsement_status": "requires author account check",
+  "license": "CC BY 4.0",
+  "endorsement_status": "requires signed-in astro-ph.CO account check",
   "submission_status": "prepared_not_submitted"
 }
