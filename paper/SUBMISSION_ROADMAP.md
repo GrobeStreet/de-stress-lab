@@ -44,12 +44,19 @@ reproduction remains archived at `10.5281/zenodo.21632602`.
 Before the screening date:
 
 - [x] preserve a versioned reusable-software DOI;
+- [x] map the current reviewer checklist to repository evidence;
+- [x] publish changelog, governance, support, contribution, and conduct guidance;
 - [ ] obtain an independent installation record;
 - [ ] document at least one use beyond the original flagship analysis;
 - [ ] maintain meaningful issues, pull requests, tests, releases, and changelog
   entries over time;
 - [ ] record external feedback and how it changed the software;
 - [ ] confirm author name, affiliation, ORCID choice, conflicts, and AI disclosure.
+
+The live self-audit and submission-day sequence are in
+[`REVIEW_CHECKLIST.md`](REVIEW_CHECKLIST.md). Under the current JOSS AI policy,
+the author must conduct editor and reviewer conversations without generative-AI
+assistance.
 
 Do not manufacture activity to satisfy the timeline. Every public change should
 reflect actual maintenance, feedback, adoption, or research use.
