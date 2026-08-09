@@ -29,6 +29,7 @@ const input = path.resolve(process.argv[2] || path.join(project, "whitepaper.md"
 const output = path.resolve(process.argv[3] || path.join(project, "whitepaper.docx"));
 const source = fs.readFileSync(input, "utf8").replace(/\r\n/g, "\n");
 const lines = source.split("\n");
+const isReviewerPacket = path.basename(input).toUpperCase().includes("REVIEWER_PACKET");
 
 const PAGE_WIDTH = 12240;
 const PAGE_HEIGHT = 15840;
@@ -244,7 +245,9 @@ children.push(
     spacing: { after: 700 },
     children: [
       new TextRun({
-        text: "Canonical edition • July 2026",
+        text: isReviewerPacket
+          ? "Independent review packet • August 2026"
+          : "Canonical edition • July 2026",
         size: 19,
         bold: true,
         color: MUTED,
@@ -272,7 +275,7 @@ children.push(
                 spacing: { after: 100 },
                 children: [
                   new TextRun({
-                    text: "SCIENTIFIC STATUS",
+                    text: isReviewerPacket ? "REVIEW STATUS" : "SCIENTIFIC STATUS",
                     bold: true,
                     color: NAVY,
                     size: 18,
@@ -283,7 +286,9 @@ children.push(
                 spacing: { after: 80 },
                 children: [
                   new TextRun({
-                    text: "A calibrated, LRG2-sensitive 2–3σ hint within published compressed likelihoods. Not a discovery.",
+                    text: isReviewerPacket
+                      ? "Independent error-finding and numerical verification requested. No endorsement is claimed."
+                      : "A calibrated, LRG2-sensitive 2–3σ hint within published compressed likelihoods. Not a discovery.",
                     bold: true,
                     color: BODY,
                     size: 22,
@@ -294,7 +299,9 @@ children.push(
                 spacing: { after: 0 },
                 children: [
                   new TextRun({
-                    text: "Includes selection-calibrated influence, direct wCDM-versus-CPL time variation, held-out LRG2 prediction, full-Boltzmann verification, and explicit frontier evidence gates.",
+                    text: isReviewerPacket
+                      ? "Covers numerical reproduction, statistical calibration, domain framing, manuscript scope, and explicit open gates."
+                      : "Includes selection-calibrated influence, direct wCDM-versus-CPL time variation, held-out LRG2 prediction, full-Boltzmann verification, and explicit frontier evidence gates.",
                     color: BODY,
                     size: 18,
                   }),
@@ -310,7 +317,9 @@ children.push(
     spacing: { before: 800, after: 0 },
     children: [
       new TextRun({
-        text: "Numerical results frozen at analysis commit 28894e7. Canonical source: whitepaper.md.",
+        text: isReviewerPacket
+          ? "Prepared from the reconciled manuscript and released evidence manifest. External review remains pending."
+          : "Numerical results frozen at analysis commit 28894e7. Canonical source: whitepaper.md.",
         italics: true,
         color: MUTED,
         size: 17,
@@ -320,7 +329,9 @@ children.push(
   new Paragraph({ children: [new PageBreak()] })
 );
 
-let index = lines.findIndex((line) => line.trim() === "## Abstract");
+let index = lines.findIndex((line) =>
+  line.trim() === (isReviewerPacket ? "## Review purpose" : "## Abstract")
+);
 let inNumberedList = false;
 for (; index < lines.length; index += 1) {
   const raw = lines[index];
@@ -392,8 +403,10 @@ for (; index < lines.length; index += 1) {
 
 const doc = new Document({
   creator: "Bobby Morong",
-  title: "Anatomy of a 2–3σ Hint",
-  subject: "Independent stress test of the DESI DR2 evolving-dark-energy preference",
+  title: isReviewerPacket ? "DESI Evidence Review Packet" : "Anatomy of a 2–3σ Hint",
+  subject: isReviewerPacket
+    ? "Independent review and verification guide"
+    : "Independent stress test of the DESI DR2 evolving-dark-energy preference",
   description:
     "Canonical July 2026 whitepaper with selection-calibrated influence, direct time-variation calibration, held-out LRG2 diagnostics, and frontier evidence gates.",
   keywords:
@@ -504,7 +517,9 @@ const doc = new Document({
               },
               children: [
                 new TextRun({
-                  text: "DARK-ENERGY STRESS LAB  •  CANONICAL WHITEPAPER",
+                  text: isReviewerPacket
+                    ? "DARK-ENERGY STRESS LAB  •  INDEPENDENT REVIEW PACKET"
+                    : "DARK-ENERGY STRESS LAB  •  CANONICAL WHITEPAPER",
                   color: MUTED,
                   size: 14,
                   bold: true,
@@ -520,7 +535,11 @@ const doc = new Document({
             new Paragraph({
               alignment: AlignmentType.RIGHT,
               children: [
-                new TextRun({ text: "July 2026  •  " , color: MUTED, size: 14 }),
+                new TextRun({
+                  text: isReviewerPacket ? "August 2026  •  " : "July 2026  •  ",
+                  color: MUTED,
+                  size: 14,
+                }),
                 new TextRun({ children: [PageNumber.CURRENT], color: MUTED, size: 14 }),
               ],
             }),
