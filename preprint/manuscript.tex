@@ -1,0 +1,453 @@
+\documentclass[aps,prd,preprint,superscriptaddress,nofootinbib]{revtex4-2}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs,array}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{textcomp}
+\usepackage{etoolbox}
+\setlength{\emergencystretch}{3em}
+\providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\hypersetup{hidelinks,pdftitle={Anatomy of a 2--3 Sigma Hint},pdfauthor={Bobby Morong}}
+\begin{document}
+\title{Anatomy of a 2--3$\sigma$ Hint}
+\author{Bobby Morong}
+\affiliation{Independent researcher}
+\date{August 2026}
+\begin{abstract}
+We independently reimplement the published compressed likelihoods behind
+the DESI DR2 preference for evolving dark energy and audit the result
+with selection-aware simulations, direct time-variation tests, held-out
+prediction, supernova-calibration sensitivity, and full-Boltzmann
+checks. The compressed DESI+CMB likelihood gives
+\(\Delta\chi^2=-8.4575\) for CPL relative to \(\Lambda\)CDM; 70 of 5,000
+fitted-\(\Lambda\)CDM mocks are at least as extreme, \(p=0.0140\). The
+largest leave-one-tracer influence is LRG2 at \(z=0.706\), \(M=4.1249\),
+with an unconditional selected tail of 78/5,000, \(p=0.0156\).
+Conditional on null mocks with a global preference at least as strong as
+observed, however, 34/70 have an equal-or-larger maximum,
+\(p_{\rm cond}=0.486\): LRG2 is load-bearing, but its localization is
+not independent evidence. A direct constant-\(w\)-versus-CPL calibration
+gives \(T=7.8506\), 30/5,000, \(p=0.0060\) (\(2.75\sigma\)); without
+LRG2 it falls to \(T=3.4263\), 349/5,000, \(p=0.0698\) (\(1.81\sigma\)).
+A targeted held-out \(\Lambda\)CDM prediction gives joint LRG2
+\(p=0.0408\), driven by isotropic distance rather than an unusual
+Alcock-\/-Paczynski ratio. A free low-redshift DES5Y magnitude offset
+reduces the corresponding supernova preference to noise-compatible
+levels, as a degeneracy test rather than a calibration diagnosis. CAMB
+and a PR3-native full-CMB variant preserve the LRG2 sensitivity. The
+compressed likelihood therefore contains a calibrated, CPL-specific
+2-\/-3\(\sigma\) hint, but not a discovery. Independent human clean-room
+execution remains pending.
+\end{abstract}
+\maketitle
+\sloppy
+
+\section{Motivation and scope}\label{motivation-and-scope}
+
+The DESI DR2 BAO analysis (arXiv:2503.14738) reports a preference for a
+time-varying dark-energy equation of state reaching 3.1\(\sigma\) with
+full CMB data and 2.8--4.2\(\sigma\) with supernova compilations --- the
+most significant challenge to \(\Lambda\)CDM in a generation, if it
+holds. Claims of this magnitude attract two failure modes: uncritical
+amplification and uncritical dismissal. This project attempts a third
+path: full independent reimplementation followed by systematic attempts
+to break the result, with every finding published regardless of
+direction.
+
+Scope, stated precisely: this is an independent implementation of the
+\emph{published compressed likelihoods} --- DESI DR2 BAO summary values,
+Pantheon+ and DES-SN5YR distance moduli with full covariances, and the
+DR2 paper\textquotesingle s own compressed early-CMB prior (its eqs.
+35--36). It is not a raw-data reanalysis. In addition to the compressed
+branch, a full-CMB variant (Planck 2018 native low-\(\ell\) TT/EE +
+plik-lite TTTEEE + lensing, via cobaya+CAMB) is included;
+DESI\textquotesingle s own analysis uses PR4 CamSpec and PR4/ACT
+lensing, so this variant tests the lensing-inclusive structure of the
+result, not its exact published numbers. Four AI systems performed
+software, statistics, or manuscript checks during development; these are
+not independent scientific peer review. One re-executed the pipeline and
+matched all \(\chi^2\) values to four decimals. A clean-room human rerun
+remains the outstanding verification step.
+
+\section{Data and provenance}\label{data-and-provenance}
+
+All inputs are public and primary-sourced under a fixed rule: no number
+enters the pipeline from memory. DESI DR2 BAO values (7 tracers,
+correlated D\_M/D\_H pairs plus BGS D\_V) and the compressed CMB prior
+were machine-extracted from the arXiv HTML of the DR2 paper. Pantheon+
+(1,701 light curves; 1,580 after standard cuts; full STAT+SYS
+covariance) from the official PantheonPlusSH0ES release. DES-SN5YR from
+the official repository\textquotesingle s 2025 Dovekie-recalibrated
+release (N = 1,820; inverse covariance unpacked per the
+repository\textquotesingle s own likelihood code; external low-z sample
+identified by IDSURVEY). eBOSS DR16 LRG consensus values from the
+official SDSS files in the cobaya bao\_data release. DESI DR1 values
+from arXiv:2404.03002. BBN and \(\theta_*\) priors from DR2 eqs. 14 and
+16; w(z) priors (\(w_0\) \(\in\) U{[}-3,1{]}, \(w_a\) \(\in\)
+U{[}-3,2{]}, \(w_0+w_a\) \textless{} 0) verbatim from the paper.
+
+\section{Methods}\label{methods}
+
+Likelihoods are Gaussian in the published summary statistics (mirroring
+the official compressed treatment), with supernova magnitude offsets
+marginalized analytically and, where used, subsample calibration offsets
+marginalized jointly. Late-time distances use a validated fast
+integrator (relative error \textless{} \(3\times 10^{-7}\), verified by
+external audit). Early-universe quantities (r\_drag, \(\theta_*\)) use,
+in the production pipeline, a calibrated surrogate --- standard fitting
+formulas pinned to the paper\textquotesingle s own r\_d formula and CMB
+column, a labeling adopted after audit --- and, decisively, full CAMB
+Boltzmann computations (RECFAST recombination, PPF dark energy) for
+verification. Two validation gates preceded all dark-energy fits and
+caught two real implementation bugs before any result existed. The
+\(\Lambda\)CDM-versus-\(w_0\)\(w_a\) statistic is calibrated with 5,000
+\(\Lambda\)CDM mocks. The direct one-extra-parameter test of time
+variation compares wCDM to CPL \(w_0w_a\)CDM and is calibrated with
+5,000 mocks at the observed best-fit constant-w null, both with and
+without LRG2. The official \(w_0\), \(w_a\), and \(w_0+w_a\) prior
+domain is enforced in every fit.
+
+\section{Reproduction}\label{reproduction}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{BAO-alone \(\Lambda\)CDM:} \textbf{This work:} \(\Omega_m\) =
+  0.2973 \(\pm\) 0.0083, h·r\_d = 101.55 \(\pm\) 0.72;
+  \textbf{Published:} 0.2975 \(\pm\) 0.0086, 101.54 \(\pm\) 0.73
+\item
+  \textbf{Pantheon+-alone \(\Lambda\)CDM:} \textbf{This work:}
+  \(\Omega_m\) = 0.3326 \(\pm\) 0.0180 (N=1580); \textbf{Published:}
+  0.334 \(\pm\) 0.018
+\item
+  \textbf{\(\Delta\chi^2\): DESI / +Pantheon+ / +cCMB:} \textbf{This
+  work:} -4.7 / -5.1 / -8.5; \textbf{Published:} -4.7 / -4.9 / -8.0
+\item
+  \textbf{\(w_0\), \(w_a\) (DESI+cCMB, MAP):} \textbf{This work:} -0.44,
+  -1.68 (H0 = 63.6); \textbf{Published:} -0.42, -1.75 (63.6)
+\item
+  \textbf{\(w_0\), \(w_a\) (posterior 68\%):} \textbf{This work:} -0.45
+  +0.24/-0.23, -1.66 +0.65/-0.71; \textbf{Published:} -0.42 \(\pm\)
+  0.21, -1.75 \(\pm\) 0.58
+\item
+  \textbf{\(w_0\)-\/-\(w_a\) posterior correlation:} \textbf{This work:}
+  -0.978; \textbf{Published:} -0.975
+\item
+  \textbf{ΔDIC (DESI+cCMB):} \textbf{This work:} -4.96 (MAP plug-in;
+  p\_D = 4.75/3.0); \textbf{Published:} -4.4
+\end{itemize}
+
+An AI software audit re-ran this pipeline and confirmed all \(\chi^2\)
+values to four decimals, verified the minima against differential
+evolution, and confirmed covariance positive-definiteness. This is a
+software check, not independent scientific review.
+
+\section{Influence diagnostics: where the preference
+lives}\label{influence-diagnostics-where-the-preference-lives}
+
+Leave-one-tracer-out refits of DESI+cCMB show the preference is not
+distributed: dropping any of six tracers leaves 2.3--2.6\(\sigma\)
+(removing BGS or Ly\(\alpha\) \emph{strengthens} it), while dropping
+LRG2 (z = 0.706) collapses it to 1.6\(\sigma\). The \(\chi^2\)
+decomposition attributes the \(w_0\)\(w_a\) improvement to LRG2 (-4.1)
+and the CMB geometric anchor (-3.9), with LRG1 contributing -1.2, all
+others approximately 0, and Ly\(\alpha\) opposing at +1.0. Within LRG2,
+the radial measurement carries more model leverage: retaining only
+D\_H/r\_d gives \(\Delta\chi^2\) = -6.5, only D\_M/r\_d gives -4.9,
+neither -4.3. The selection-calibrated statistic I\_j =
+\(\Delta\chi^2\)\_-j - \(\Delta\chi^2\)\_full and M = max\_j I\_j gives
+M\_obs = 4.125 at LRG2. Repeating the full fit and all seven deletion
+fits inside each of 5,000 \(\Lambda\)CDM mocks yields an unconditional
+selected tail of 78/5,000, p = 0.0156 {[}0.0124, 0.0194{]}. Conditioning
+on a global preference at least as strong as observed leaves 70 mocks,
+of which 34 meet or exceed M\_obs: p\_cond = 0.486 {[}0.364, 0.608{]}.
+Thus LRG2\textquotesingle s leverage is a valid description of where the
+observed fit changes, but it is not an additional anomaly beyond the
+rarity of the global fit.
+
+A targeted held-out check fits \(\Lambda\)CDM to DESI+cCMB without LRG2,
+propagates the fitted-parameter covariance, and then predicts the
+excluded (D\_M/r\_d, D\_H/r\_d) vector. The prediction is (17.530,
+20.066), compared with (17.351, 19.455) observed. Repeating the full
+exclusion, fit, prediction, and score in 5,000 fitted-\(\Lambda\)CDM
+mocks gives a joint tail of 204/5,000, p = 0.0408 {[}0.0355, 0.0467{]}
+(2.05\(\sigma\)). Its decomposition changes the earlier interpretation:
+the isotropic distance D\_V/r\_d is low (p = 0.0204), but the
+Alcock--Paczynski ratio D\_M/D\_H is unexceptional (p = 0.374).
+LRG2\textquotesingle s radial coordinate carries more leverage for the
+\(w_0\)\(w_a\) model comparison, but the held-out residual is not an
+anomalous anisotropy. Because LRG2 was selected after inspection, these
+targeted p-values are diagnostic and do not replace the selected-null
+calibration above. Shifting LRG2 halfway toward \(\Lambda\)CDM lowers
+the global preference below 2\(\sigma\); inflating only its errors
+degrades the signal smoothly, indicating statistical leverage rather
+than numerical pathology. On the supernova side, the significance of
+DESI+Pantheon+ falls monotonically from 1.8\(\sigma\) to 1.3\(\sigma\)
+as low-z cuts rise from z \textgreater{} 0.01 to z \textgreater{} 0.1,
+with \(w_0\) pinned near -0.89 throughout.
+
+\section{The z approximately 0.7 measurement across
+experiments}\label{the-z-approximately-07-measurement-across-experiments}
+
+Three analyses have measured BAO at this redshift. Against the
+\(\Lambda\)CDM best-fit prediction: eBOSS DR16 (z = 0.698; partially
+correlated with DESI in sample and footprint) deviates jointly by
+0.83\(\sigma\), with D\_M \emph{high} if anything; DESI DR1 by
+1.40\(\sigma\), driven by low D\_M; DESI DR2 by 1.51\(\sigma\), driven
+by low D\_H. The anomaly changed observable between
+DESI\textquotesingle s own releases. The swap test quantifies the
+consequence: with DR2\textquotesingle s LRG2 the preference is
+2.4\(\sigma\); with DR1\textquotesingle s, 1.9\(\sigma\); with
+eBOSS\textquotesingle s, 1.6\(\sigma\) --- numerically identical to
+having no z approximately 0.7 measurement at all. Balanced reading:
+DR2\textquotesingle s measurement is 1.7--1.8\(\times\) more precise
+than either comparator and may be resolving what noisier data could not;
+DESI\textquotesingle s blinded internal-consistency checks passed; eBOSS
+could not strongly confirm a real signal at its precision, and the
+footprints partially overlap. But a discovery narrative must carry both
+facts: the signature is unstable across releases, and the earlier
+partially overlapping measurement at this redshift is
+\(\Lambda\)CDM-consistent (the swap is a comparator test, not an
+independent non-confirmation). Reproducing LRG2 from its official
+likelihood surface is the single most decisive open test.
+
+\section{Supernova calibration}\label{supernova-calibration}
+
+On the Dovekie-recalibrated DES5Y release, DESI+DES5Y (no CMB) prefers
+\(w_0\)\(w_a\) at 2.2\(\sigma\) (\(\Delta\chi^2\) = -7.3) --- against
+-13.6 (3.3\(\sigma\)) published with the 2024 release. The updated
+Dovekie release changed cross-calibration, SALT training, scatter
+modeling, bias simulations, and sample treatment together; the smaller
+preference coincides with the new release, but attribution among those
+changes is not established (the same machinery reproduces Pantheon+ at
+-5.1 vs -4.9). As a sensitivity test (not a diagnosis --- a free offset
+can absorb calibration, selection, population evolution, survey
+differences, or genuine cosmological curvature alike), freeing one
+magnitude offset on the 197 external low-z supernovae returns D = +0.037
+mag under \(\Lambda\)CDM --- matching Efstathiou\textquotesingle s
+\textasciitilde0.04 mag estimate from Pantheon+/DES5Y cross-matching ---
+and the preference collapses to 0.2\(\sigma\), with \(w_0\) = -0.99.
+With the CMB anchor attached, the intercept still reduces 2.9\(\sigma\)
+to 1.3\(\sigma\) (D = +0.036). Counter-arguments are part of the record:
+the DES team reproduces the offset but attributes much of it to improved
+intrinsic-scatter and host-galaxy modeling (reverting those assumptions
+moves their result 3.9\(\sigma\) \(\rightarrow\) 3.3\(\sigma\), not to
+zero); the intercept is a post-hoc test motivated by a critic and may
+double-count covariance systematics; and per Cort\^{e}s \& Liddle, the
+overlapping supernova compilations must never be averaged.
+
+\section{Robustness of the statistical
+framework}\label{robustness-of-the-statistical-framework}
+
+The preference is not unique to CPL: JBP and logarithmic w(z) families
+find similar improvements. That parameterization swap, however, is not
+itself a calibrated test that w changes with time. We therefore test the
+nested CPL question directly, comparing constant-w CDM to \(w_0w_a\)CDM
+with only \(w_a\) added. For DESI+cCMB, T = \(\chi^2_{\min}\)(wCDM) -
+\(\chi^2_{\min}\)(\(w_0w_a\)CDM) = 7.8506. In 5,000 mocks generated at
+the observed best-fit constant-w model, 30 are at least as large: p =
+0.0060 {[}0.0041, 0.0086{]}, or 2.75\(\sigma\); the
+one-degree-of-freedom Wilks value is 2.80\(\sigma\). No mock fit failed
+or reached the prior boundary. After removing LRG2, T falls to 3.4263,
+with 349/5,000 exceedances: p = 0.0698 {[}0.0629, 0.0772{]}, or
+1.81\(\sigma\). Thus the compressed data contain a direct, calibrated,
+CPL-specific preference for time variation, but most of its strength is
+not retained without LRG2. This does not establish arbitrary time
+dependence or a physical dark-energy field.
+
+Separately, the 5,000-mock \(\Lambda\)CDM-versus-\(w_0\)\(w_a\) global
+calibration yields 70 exceedances of the unrounded observed
+\(\Delta\chi^2\) = -8.4575: p = 0.0140 {[}0.0109, 0.0177{]}, versus the
+Wilks expectation 0.0146. The selection-calibrated maximum-influence
+result is reported in §5; its conditional result shows that localization
+should not be counted as independent evidence against \(\Lambda\)CDM.
+Full CAMB computation (a separate execution environment, not scientific
+independence) confirms the baseline and LRG2-deletion fits to
+approximately0.2 in \(\Delta\chi^2\). Posterior sampling under the
+official priors shows no pileup at the \(w_0+w_a\) \textless{} 0
+boundary; the naive mean-plug-in DIC convention (-8.99) is documented as
+an artifact of the curved \(w_0\)-\/-\(w_a\) ridge, with the standard
+MAP plug-in giving -4.96.
+
+\section{Pre-registered cross-probe consistency test
+(H-X)}\label{pre-registered-cross-probe-consistency-test-h-x}
+
+With hypotheses and kill conditions registered before execution
+(HYPOTHESIS-cross-probe.md), per-probe \(w_0\)\(w_a\) posteriors were
+sampled for P1 = DESI BAO+cCMB, P2 = Pantheon+ +cCMB+BBN, P3 =
+DES5Y+cCMB+BBN. Pairwise 2D parameter-shift tensions: P1--P2 =
+1.44\(\sigma\), P1--P3 = 1.35\(\sigma\), P2--P3 = 0.24\(\sigma\).
+Phantom-crossing redshifts: P1 z\(\times\) = 0.487 {[}0.418--0.553{]};
+P2 0.292 {[}0.187--0.502{]}; P3 0.296 {[}0.244--0.403{]}. Verdict
+against the registered conditions: INTERMEDIATE --- neither the
+consistency (\textless1\(\sigma\) all pairs) nor inconsistency
+(\textgreater2\(\sigma\) any pair) threshold met; reported without
+promotion. The registered follow-up is complete: P1 without LRG2 gives
+z\(\times\) = 0.478 {[}0.384--0.564{]}, so LRG2 controls much of the
+preference\textquotesingle s strength but not the surviving BAO
+posterior\textquotesingle s crossing location. Caveats: Gaussian shift
+metric on curved posteriors; surrogate likelihood (CAMB-validated);
+shared-anchor correlation.
+
+\section{The full-CMB lensing
+variant}\label{the-full-cmb-lensing-variant}
+
+Using cobaya with CAMB and the clik-free native Planck 2018 likelihoods
+(low-\(\ell\) TT, low-\(\ell\) EE, plik-lite TTTEEE, lensing) plus the
+DESI BAO likelihood, MAP minimization (BOBYQA, dual converged runs)
+under DESI\textquotesingle s official w(z) priors gives, after removing
+the uniform-prior volume constant: with LRG2, \(\Delta\chi^2\) = -10.35
+(2.77\(\sigma\)); without LRG2, \(\Delta\chi^2\) = -3.76
+(1.43\(\sigma\)). The with-LRG2 value sits below the published PR4-based
+-12.5 (3.1\(\sigma\)) by an amount consistent with the PR3-vs-PR4
+likelihood difference (pre-registered caveat). The central finding
+stands at the full-likelihood level: \textbf{CMB lensing does not
+substitute for LRG2} --- the preference collapses from
+\textasciitilde2.8\(\sigma\) to \textasciitilde1.4\(\sigma\) on removal
+of one measurement. Caveats: PR3-native likelihoods; MAP not posterior
+comparison; single pipeline pending clean-room rerun; the selected-null
+calibration and its conditional limit are in §5.
+
+\section{What this establishes --- and what it does
+not}\label{what-this-establishes--and-what-it-does-not}
+
+Established: the published compressed likelihoods genuinely contain the
+reported preference; it survives independent reimplementation, optimizer
+attack, full Boltzmann physics, parameterization changes, and bootstrap
+calibration. Within CPL, a direct constant-w null test gives a
+calibrated 2.75\(\sigma\) preference for time variation, falling to
+1.81\(\sigma\) without LRG2. The held-out LRG2 vector is a modest
+2.05\(\sigma\) discrepancy, driven more by isotropic distance scale than
+by its shape ratio. Among \(\Lambda\)CDM mocks with a global preference
+this strong, a maximum deletion influence at least as large as observed
+occurs about half the time. Not established: that dark energy evolves;
+that LRG2 is wrong; that localization or the targeted held-out p-value
+is independent evidence; that the supernova calibration explanation is
+correct; or that the PR3-native full-CMB variant reproduces
+DESI\textquotesingle s PR4/ACT stack. The honest status is \textbf{a
+reproducible, LRG2-sensitive 2--3\(\sigma\) hint --- not proof.}
+
+\section{Frontier-standard boundary and development
+roadmap}\label{frontier-standard-boundary-and-development-roadmap}
+
+A frontier-roadmap review was compared against the frozen analysis
+rather than treated as new evidence. Several recommendations are adopted
+as the next evidentiary gates: native-likelihood reconstruction of LRG2;
+survey splits and nuisance templates for fiber assignment,
+reconstruction, redshift failures, observing conditions, covariance, and
+window functions; flexible or nonparametric expansion reconstructions
+calibrated inside null mocks; prior-sensitive Bayesian evidence or
+out-of-sample predictive scores; growth consistency through RSD,
+\(f\sigma_8\), weak lensing, and CMB lensing; and a hierarchical,
+survey-aware supernova calibration model.
+
+The same review also proposed interpretations that exceed this project's
+evidence. This compressed-likelihood analysis does not identify fiber
+assignment as the cause of LRG2, prove that the supernova seam is a
+calibration error, validate a Gaussian-process crossing, support Early
+Dark Energy, or favor interacting/decaying dark matter or modified
+gravity. Those ideas remain hypotheses until they improve predictions
+outside the data that generated the anomaly and survive appropriate null
+calibration and model-complexity penalties. The complete comparison is
+recorded in \texttt{FRONTIER\_REVIEW.md}.
+
+The frontier claim ladder is therefore explicit:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{Reproducible likelihood feature:} \textbf{Required evidence:}
+  independent implementation and stable optimization; \textbf{Current
+  status:} \textbf{Met} for the published compressed inputs
+\item
+  \textbf{Calibrated anomaly:} \textbf{Required evidence:} null
+  simulations and selection-aware statistics; \textbf{Current status:}
+  \textbf{Met} for the global, maximum-influence, direct-time-variation,
+  and held-out tests
+\item
+  \textbf{Measurement diagnosis:} \textbf{Required evidence:} native
+  likelihood, survey splits, nuisance-template and covariance audit;
+  \textbf{Current status:} \textbf{Open}
+\item
+  \textbf{Cross-probe physical consistency:} \textbf{Required evidence:}
+  expansion, growth, and lensing predicted by one model; \textbf{Current
+  status:} \textbf{Open}
+\item
+  \textbf{Model preference:} \textbf{Required evidence:} prior-robust
+  Bayesian or predictive advantage over flexible alternatives;
+  \textbf{Current status:} \textbf{Open}
+\item
+  \textbf{Discovery:} \textbf{Required evidence:} independent data and
+  human replication at discovery-grade significance; \textbf{Current
+  status:} \textbf{Not met}
+\end{itemize}
+
+\section{Falsifiable expectations}\label{falsifiable-expectations}
+
+If the signal is physics: DESI\textquotesingle s final likelihood (2027)
+retains the z approximately 0.7 distance-scale departure at higher
+precision; Rubin-calibrated supernovae reproduce the low-z crossing with
+no magnitude offset required; growth and lensing co-vary as dynamical
+dark energy predicts. If it is systematics: the LRG2 distance residual
+regresses; the supernova preference tracks calibration choices across
+compilations; residuals decorrelate across probes. We pre-commit to
+updating this document against those outcomes.
+
+\section{Reproduction}\label{reproduction-1}
+
+The blind reproduction protocol and one-command runners are documented
+in cleanroom/README.md. Released outputs are in results/; canonical
+values, completion states, and checksums are in RESULTS\_MANIFEST.json.
+
+\section{Acknowledgments and provenance of
+assistance}\label{acknowledgments-and-provenance-of-assistance}
+
+Implementation, literature triage, and drafting were AI-assisted
+(multiple systems, adversarially cross-checked); four AI
+software/statistics/manuscript audits are incorporated with attribution
+in the README, but these are not independent scientific replication. A
+human clean-room rerun remains pending. Errors are the
+author\textquotesingle s. Data credits: DESI, SDSS/eBOSS,
+Pantheon+/SH0ES, DES, Planck, and the cobaya project\textquotesingle s
+data releases.
+
+\section{Primary sources}\label{primary-sources}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  DESI Collaboration, ``DESI DR2 Results II: Measurements of Baryon
+  Acoustic Oscillations and Cosmological Constraints,''
+  arXiv:2503.14738.
+\item
+  DESI Collaboration, ``DESI 2024 III: Baryon Acoustic Oscillations from
+  Galaxies and Quasars,'' arXiv:2404.03000, and ``DESI 2024 VI:
+  Cosmological Constraints from the Measurements of Baryon Acoustic
+  Oscillations,'' arXiv:2404.03002.
+\item
+  Brout et al., ``The Pantheon+ Analysis: Cosmological Constraints,''
+  arXiv:2202.04077.
+\item
+  DES Collaboration, ``The Dark Energy Survey: Cosmology Results With
+  \textasciitilde1500 New High-redshift Type Ia Supernovae Using the
+  Full 5-year Dataset,'' arXiv:2401.02929.
+\item
+  Efstathiou, ``Evolving Dark Energy or Supernovae Systematics?'',
+  arXiv:2408.07175.
+\item
+  Vincenzi et al., ``Comparing the DES-SN5YR and Pantheon+ SN cosmology
+  analyses,'' arXiv:2501.06664.
+\item
+  Cort\^{e}s and Liddle, ``Interpreting DESI's evidence for evolving
+  dark energy,'' arXiv:2504.15336.
+\end{enumerate}
+
+\section*{Data Availability}
+The released code, download instructions, result files, chains, and registered hypothesis records are available at \url{https://github.com/GrobeStreet/de-stress-lab}. The immutable flagship scientific archive is \href{https://doi.org/10.5281/zenodo.21632602}{doi:10.5281/zenodo.21632602}. The canonical completion states and checksums are recorded in \texttt{RESULTS\_MANIFEST.json}. A human clean-room execution remains pending.
+
+\section*{Conflict of Interest}
+The author declares no competing financial interests.
+
+\end{document}
