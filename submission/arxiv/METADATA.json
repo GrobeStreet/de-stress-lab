@@ -16,6 +16,11 @@
   "doi": null,
   "report_number": null,
   "license": "CC BY 4.0",
-  "endorsement_status": "requires signed-in astro-ph.CO account check",
+  "account_affiliation": "Unaffiliated",
+  "account_groups": ["physics", "stat"],
+  "account_default_category": "astro-ph.CO",
+  "orcid_link_status": "unlinked",
+  "submittal_agreement_status": "not_accepted",
+  "endorsement_status": "not_yet_determined",
   "submission_status": "prepared_not_submitted"
 }

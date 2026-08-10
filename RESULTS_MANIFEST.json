@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_utc": "2026-08-09T20:58:49Z",
+  "generated_utc": "2026-08-10T15:20:14Z",
   "project": "Dark-Energy Stress Lab",
   "repository": "https://github.com/GrobeStreet/de-stress-lab.git",
   "base_repository_commit": "c6293da4f870f4f1aef15d9f6cd31c6a1a67b896",
@@ -213,8 +213,8 @@
     "preprint/README.md": "eb1b1dfb991b3c31fbeca856180dc82bf49a8a873dea1374d1335d042114206f",
     "preprint/manuscript.tex": "cf43c8a9f056651d1f6362732003bec301a20e8c9b5e89bc926bc53cdc194879",
     "preprint/manuscript.pdf": "6414396edfa532724e5b25b853b21f20313bfcd08dc6fdbd1c13a40cd3eb730b",
-    "submission/arxiv/METADATA.json": "263be362e811ba4f763cfcfd83f8ffa7b198f115b37a21b3511819efc9e9cc1b",
-    "submission/arxiv/METADATA.md": "7d9b82036807dec23d330888b3697f75d3aceace7b2c5e66c95cf0ecc8730c05",
+    "submission/arxiv/METADATA.json": "0e1a68dc689c30637db78c74f0c816f479b63ab28a5035cf88d2c08f311ff043",
+    "submission/arxiv/METADATA.md": "5bc51032ab79fa718822e36f0032bee8e5c12c65b67f584b0c71ffce67dedcd3",
     "submission/arxiv/README.md": "eca74b1c249bce5fd615db1ecad28dd32b61d49c85d4b34598580a3596db8b5e",
     "submission/arxiv/arxiv-source.zip": "37478acb9a490311da46fccb6a73ad9260039d24ffc0273797a3de2fe27594e7",
     "submission/arxiv/SHA256SUMS": "ed736f485f671f9dedc1869f45f65fdf722be2f11599ab8ec532ea9baffc5718",

@@ -1,12 +1,13 @@
 # arXiv submission metadata
 
-Status: prepared, not submitted. Verified 2026-08-09 against the manuscript, repository, Gmail author identity, and current arXiv submission guidance.
+Status: prepared, not submitted. Verified 2026-08-10 against the manuscript, repository, author identity, current arXiv guidance, and the signed-in arXiv account.
 
 ## Frozen fields
 
 - Title: **Anatomy of a 2–3σ Hint**
 - Author: **Robert Morong**
 - Affiliation in manuscript: **Independent researcher, San Diego, California, USA**
+- Affiliation in arXiv account: **Unaffiliated**
 - Contact email: **bobby@trainingties.com**
 - Primary category: **astro-ph.CO**
 - Cross-lists: **None recommended for v1**
@@ -19,9 +20,10 @@ Status: prepared, not submitted. Verified 2026-08-09 against the manuscript, rep
 
 ## Author confirmation gates
 
-- ORCID: **include**. Link an existing ORCID or create one through the signed-in arXiv account before submission; no unambiguous public identifier was found.
+- ORCID: **include, currently unlinked**. Link an existing ORCID or create one through the signed-in arXiv account before submission; no unambiguous public identifier was found.
 - License: **CC BY 4.0 selected** for the prepared package. The choice is not active until the author selects it in arXiv and submits.
-- Endorsement: **account check pending**. Neither available browser was signed in; confirm whether the account is endorsed for `astro-ph.CO` after login.
+- Account category: **confirmed**. The signed-in account is registered for the `physics` and `stat` groups with `astro-ph.CO` as its default category.
+- Endorsement: **not yet determined**. The category is available, but the account has not accepted the Submittal Agreement or advanced the incomplete draft far enough for arXiv to display an endorsement decision.
 - Final author preview: verify title, abstract, author spelling, processed PDF, and source-file list in arXiv before pressing **Submit Article**.
 
 ## Scope note
