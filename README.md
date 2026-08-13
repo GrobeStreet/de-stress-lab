@@ -5,6 +5,8 @@
 [![Software DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21633731.svg)](https://doi.org/10.5281/zenodo.21633731)
 [![Scientific archive DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21632602.svg)](https://doi.org/10.5281/zenodo.21632602)
 
+> **Independent verifier wanted.** A human who was not involved in development can start with the [verification front door](VERIFY.md) or the [good-first verification issue](https://github.com/GrobeStreet/de-stress-lab/issues/21). Clean install/test verification is useful; a blinded 5,000-mock rerun is available but optional. Failures and deviations are welcome evidence.
+
 `de-stress-lab` is an installable Python package for selection-aware influence
 diagnostics, null calibration, and frozen scientific prediction ledgers. The
 original dark-energy scripts remain frozen as the flagship validation case.
