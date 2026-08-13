@@ -1,7 +1,7 @@
 # Anatomy of a 2–3σ Hint
 ## An Independent Stress Test of the DESI DR2 Evolving-Dark-Energy Preference
 
-**Bobby Morong** (independent researcher), with AI-assisted implementation · July 2026
+**Robert Morong** (independent researcher, San Diego, California, USA), with AI-assisted implementation · July 2026
 *All data public · all code released with this report · every input primary-sourced · published under a pre-committed publish-regardless protocol*
 
 ---
@@ -41,6 +41,8 @@ An AI software audit re-ran this pipeline and confirmed all χ² values to four 
 ## 5. Influence diagnostics: where the preference lives
 
 Leave-one-tracer-out refits of DESI+cCMB show the preference is not distributed: dropping any of six tracers leaves 2.3–2.6σ (removing BGS or Lyα *strengthens* it), while dropping LRG2 (z = 0.706) collapses it to 1.6σ. The χ² decomposition attributes the w₀wₐ improvement to LRG2 (−4.1) and the CMB geometric anchor (−3.9), with LRG1 contributing −1.2, all others ≈ 0, and Lyα opposing at +1.0. Within LRG2, the radial measurement carries more model leverage: retaining only D_H/r_d gives Δχ² = −6.5, only D_M/r_d gives −4.9, neither −4.3. The selection-calibrated statistic I_j = Δχ²_−j − Δχ²_full and M = max_j I_j gives M_obs = 4.125 at LRG2. Repeating the full fit and all seven deletion fits inside each of 5,000 ΛCDM mocks yields an unconditional selected tail of 78/5,000, p = 0.0156 [0.0124, 0.0194]. Conditioning on a global preference at least as strong as observed leaves 70 mocks, of which 34 meet or exceed M_obs: p_cond = 0.486 [0.364, 0.608]. Thus LRG2's leverage is a valid description of where the observed fit changes, but it is not an additional anomaly beyond the rarity of the global fit.
+
+After this analysis was frozen, Kim, Mota, and Tamosiunas independently studied the DR1-to-DR2 sequence with an anytime-valid e-process at a Planck-fixed background. Under their pre-specified alternative the running evidence crosses their illustrative threshold, but it does not survive when any of the seven bins is allowed to have produced the excess; removing LRG2 reduces their running e-value from 33.97 to 0.49. Their statistic, null, background treatment, and repeated-release question differ from the fitted-null bootstrap used here, so the numerical results must not be combined or treated as mutual validation. The qualitative agreement is narrower: LRG2 sensitivity and test specification are central. Their work also identifies a sequential-testing question across releases that the present single-release calibration does not answer.
 
 A targeted held-out check fits ΛCDM to DESI+cCMB without LRG2, propagates the fitted-parameter covariance, and then predicts the excluded (D_M/r_d, D_H/r_d) vector. The prediction is (17.530, 20.066), compared with (17.351, 19.455) observed. Repeating the full exclusion, fit, prediction, and score in 5,000 fitted-ΛCDM mocks gives a joint tail of 204/5,000, p = 0.0408 [0.0355, 0.0467] (2.05σ). Its decomposition changes the earlier interpretation: the isotropic distance D_V/r_d is low (p = 0.0204), but the Alcock–Paczynski ratio D_M/D_H is unexceptional (p = 0.374). LRG2's radial coordinate carries more leverage for the w₀wₐ model comparison, but the held-out residual is not an anomalous anisotropy. Because LRG2 was selected after inspection, these targeted p-values are diagnostic and do not replace the selected-null calibration above. Shifting LRG2 halfway toward ΛCDM lowers the global preference below 2σ; inflating only its errors degrades the signal smoothly, indicating statistical leverage rather than numerical pathology. On the supernova side, the significance of DESI+Pantheon+ falls monotonically from 1.8σ to 1.3σ as low-z cuts rise from z > 0.01 to z > 0.1, with w₀ pinned near −0.89 throughout.
 
@@ -108,6 +110,7 @@ Implementation, literature triage, and drafting were AI-assisted (multiple syste
 5. Efstathiou, “Evolving Dark Energy or Supernovae Systematics?”, arXiv:2408.07175.
 6. Vincenzi et al., “Comparing the DES-SN5YR and Pantheon+ SN cosmology analyses,” arXiv:2501.06664.
 7. Cortês and Liddle, “Interpreting DESI’s evidence for evolving dark energy,” arXiv:2504.15336.
+8. Kim, Mota, and Tamosiunas, “A Sequentially-Valid Reanalysis of DESI's Dynamical Dark Energy Signal,” arXiv:2607.28918.
 
 
 ## Appendix A. Complete test ledger

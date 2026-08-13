@@ -129,11 +129,11 @@ def main() -> int:
 \usepackage{etoolbox}
 \setlength{\emergencystretch}{3em}
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\hypersetup{hidelinks,pdftitle={Anatomy of a 2--3 Sigma Hint},pdfauthor={Bobby Morong}}
+\hypersetup{hidelinks,pdftitle={Anatomy of a 2--3 Sigma Hint},pdfauthor={Robert Morong}}
 \begin{document}
 \title{Anatomy of a 2--3$\sigma$ Hint}
-\author{Bobby Morong}
-\affiliation{Independent researcher}
+\author{Robert Morong}
+\affiliation{Independent researcher, San Diego, California, USA}
 \date{August 2026}
 \begin{abstract}
 """

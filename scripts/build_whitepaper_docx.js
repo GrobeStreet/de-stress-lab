@@ -203,7 +203,7 @@ function parseTable(start) {
 
 const firstTitle = lines.find((line) => line.startsWith("# "));
 const firstSubtitle = lines.find((line) => line.startsWith("## "));
-const authorLine = lines.find((line) => line.startsWith("**Bobby Morong**"));
+const authorLine = lines.find((line) => line.startsWith("**Robert Morong**"));
 const children = [];
 
 children.push(
@@ -402,7 +402,7 @@ for (; index < lines.length; index += 1) {
 }
 
 const doc = new Document({
-  creator: "Bobby Morong",
+  creator: "Robert Morong",
   title: isReviewerPacket ? "DESI Evidence Review Packet" : "Anatomy of a 2–3σ Hint",
   subject: isReviewerPacket
     ? "Independent review and verification guide"
