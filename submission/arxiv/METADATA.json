@@ -1,26 +1,27 @@
 {
   "title": "Anatomy of a 2–3σ Hint",
+  "arxiv_web_title": "Anatomy of a 2--3$\\sigma$ Hint",
   "authors": [
     {
       "name": "Robert Morong",
       "affiliation": "Independent researcher, San Diego, California, USA",
       "email": "bobby@trainingties.com",
       "orcid": null,
-      "orcid_inclusion": "yes_link_before_submission"
+      "orcid_status": "recommended_optional_unlinked"
     }
   ],
   "primary_category": "astro-ph.CO",
   "cross_lists": [],
-  "comments": "REVTeX manuscript; code, released results, and review materials: https://github.com/GrobeStreet/de-stress-lab; scientific archive: https://doi.org/10.5281/zenodo.21632602",
+  "comments": "REVTeX manuscript; code, released results, and verification materials: https://github.com/GrobeStreet/de-stress-lab; scientific archive: https://doi.org/10.5281/zenodo.21632602",
   "journal_reference": null,
   "doi": null,
   "report_number": null,
-  "license": "CC BY 4.0",
+  "license_recommendation": "CC BY 4.0",
+  "license_status": "author_must_select_live_irrevocable_for_version",
   "account_affiliation": "Unaffiliated",
   "account_groups": ["physics", "stat"],
   "account_default_category": "astro-ph.CO",
-  "orcid_link_status": "unlinked",
-  "submittal_agreement_status": "not_accepted",
-  "endorsement_status": "not_yet_determined",
+  "submittal_agreement_status": "author_action_required",
+  "endorsement_status": "determine_in_live_submission_workflow",
   "submission_status": "prepared_not_submitted"
 }
