@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.10"
 license = {file = "LICENSE"}
 authors = [
-  {name = "Bobby Morong", email = "bobbyopsassistant@gmail.com"}
+  {name = "Bobby Morong", email = "Bobby@Trainingties.com"}
 ]
 keywords = [
   "reproducibility",
