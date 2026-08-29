@@ -57,5 +57,5 @@ Changelog = "https://github.com/GrobeStreet/de-stress-lab/blob/main/CHANGELOG.md
 packages = ["src/destress"]
 
 [tool.pytest.ini_options]
-addopts = "-ra --cov=destress --cov-report=term-missing"
+addopts = "-ra --cov=destress --cov-report=term-missing --cov-report=xml"
 testpaths = ["tests"]
