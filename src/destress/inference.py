@@ -11,7 +11,19 @@ from scipy import optimize
 
 @dataclass(frozen=True)
 class FitResult:
-    """A stable, serialization-friendly view of an optimizer result."""
+    """Stable, serialization-friendly view of an optimizer result.
+
+    Parameters
+    ----------
+    parameters
+        Best-fit parameter vector.
+    objective
+        Objective-function value at the retained optimum.
+    success
+        Whether the underlying optimizer reported success.
+    message
+        Optimizer status message.
+    """
 
     parameters: np.ndarray
     objective: float
@@ -21,17 +33,32 @@ class FitResult:
 
 @dataclass(frozen=True)
 class ModelComparison:
-    """Nested or non-nested minimum-objective comparison."""
+    """Compare the best objective values of two fitted models.
+
+    Parameters
+    ----------
+    null
+        Fit result for the reference/null model.
+    alternative
+        Fit result for the alternative model.
+
+    Notes
+    -----
+    ``delta_chi2`` is defined as alternative minus null objective. Therefore a
+    negative value favors the alternative when the objective is chi-squared.
+    """
 
     null: FitResult
     alternative: FitResult
 
     @property
     def delta_chi2(self) -> float:
+        """Return alternative minus null objective value."""
         return self.alternative.objective - self.null.objective
 
     @property
     def improvement(self) -> float:
+        """Return null minus alternative objective value."""
         return self.null.objective - self.alternative.objective
 
 
@@ -45,7 +72,42 @@ def multistart_minimize(
     method: str = "Nelder-Mead",
     options: dict | None = None,
 ) -> FitResult:
-    """Minimize from deterministic jittered starts and retain the best result."""
+    """Minimize an objective from deterministic jittered starting points.
+
+    Parameters
+    ----------
+    objective
+        Callable accepting a one-dimensional NumPy parameter vector and
+        returning a scalar objective value.
+    start
+        Base starting parameter vector.
+    starts
+        Number of optimization starts, including the unjittered base start.
+    seed
+        Seed for the NumPy random generator used to create jittered starts.
+    jitter
+        Fractional Gaussian jitter applied elementwise to additional starts.
+    method
+        Optimization method passed to :func:`scipy.optimize.minimize`.
+    options
+        Optional dictionary passed to :func:`scipy.optimize.minimize`.
+
+    Returns
+    -------
+    FitResult
+        The candidate with the smallest objective value.
+
+    Raises
+    ------
+    ValueError
+        If ``starts`` is less than one.
+
+    Examples
+    --------
+    >>> result = multistart_minimize(lambda x: float((x[0] - 2.0) ** 2), [0.0])
+    >>> round(result.parameters[0], 3)
+    2.0
+    """
     if starts < 1:
         raise ValueError("starts must be positive")
     initial = np.asarray(start, dtype=float)
@@ -66,4 +128,3 @@ def multistart_minimize(
         success=bool(best.success),
         message=str(best.message),
     )
-
